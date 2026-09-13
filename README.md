@@ -60,4 +60,4 @@ git clone https://github.com/kokomoko757/cafe_project.git
 
 ## License
 
-© 2023 Global Coffee. All rights reserved.
+© 2026 Global Coffee. All rights reserved.
