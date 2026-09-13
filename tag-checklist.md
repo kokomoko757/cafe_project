@@ -2,123 +2,304 @@
 
 ## 1. Required in each file
 
-### index.html (Author: Tazhmaganbetov Yeraidyn)[cite: 10]
-* `<!DOCTYPE html>` — line 1[cite: 10]
-* `lang` — line 2[cite: 10]
-* `charset` — line 4[cite: 10]
-* `viewport` — line 5[cite: 10]
-* `meta description` — line 6[cite: 10]
-* `meta author` — line 8[cite: 10]
-* `h1` — line 16[cite: 10]
-* `header` — line 15[cite: 10]
-* `nav` — line 17[cite: 10]
-* `main` — line 30[cite: 10]
-* `footer` — line 133[cite: 10]
-* `comments` — line 7, line 12, line 28[cite: 10]
+# Index.html Tag and Structure Analysis КОКО
 
-### booking.html (Author: Bolatuly Assylzhan)[cite: 8]
-* `<!DOCTYPE html>` — line 1[cite: 8]
-* `lang` — line 2[cite: 8]
-* `charset` — line 4[cite: 8]
-* `viewport` — line 5[cite: 8]
-* `meta description` — line 6[cite: 8]
-* `meta author` — line 7[cite: 8]
-* `h1` — line 12[cite: 8]
-* `header` — line 11[cite: 8]
-* `nav` — line 13[cite: 8]
-* `main` — line 24[cite: 8]
-* `footer` — line 81[cite: 8]
-* `comments` — line 20, line 32, line 38, line 49, line 57, line 68[cite: 8]
+## Document Structure & Key Tags
 
-### colophon.html (Author: Bolatuly Assylzhan)[cite: 9]
-* `<!DOCTYPE html>` — line 1[cite: 9]
-* `lang` — line 2[cite: 9]
-* `charset` — line 4[cite: 9]
-* `viewport` — line 5[cite: 9]
-* `meta description` — line 6[cite: 9]
-* `meta author` — line 7[cite: 9]
-* `h1` — line 13[cite: 9]
-* `header` — line 12[cite: 9]
-* `nav` — line 14[cite: 9]
-* `main` — line 26[cite: 9]
-* `footer` — line 54[cite: 9]
-* `comments` — line 11, line 25[cite: 9]
-
-### location.html (Author: Ibraev Tamerlan)[cite: 5]
-* `<!DOCTYPE html>` — line 1[cite: 5]
-* `lang` — line 2[cite: 5]
-* `charset` — line 4[cite: 5]
-* `viewport` — line 5[cite: 5]
-* `meta description` — line 6[cite: 5]
-* `meta author` — line 7[cite: 5]
-* `h1` — line 12[cite: 5]
-* `header` — line 11[cite: 5]
-* `nav` — line 13[cite: 5]
-* `main` — line 22[cite: 5]
-* `footer` — line 203[cite: 5]
-* `comments` — line 30, line 185[cite: 5]
-
-### menu.html (Author: Tazhmaganbetov Yeraidyn)[cite: 6]
-* `<!DOCTYPE html>` — line 1[cite: 6]
-* `lang` — line 2[cite: 6]
-* `charset` — line 4[cite: 6]
-* `viewport` — line 5[cite: 6]
-* `meta description` — line 6[cite: 6]
-* `meta author` — line 7[cite: 6]
-* `h1` — line 12[cite: 6]
-* `header` — line 11[cite: 6]
-* `nav` — line 13[cite: 6]
-* `main` — line 24[cite: 6]
-* `footer` — line 62[cite: 6]
-* `comments` — line 29[cite: 6]
-
-### reviews.html (Author: Ibraev Tamerlan)[cite: 7]
-* `<!DOCTYPE html>` — line 1[cite: 7]
-* `lang` — line 2[cite: 7]
-* `charset` — line 4[cite: 7]
-* `viewport` — line 5[cite: 7]
-* `meta description` — line 6[cite: 7]
-* `meta author` — line 7[cite: 7]
-* `h1` — line 12[cite: 7]
-* `header` — line 11[cite: 7]
-* `nav` — line 13[cite: 7]
-* `main` — line 23[cite: 7]
-* `footer` — line 245[cite: 7]
-* `comments` — line 200[cite: 7]
+* **Author**: `Yeraidyn` (Line 9)
+* **`<!DOCTYPE html>`**: Line 1 (`<!DOCTYPE html>`)
+* **`lang`**: Line 2 (`<html lang="ru">`)
+* **`charset`**: Line 5 (`<meta charset="UTF-8">`)
+* **`viewport`**: Line 6 (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`)
+* **`meta description`**: Line 7 (`<meta name="description" content="Global Coffee - уютная кофейня в Астане на улице Туркестан.">`)
+* **`meta author`**: Line 9 (`<meta name="author" content="Yeraidyn">`)
+* **`<header>`**: Line 14 (`<header id="top">`)
+* **`<h1>`**: Line 15 (`<h1>Global Coffee в Астане</h1>`)
+* **`<nav>`**: Line 16 (`<nav>`)
+* **`<main>`**: Line 30 (`<main>`)
+* **`<footer>`**: Line 126 (`<footer>`)
 
 ---
 
-## 2. Required in total for the entire site
+## All HTML Comments
 
-* `section` — `index.html` line 31 (Tazhmaganbetov Yeraidyn)[cite: 10], `location.html` line 28 (Ibraev Tamerlan)[cite: 5]
-* `article` — `index.html` line 33 (Tazhmaganbetov Yeraidyn)[cite: 10], `reviews.html` line 25 (Ibraev Tamerlan)[cite: 7]
-* `aside` — `index.html` line 46 (Tazhmaganbetov Yeraidyn)[cite: 10], `location.html` line 24 (Ibraev Tamerlan)[cite: 5]
-* `figure` + `figcaption` — `index.html` line 39, line 41 (Tazhmaganbetov Yeraidyn)[cite: 10]; `menu.html` line 50, line 52 (Tazhmaganbetov Yeraidyn)[cite: 6]
-* `table` — `index.html` line 55 (Tazhmaganbetov Yeraidyn)[cite: 10], `location.html` line 31 (Ibraev Tamerlan)[cite: 5]
-* `nested list` — `index.html` line 83 (Tazhmaganbetov Yeraidyn)[cite: 10], `menu.html` line 31 (Tazhmaganbetov Yeraidyn)[cite: 6]
-* `ol` — `index.html` line 92 (Tazhmaganbetov Yeraidyn)[cite: 10], `location.html` line 188 (Ibraev Tamerlan)[cite: 5]
-* `dl` — `index.html` line 98 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `target` — `index.html` line 120 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `email input` — `booking.html` line 36 (Bolatuly Assylzhan)[cite: 8]
-* `tel` — `index.html` line 119 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `id href` — `index.html` line 15, line 123 (Tazhmaganbetov Yeraidyn)[cite: 10]; `location.html` line 193 (Ibraev Tamerlan)[cite: 5]
-* `img` — `index.html` line 40 (Tazhmaganbetov Yeraidyn)[cite: 10]; `menu.html` line 51, line 56 (Tazhmaganbetov Yeraidyn)[cite: 6]
-* `strong` — `index.html` line 34 (Tazhmaganbetov Yeraidyn)[cite: 10]; `reviews.html` line 27 (Ibraev Tamerlan)[cite: 7]
-* `em` — `index.html` line 36 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `b` — `colophon.html` line 45 (Bolatuly Assylzhan)[cite: 9]
-* `i` — `colophon.html` line 45 (Bolatuly Assylzhan)[cite: 9]
-* `mark` — `index.html` line 110 (Tazhmaganbetov Yeraidyn)[cite: 10]; `location.html` line 24 (Ibraev Tamerlan)[cite: 5]
-* `small` — `index.html` line 110 (Tazhmaganbetov Yeraidyn)[cite: 10]; `reviews.html` line 31 (Ibraev Tamerlan)[cite: 7]
-* `sub` — `index.html` line 110 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `sup` — `index.html` line 109 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `abbr` — `index.html` line 48, line 49 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `blockquote` + `cite` — `index.html` line 113, line 116 (Tazhmaganbetov Yeraidyn)[cite: 10]; `reviews.html` line 28 (Ibraev Tamerlan)[cite: 7]
-* `q` — `index.html` line 36 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `pre`, `code` — `colophon.html` line 33, line 34 (Bolatuly Assylzhan)[cite: 9]
-* `kbd`, `samp` — `colophon.html` line 41, line 44 (Bolatuly Assylzhan)[cite: 9]
-* `br` — `booking.html` line 34 (Bolatuly Assylzhan)[cite: 8]
-* `hr` — `index.html` line 124 (Tazhmaganbetov Yeraidyn)[cite: 10]
-* `Html entity` — `index.html` line 109, line 134 (Tazhmaganbetov Yeraidyn)[cite: 10]; `location.html` line 205 (Ibraev Tamerlan)[cite: 5]
-* `div` — `booking.html` line 28 (Bolatuly Assylzhan)[cite: 8]
-* `span` — `colophon.html` line 47 (Bolatuly Assylzhan)[cite: 9]
-* `form` — `booking.html` line 29 (Bolatuly Assylzhan)[cite: 8]
+* **Line 8**: `<!-- Имя автора в meta теге -->`
+* **Line 29**: `<!-- Содержимое главной страницы -->`
+* **Line 109**: `<!-- Показной отзыв клиента -->`
+* **Line 120**: `<!-- Внутренняя навигация для возврата к началу страницы -->`
+
+
+
+# Booking.html Tag and Structure Analysis АСЫЛ
+
+## Document Structure & Key Tags
+
+* **Author**: `Assylzhan` (Line 7)
+* **`<!DOCTYPE html>`**: Line 1 (`<!DOCTYPE html>`)
+* **`lang`**: Line 2 (`<html lang="ru">`)
+* **`charset`**: Line 4 (`<meta charset="UTF-8">`)
+* **`viewport`**: Line 5 (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`)
+* **`meta description`**: Line 6 (`<meta name="description" content="Бронирование столика в кофейне Global Coffee.">`)
+* **`meta author`**: Line 7 (`<meta name="author" content="Assylzhan">`)
+* **`<header>`**: Line 11 (`<header>`)
+* **`<h1>`**: Line 12 (`<h1>Забронировать столик</h1>`)
+* **`<nav>`**: Line 13 (`<nav>`)
+* **`<main>`**: Line 26 (`<main>`)
+* **`<footer>`**: Line 84 (`<footer>`)
+
+---
+
+## All HTML Comments
+
+* **Line 21**: `<!-- Кнопки для переключения между страницами -->`
+* **Line 36**: `<!-- Контактная информация клиента -->`
+* **Line 46**: `<!-- Детали визита -->`
+* **Line 53**: `<!-- Выбор зоны -->`
+* **Line 60**: `<!-- Дополнительные данные -->`
+* **Line 74**: `<!-- Кнопки управления -->`
+* **Line 83**: `<!-- Контактная информация -->`
+
+
+
+# Colophon.html Tag and Structure Analysis АСЫЛ
+
+## Document Structure & Key Tags
+
+* **Author**: `Assylzhan` (Line 7)
+* **`<!DOCTYPE html>`**: Line 1 (`<!DOCTYPE html>`)
+* **`lang`**: Line 2 (`<html lang="ru">`)
+* **`charset`**: Line 4 (`<meta charset="UTF-8">`)
+* **`viewport`**: Line 5 (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`)
+* **`meta description`**: Line 6 (`<meta name="description" content="Колофон - техническая информация о создании сайта кофейни.">`)
+* **`meta author`**: Line 7 (`<meta name="author" content="Assylzhan">`)
+* **`<header>`**: Line 12 (`<header>`)
+* **`<h1>`**: Line 13 (`<h1>О создании сайта (Colophon)</h1>`)
+* **`<nav>`**: Line 14 (`<nav>`)
+* **`<main>`**: Line 27 (`<main>`)
+* **`<footer>`**: Line 54 (`<footer>`)
+
+---
+
+## All HTML Comments
+
+* **Line 11**: `<!-- Навигация сайта -->`
+* **Line 26**: `<!-- Описание проекта и локации -->`
+
+
+
+# Location.html Tag and Structure Analysis ТАМЕР
+
+## Document Structure & Key Tags
+
+* **Author**: `Tamerlan` (Line 7)
+
+* **`<!DOCTYPE html>`**: Line 1 (`<!DOCTYPE html>`)
+
+* **`lang`**: Line 2 (`<html lang="ru">`)
+
+* **`charset`**: Line 4 (`<meta charset="UTF-8">`)
+
+* **`viewport`**: Line 5 (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`)
+
+* **`meta description`**: Line 6 (`<meta name="description" content="Меню напитков Global Coffee в Астане.">`)
+
+* **`meta author`**: Line 7 (`<meta name="author" content="Tamerlan">`)
+
+* **`<header>`**: Line 12 (`<header>`)
+
+* **`<h1>`**: Line 13 (`<h1>Наше Меню Напитков</h1>`)
+
+* **`<nav>`**: Line 15 (`<nav>`)
+
+* **`<main>`**: Line 27 (`<main>`)
+
+* **`<footer>`**: Line 288 (`<footer>`)
+
+## All HTML Comments
+
+* **No HTML comments are present in this document.**
+
+
+
+# Menu.html Tag and Structure Analysis КОКО
+
+## Document Structure & Key Tags
+
+* **Author**: `Yeraidyn` (Line 7)
+
+* **`<!DOCTYPE html>`**: Line 1 (`<!DOCTYPE html>`)
+
+* **`lang`**: Line 2 (`<html lang="ru">`)
+
+* **`charset`**: Line 4 (`<meta charset="UTF-8">`)
+
+* **`viewport`**: Line 5 (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`)
+
+* **`meta description`**: Line 6 (`<meta name="description" content="Меню напитков Global Coffee в Астане.">`)
+
+* **`meta author`**: Line 7 (`<meta name="author" content="Yeraidyn">`)
+
+* **`<header>`**: Line 11 (`<header>`)
+
+* **`<h1>`**: Line 12 (`<h1>Наше Меню Напитков</h1>`)
+
+* **`<nav>`**: Line 13 (`<nav>`)
+
+* **`<main>`**: Line 25 (`<main>`)
+
+* **`<footer>`**: Line 73 (`<footer>`)
+
+## All HTML Comments
+
+* **Line 30**: `<!-- Маркированный список меню -->`
+
+
+
+# Reviews.html Tag and Structure Analysis ТАМЕР
+
+## Document Structure & Key Tags
+
+* **Author**: `Tamerlan` (Line 8)
+
+* **`<!DOCTYPE html>`**: Line 1 (`<!DOCTYPE html>`)
+
+* **`lang`**: Line 2 (`<html lang="ru">`)
+
+* **`charset`**: Line 5 (`<meta charset="UTF-8">`)
+
+* **`viewport`**: Line 6 (`<meta name="viewport" content="width=device-width, initial-scale=1.0">`)
+
+* **`meta description`**: Line 7 (`<meta name="description" content="Global Coffee - уютная кофейня в Астане на улице Туркестан.">`)
+
+* **`meta author`**: Line 8 (`<meta name="author" content="Tamerlan">`)
+
+* **`<header>`**: Line 12 (`<header id="top">`)
+
+* **`<h1>`**: Line 13 (`<h1>Global Coffee в Астане</h1>`)
+
+* **`<nav>`**: Line 14 (`<nav>`)
+
+* **`<main>`**: Missing opening `<main>` tag (closing `</main>` tag is at Line 266)
+
+* **`<footer>`**: Line 268 (`<footer>`)
+
+## All HTML Comments
+
+* **No HTML comments are present in this document.**
+
+---
+
+
+   
+## 2. Complete Breakdown of Site Requirements
+
+### `<section>`
+* **`index.html`**: Line 31, Line 53, Line 107 (Author: Yeraidyn)
+* **`menu.html`**: Line 25, Line 49 (Author: Yeraidyn)
+* **`location.html`**: Line 35, Line 278 (Author: Tamerlan)
+
+### `<article>`
+* **`index.html`**: Line 33 (Author: Yeraidyn)
+* **`reviews.html`**: Line 25 (Author: Tamerlan)
+
+### `<aside>`
+* **`index.html`**: Line 46 (Author: Yeraidyn)
+* *Note: `<aside>` is not present in `location.html`.*
+
+### `<figure>` & `<figcaption>`
+* **`index.html`**: Line 39 (`<figure>`), Line 41 (`<figcaption>`) (Author: Yeraidyn)
+* **`menu.html`**: Line 52, Line 57 (`<figure>`); Line 54, Line 59 (`<figcaption>`) (Author: Yeraidyn)
+
+### `<table>`
+* **`index.html`**: Line 55 (Author: Yeraidyn)
+* **`location.html`**: Line 38 (Author: Tamerlan)
+
+### `Nested List` (`<ul>` inside `<ul>`)
+* **`index.html`**: Line 83 (Author: Yeraidyn)
+* **`menu.html`**: Line 32 (Author: Yeraidyn)
+
+### `<ol>` (Ordered List)
+* **`index.html`**: Line 92 (Author: Yeraidyn)
+* **`location.html`**: Line 281 (Author: Tamerlan)
+
+### `<dl>` (Description List)
+* **`index.html`**: Line 98 (Author: Yeraidyn)
+
+### `target` Attribute
+* **`index.html`**: Line 120 (`target="_blank"`) (Author: Yeraidyn)
+
+### `email input` (`<input type="email">`)
+* **`booking.html`**: Line 36 (Author: Assylzhan)
+
+### `tel` Link (`<a href="tel:...">`)
+* **`index.html`**: Line 119 (Author: Yeraidyn)
+
+### Internal Anchor Links (`id` & `href`)
+* **`index.html`**: Line 14 (`id="top"`), Line 123 (`href="#top"`) (Author: Yeraidyn)
+* **`location.html`**: Line 10 (`id="top"`), Line 287 (`href="#top"`) (Author: Tamerlan)
+
+### `<img>`
+* **`index.html`**: Line 40 (Author: Yeraidyn)
+* **`menu.html`**: Line 53, Line 58 (Author: Yeraidyn)
+
+### `<strong>`
+* **`index.html`**: Line 34 (Author: Yeraidyn)
+* **`reviews.html`**: Line 27 (Author: Tamerlan)
+
+### `<em>`
+* **`index.html`**: Line 36 (Author: Yeraidyn)
+
+### `<b>`
+* **`colophon.html`**: Line 45 (Author: Assylzhan)
+
+### `<i>`
+* **`colophon.html`**: Line 45 (Author: Assylzhan)
+
+### `<mark>`
+* **`index.html`**: Line 110 (Author: Yeraidyn)
+* **`location.html`**: Line 32 (Author: Tamerlan)
+
+### `<small>`
+* **`index.html`**: Line 110 (Author: Yeraidyn)
+* **`reviews.html`**: Line 31 (Author: Tamerlan)
+
+### `<sub>`
+* **`index.html`**: Line 110 (Author: Yeraidyn)
+
+### `<sup>`
+* **`index.html`**: Line 109 (Author: Yeraidyn)
+
+### `<abbr>`
+* **`index.html`**: Line 48, Line 49 (Author: Yeraidyn)
+
+### `<blockquote>` & `<cite>`
+* **`index.html`**: Line 113 (`<blockquote>`), Line 116 (`<cite>`) (Author: Yeraidyn)
+* **`reviews.html`**: Line 28 (`<blockquote>`) (Author: Tamerlan)
+
+### `<q>`
+* **`index.html`**: Line 36 (Author: Yeraidyn)
+
+### `<pre>` & `<code>`
+* **`colophon.html`**: Line 33 (`<pre>`), Line 34 (`<code>`) (Author: Assylzhan)
+
+### `<kbd>` & `<samp>`
+* **`colophon.html`**: Line 41 (`<kbd>`), Line 44 (`<samp>`) (Author: Assylzhan)
+
+### `<br>`
+* **`booking.html`**: Line 34 (and subsequent form lines) (Author: Assylzhan)
+
+### `<hr>`
+* **`index.html`**: Line 124 (Author: Yeraidyn)
+
+### HTML Entities (`&deg;`, `&copy;`, `&amp;`, `&hearts;`, `&trade;`)
+* **`index.html`**: Line 109 (`&deg;`), Line 134 (`&copy;`, `&amp;`, `&hearts;`, `&trade;`) (Author: Yeraidyn)
+* **`location.html`**: Line 296 (`&copy;`, `&amp;`, `&hearts;`, `&trade;`) (Author: Tamerlan)
+
+### `<div>`
+* **`booking.html`**: Line 28 (Author: Assylzhan)
+
+### `<span>`
+* **`colophon.html`**: Line 47 (Author: Assylzhan)
+
+### `<form>`
+* **`booking.html`**: Line 29 (Author: Assylzhan)
