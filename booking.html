@@ -17,6 +17,7 @@
                 <li><a href="booking.html">Бронь столика</a></li>
                 <li><a href="colophon.html">О сайте</a></li>
                 <li><a href="reviews.html">Отзывы</a></li>
+                <!-- Кнопки для переключения между страницами -->
             </ul>
         </nav>
     </header>
@@ -26,13 +27,12 @@
             <h2>Форма бронирования столика</h2>
             <p>В нашей кофейне на улице Туркестан, 4Б часто бывает много гостей, особенно в вечернее время. Если вы планируете деловую встречу или посиделки с друзьями, мы рекомендуем заранее забронировать столик. Пожалуйста, заполните форму ниже, и наш менеджер свяжется с вами для подтверждения. Мы работаем до 24:00, поэтому вы можете запланировать визит на любое удобное для вас время!</p>
             
-            <!-- div используется исключительно для обертки формы, так как нет подходящего семантического тега для этой цели -->
             <div>
                 <form action="submit_booking.php" method="POST">
-                    <!-- The form does not send anything yet - there is no server behind it -->
                     <fieldset>
                         <legend>Личные данные и детали визита</legend>
                         
+                        <!-- Контактная информация клиента -->
                         <label for="client-name">Ваше имя:</label>
                         <input type="text" id="client-name" name="client_name" required placeholder="Азамат"><br><br>
 
@@ -42,18 +42,21 @@
                         <label for="client-phone">Номер телефона:</label>
                         <input type="tel" id="client-phone" name="client_phone" required><br><br>
 
+                        <!-- Детали визита -->
                         <label for="guests">Количество гостей:</label>
                         <input type="number" id="guests" name="guests" min="1" max="15" required><br><br>
 
                         <label for="booking-date">Дата визита:</label>
                         <input type="date" id="booking-date" name="booking_date" required><br><br>
 
+                        <!-- Выбор зоны -->
                         <p>Где вы предпочитаете сидеть?</p>
                         <input type="radio" id="zone-window" name="zone" value="window" required>
                         <label for="zone-window">У окна с видом на улицу Туркестан</label><br>
                         <input type="radio" id="zone-bar" name="zone" value="bar">
                         <label for="zone-bar">За баром рядом с бариста</label><br><br>
 
+                        <!-- Дополнительные данные -->
                         <label for="event-type">Повод визита:</label>
                         <select id="event-type" name="event_type">
                             <option value="work">Работа / Учеба (нужна розетка)</option>
@@ -67,6 +70,7 @@
                         <label for="comments">Особые пожелания:</label><br>
                         <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Например: нужен детский стульчик..."></textarea><br><br>
 
+                        <!-- Кнопки управления -->
                         <button type="submit">Забронировать</button>
                         <button type="reset">Очистить форму</button>
                     </fieldset>
@@ -75,6 +79,7 @@
         </section>
     </main>
 
+    <!-- Контактная информация -->
     <footer>
         <p>Адрес: г. Астана, ул. Туркестан, 4Б. Тел: +7‒776‒200‒06‒12</p>
         <p>&copy; 2023 Global Coffee.</p>
