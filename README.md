@@ -27,8 +27,6 @@ cafe_project/
           ├── coffee-shop.jpg
               cold-drinks.jpg
               latte-art.jpg
-├── README.md
-├── ai-log.txt
 ├── booking.html
 ├── colophon.html
 ├── index.html
