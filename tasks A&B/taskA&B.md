@@ -31,10 +31,6 @@
 - **Forms (`<form>`):** They are used in the Store Locator section, with an `<input type="search">` field and a submit button.
 - **Tables (`<table>`):** They are used in the Nutritional Information sections to display calorie and protein values.
 
-### 3. Hand-drawn structural sketch
-
-*TO BE COMPLETED: Assyl and Tamer, please prepare this section.*
-
 ### 4. Three structural issues on the third-party website and how we addressed them in our project
 
 1. **Excessive nesting of containers ("div soup"):** On the third-party website, content is wrapped in 5–7 nested `<div>` elements. In our project, we use semantic blocks such as `<section>`, `<article>`, and `<aside>` instead of neutral `<div>` containers [cite: 5, 7, 10].
