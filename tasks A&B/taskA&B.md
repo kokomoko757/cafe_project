@@ -1,74 +1,82 @@
 # Report: Assignment 1 — HTML Basics
+
 **Project:** Global Coffee Website  
-**Team Members:**  
-- Tazhmaganbetov Yeraidyn (SE-2533)  
-- Ibraev Tamerlan (SE-2533)  
-- Bolatuly Assylzhan (SE-2533)  
+**Team Members:**
+
+- Tazhmaganbetov Yeraidyn (SE-2533)
+- Ibraev Tamerlan (SE-2533)
+- Bolatuly Assylzhan (SE-2533)
 
 ---
 
-## Task A — Анатомия реального сайта (15 баллов)
+## Task A — Anatomy of a Real Website (15 points)
 
-### 1. Анализируемый сайт и служебные мета-теги
-* **Исследованный сайт:** Starbucks (`starbucks.com`)
-* **DOCTYPE:** `<!DOCTYPE html>`
-* **Атрибут языка:** `lang="en"`
-* **Кодировка:** `<meta charset="UTF-8">`
-* **Viewport:** `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
-* **Title:** `<title>Starbucks — The Best Coffee and Espresso Drinks</title>`
-* **3 дополнительных мета-тега:**
+### 1. Website analyzed and technical meta tags
+
+- **Website analyzed:** Starbucks (`starbucks.com`)
+- **DOCTYPE:** `<!DOCTYPE html>`
+- **Language attribute:** `lang="en"`
+- **Character encoding:** `<meta charset="UTF-8">`
+- **Viewport:** `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
+- **Title:** `<title>Starbucks — The Best Coffee and Espresso Drinks</title>`
+- **Three additional meta tags:**
   1. `<meta name="description" content="Order coffee online, find store locations, and explore our coffee menu.">`
   2. `<meta name="author" content="Starbucks Coffee Company">`
   3. `<meta property="og:title" content="Starbucks Coffee Company">`
 
-### 2. Использование структурных элементов на стороннем сайте
-* **Семантические теги:** `<header>` используется для шапки с логотипом, `<nav>` — для главного меню навигации, `<main>` — для акционного контента, `<footer>` — для правовой информации и ссылок на соцсети.
-* **Тег `<div>`:** Применяется в качестве внутренних контейнеров-обёрток (wrappers) для сетки CSS Flexbox/Grid, выравнивания карточек товаров и построения выпадающих списков.
-* **Формы (`<form>`):** Используются в блоке поиска близлежащих кофеен (Store Locator) с полем `<input type="search">` и кнопкой отправки.
-* **Таблицы (`<table>`):** Применяются в разделах подробной пищевой ценности напитков (Nutritional Information) для отображения калорий и белков.
+### 2. Use of structural elements on the third-party website
 
-### 3. Рукописный скетч структуры
-*НАДО СДЕЛАТЬ АСЫЛ ТАМЕР ПОСМОТРИТЕ*
+- **Semantic tags:** `<header>` is used for the page header with the logo, `<nav>` for the main navigation menu, `<main>` for promotional content, and `<footer>` for legal information and social media links.
+- **The `<div>` tag:** It is used as an internal wrapper for CSS Flexbox/Grid layouts, product-card alignment, and dropdown menus.
+- **Forms (`<form>`):** They are used in the Store Locator section, with an `<input type="search">` field and a submit button.
+- **Tables (`<table>`):** They are used in the Nutritional Information sections to display calorie and protein values.
 
-### 4. Три структурные ошибки стороннего сайта и их устранение в нашем проекте
-1. **Избыточная вложенность контейнеров ("Div Soup"):** На стороннем сайте контент обёрнут в 5–7 вложенных `<div>`. В нашем проекте вместо нейтральных `<div>` использованы семантические блоки `<section>`, `<article>` и `<aside>`[cite: 5, 7, 10].
-2. **Отсутствие связи между изображениями и подписями:** Фотографии товаров вставлены одиночными тегами `<img>` без логического контейнера. В файлах `index.html` и `menu.html` мы связали иллюстрации с текстом с помощью тегов `<figure>` и `<figcaption>`[cite: 6, 10].
-3. **Нарушение иерархии заголовков:** На стороннем сайте присутствует несколько тегов `<h1>` на одной странице. В нашем проекте на каждой странице строго один `<h1>` в шапке `<header>`, за которым следуют подзаголовки `<h2>` и `<h3>`[cite: 5, 6, 7, 8, 9, 10].
+### 3. Hand-drawn structural sketch
+
+*TO BE COMPLETED: Assyl and Tamer, please prepare this section.*
+
+### 4. Three structural issues on the third-party website and how we addressed them in our project
+
+1. **Excessive nesting of containers ("div soup"):** On the third-party website, content is wrapped in 5–7 nested `<div>` elements. In our project, we use semantic blocks such as `<section>`, `<article>`, and `<aside>` instead of neutral `<div>` containers [cite: 5, 7, 10].
+2. **No relationship between images and captions:** Product photographs are inserted as standalone `<img>` tags without a logical container. In `index.html` and `menu.html`, we connect illustrations with their text using `<figure>` and `<figcaption>` [cite: 6, 10].
+3. **Incorrect heading hierarchy:** The third-party website contains several `<h1>` tags on one page. In our project, every page has exactly one `<h1>` in the `<header>`, followed by `<h2>` and `<h3>` subheadings [cite: 5, 6, 7, 8, 9, 10].
 
 ---
 
-## Task B — Письменная часть (10 баллов)
+## Task B — Written Part (10 points)
 
-### 1. Из чего состоит веб-страница и как браузер рендерит HTML
+### 1. What a web page consists of and how a browser renders HTML
 
-Веб-страница состоит из трёх фундаментальных компонентов: HTML задаёт семантический каркас и текстовую структуру контента, CSS отвечает за визуальное оформление, адаптивность и макет, а JavaScript обеспечивает интерактивность и обработку пользовательских событий.
+A web page consists of three fundamental components: HTML provides the semantic framework and textual content structure, CSS controls visual styling, responsiveness, and layout, while JavaScript provides interactivity and handles user events.
 
-Процесс визуализации (рендеринга) HTML-файла браузером состоит из следующих последовательных шагов:
-1. **Парсинг HTML и создание DOM:** Браузер декодирует полученные байты файла и строит древовидную модель документа — DOM (Document Object Model).
-2. **Построение CSSOM:** Параллельно загружаются и обрабатываются правила CSS, образуя модель стилей CSSOM (CSS Object Model).
-3. **Дерево рендеринга (Render Tree):** DOM и CSSOM объединяются в единое дерево рендеринга, исключающее скрытые элементы (`display: none`).
-4. **Расчет макета (Layout / Reflow):** Браузер рассчитывает геометрию, точные размеры и позиции всех видимых блоков на экране.
-5. **Отрисовка (Paint):** Графический движок переводит вычисленные блоки в физические пиксели, прорисовывая фоны, границы и текст.
-6. **Композитинг (Compositing):** Отдельные слои объединяются в итоговое изображение и выводятся на дисплей.
+The browser renders an HTML file in the following sequence:
 
-### 2. Три примера выбора семантических тегов вместо `<div>` в проекте
+1. **HTML parsing and DOM creation:** The browser decodes the file bytes and builds a tree-like document model called the DOM (Document Object Model).
+2. **CSSOM construction:** At the same time, CSS rules are loaded and processed to form the CSSOM (CSS Object Model).
+3. **Render tree creation:** The DOM and CSSOM are combined into a render tree that excludes hidden elements, such as elements with `display: none`.
+4. **Layout (reflow):** The browser calculates the geometry, exact dimensions, and positions of all visible blocks on the screen.
+5. **Painting:** The rendering engine converts the calculated blocks into physical pixels, drawing backgrounds, borders, and text.
+6. **Compositing:** Separate layers are combined into the final image and displayed on the screen.
 
-1. **Тег `<header>` вместо `<div class="header">`**
-   * **Локация:** `booking.html` (строка 11)[cite: 8], `colophon.html` (строка 12)[cite: 9].
-   * **Обоснование:** Тег `<header>` явно указывает браузерам, поисковым системам и скринридерам, что внутри находится вводная информация страницы и главное навигационное меню сайта, в отличие от нейтрального `<div>`.
+### 2. Three examples of choosing semantic tags instead of `<div>` in the project
 
-2. **Тег `<main>` вместо `<div class="content">`**
-   * **Локация:** `index.html` (строка 30)[cite: 10], `location.html` (строка 22)[cite: 5].
-   * **Обоснование:** Тег `<main>` обозначает уникальное центральное содержимое страницы, исключая повторяющиеся шапки и футеры. Это позволяет вспомогательным технологиям (читалкам для незрячих) сразу перейти к основному смысловому блоку.
+1. **The `<header>` tag instead of `<div class="header">`**
+   - **Location:** `booking.html` (line 11) [cite: 8], `colophon.html` (line 12) [cite: 9].
+   - **Reason:** The `<header>` tag clearly tells browsers, search engines, and screen readers that it contains the page's introductory information and the website's main navigation menu, unlike a neutral `<div>`.
 
-3. **Тег `<article>` вместо `<div class="review-box">`**
-   * **Локация:** `reviews.html` (строка 25)[cite: 7], `index.html` (строка 33)[cite: 10].
-   * **Обоснование:** Тег `<article>` оборачивает самостоятельный законченный фрагмент информации (отзыв клиента или философию кофейни), который сохраняет смысл даже в оторванном от остальной страницы контексте.
+2. **The `<main>` tag instead of `<div class="content">`**
+   - **Location:** `index.html` (line 30) [cite: 10], `location.html` (line 22) [cite: 5].
+   - **Reason:** The `<main>` tag identifies the page's unique central content and excludes repeated headers and footers. This allows assistive technologies, such as screen readers, to jump directly to the main meaningful content.
 
-### 3. Что происходит при нажатии кнопки отправки формы (на текущем этапе)
+3. **The `<article>` tag instead of `<div class="review-box">`**
+   - **Location:** `reviews.html` (line 25) [cite: 7], `index.html` (line 33) [cite: 10].
+   - **Reason:** The `<article>` tag wraps a self-contained and complete piece of information, such as a customer review or the coffee shop's philosophy, which remains meaningful even outside the rest of the page context.
 
-В файле `booking.html` размещена форма бронирования столиков `<form>`[cite: 8]:
+### 3. What happens when the form submit button is pressed at the current stage
 
-1. **Встроенная HTML-валидация:** При нажатии на `<button type="submit">` браузер автоматически проверяет заполненность полей, содержащих атрибуты `required`, `type="email"` и `type="tel"`[cite: 8]. Если поле пустое или содержит некорректный формат, браузер блокирует отправку и выводит всплывающее предупреждение.
-2. **Формирование HTTP-запроса:** Если все данные корректны, браузер собирает значения полей ввода (`input`, `textarea`, `select`), имеющих атрибут `name`, в парные строки вида `key=value`[cite: 8].
-3. **Перезагрузка страницы (Default Action):** Ввиду отсутствия подключенного бэкенд-сервера для обработки данных, браузер выполняет отправку на указанный в `action` адрес или на текущую страницу (по умолчанию методом `GET`)[cite: 8]. В адресной строке отображаются переданные параметры, после чего страница перезагружается, а формы сбрасываются.
+The `booking.html` file contains a table-reservation `<form>` [cite: 8].
+
+1. **Built-in HTML validation:** When the user clicks `<button type="submit">`, the browser automatically checks fields with the `required`, `type="email"`, and `type="tel"` attributes [cite: 8]. If a field is empty or contains an invalid value, the browser blocks submission and shows a warning.
+2. **HTTP request creation:** If all data is valid, the browser collects the values of the `input`, `textarea`, and `select` fields that have a `name` attribute into `key=value` pairs [cite: 8].
+3. **Page reload (default action):** Because no backend server is connected to process the data, the browser submits the form to the address specified in `action` or to the current page by default, using the `GET` method [cite: 8]. The submitted parameters appear in the address bar, the page reloads, and the form is reset.
+
