@@ -32,7 +32,8 @@ cafe_project/
 ├── index.html
 ├── location.html
 ├── menu.html
-└── reviews.html
+├── reviews.html
+└── partner.html
 ```
 
 ## Team
