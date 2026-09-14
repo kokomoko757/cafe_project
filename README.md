@@ -33,6 +33,7 @@ cafe_project/
 ├── location.html
 ├── menu.html
 ├── reviews.html
+├── aboutus.html
 └── partner.html
 ```
 
