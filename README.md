@@ -25,8 +25,8 @@ A static HTML website for Global Coffee, built as part of the **Assignment 1 —
 cafe_project/
 ├── images/  
           ├── coffee-shop.jpg
-              cold-drinks.jpg
-              latte-art.jpg
+          ├── cold-drinks.jpg
+          └── latte-art.jpg
 ├── booking.html
 ├── colophon.html
 ├── index.html
