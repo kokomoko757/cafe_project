@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Выбор даты и времени - Global Coffee">
+    <meta name="author" content="Assylzhan">
+    <title>Выбор даты и времени - Global Coffee</title>
+</head>
+
+<body>
+
+<header>
+    <h1>Global Coffee</h1>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="menu.html">Меню</a></li>
+            <li><a href="booking.html">Бронь столика</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="location.html">Филиалы</a></li>
+            <li><a href="aboutus.html">О нас</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h2>Детали бронирования</h2>
+
+    <p><a href="booking.html">&larr; Вернуться к выбору стола</a></p>
+
+    <form action="success.html" method="post">
+
+        <fieldset>
+
+            <legend>1. Дата и время посещения</legend>
+
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date" required>
+
+            <br><br>
+
+            <label for="time">Время:</label>
+            <select id="time" name="time" required>
+                <option value="">Выберите время</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+            </select>
+
+            <br><br>
+
+            <label for="guests">Количество гостей:</label>
+            <input type="number" id="guests" name="guests" min="1" max="10" required>
+
+        </fieldset>
+
+        <fieldset>
+
+            <legend>2. Контактные данные</legend>
+
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" placeholder="Введите имя" required>
+
+            <br><br>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 777 000 00 00" required>
+
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com">
+
+            <br><br>
+
+            <label for="comment">Комментарий:</label>
+            <br>
+            <textarea id="comment" name="comment" rows="4" cols="40" placeholder="Дополнительные пожелания"></textarea>
+
+        </fieldset>
+
+        <br>
+
+        <button type="submit">Подтвердить бронь</button>
+        <button type="reset">Очистить</button>
+
+    </form>
+
+</main>
+
+<footer>
+    <p>Адрес: г. Астана, ул. Туркестан, 4Б.</p>
+    <p>Ежедневно с 08:00 до 24:00.</p>
+    <p>&copy; 2026 Global Coffee.</p>
+</footer>
+
+</body>
+</html>
