@@ -1,91 +1,232 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Бронирование столика в кофейне Global Coffee.">
+    <meta name="description" content="Бронирование столика в Global Coffee">
     <meta name="author" content="Assylzhan">
-    <title>Бронирование - Global Coffee</title>
+    <title>Бронирование стола - Global Coffee</title>
 </head>
+
 <body>
-    <header>
-        <h1>Забронировать столик</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="menu.html">Меню</a></li>
-                <li><a href="booking.html">Бронь столика</a></li>
-                <li><a href="colophon.html">О сайте</a></li>
-                <li><a href="reviews.html">Отзывы</a></li>
-                <li><a href="location.html">Филиалы</a></li>
-                <li><a href="partner.html">Стать партнером</a></li>
-                <li><a href="aboutus.html">О нас</a></li>
-                <!-- Кнопки для переключения между страницами -->
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Форма бронирования столика</h2>
-            <p>В нашей кофейне на улице Туркестан, 4Б часто бывает много гостей, особенно в вечернее время. Если вы планируете деловую встречу или посиделки с друзьями, мы рекомендуем заранее забронировать столик. Пожалуйста, заполните форму ниже, и наш менеджер свяжется с вами для подтверждения. Мы работаем до 24:00, поэтому вы можете запланировать визит на любое удобное для вас время!</p>
-            
-            <div>
-                <form action="submit_booking.php" method="POST">
-                    <fieldset>
-                        <legend>Личные данные и детали визита</legend>
-                        
-                        <!-- Контактная информация клиента -->
-                        <label for="client-name">Ваше имя:</label>
-                        <input type="text" id="client-name" name="client_name" required placeholder="Азамат"><br><br>
+<header>
+    <h1>Global Coffee</h1>
 
-                        <label for="client-email">Email для чека:</label>
-                        <input type="email" id="client-email" name="client_email" required><br><br>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="menu.html">Меню</a></li>
+            <li><a href="booking.html">Бронь столика</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="location.html">Филиалы</a></li>
+            <li><a href="aboutus.html">О нас</a></li>
+        </ul>
+    </nav>
+</header>
 
-                        <label for="client-phone">Номер телефона:</label>
-                        <input type="tel" id="client-phone" name="client_phone" required><br><br>
+<main>
 
-                        <!-- Детали визита -->
-                        <label for="guests">Количество гостей:</label>
-                        <input type="number" id="guests" name="guests" min="1" max="15" required><br><br>
+    <h2>Забронировать столик</h2>
 
-                        <label for="booking-date">Дата визита:</label>
-                        <input type="date" id="booking-date" name="booking_date" required><br><br>
+    <p>
+        Выберите дату, время и подходящий столик.
+        После выбора заполните свои контактные данные.
+    </p>
 
-                        <!-- Выбор зоны -->
-                        <p>Где вы предпочитаете сидеть?</p>
-                        <input type="radio" id="zone-window" name="zone" value="window" required>
-                        <label for="zone-window">У окна с видом на улицу Туркестан</label><br>
-                        <input type="radio" id="zone-bar" name="zone" value="bar">
-                        <label for="zone-bar">За баром рядом с бариста</label><br><br>
+    <form action="#" method="post">
 
-                        <!-- Дополнительные данные -->
-                        <label for="event-type">Повод визита:</label>
-                        <select id="event-type" name="event_type">
-                            <option value="work">Работа / Учеба (нужна розетка)</option>
-                            <option value="friends">Встреча с друзьями</option>
-                            <option value="date">Свидание</option>
-                        </select><br><br>
+        <fieldset>
 
-                        <input type="checkbox" id="loyalty" name="loyalty" value="yes">
-                        <label for="loyalty">У меня есть карта лояльности Global Coffee</label><br><br>
+            <legend>1. Данные о посещении</legend>
 
-                        <label for="comments">Особые пожелания:</label><br>
-                        <textarea id="comments" name="comments" rows="4" cols="40" placeholder="Например: нужен детский стульчик..."></textarea><br><br>
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date" required>
 
-                        <!-- Кнопки управления -->
-                        <button type="submit">Забронировать</button>
-                        <button type="reset">Очистить форму</button>
-                    </fieldset>
-                </form>
-            </div>
-        </section>
-    </main>
+            <br><br>
 
-    <!-- Контактная информация -->
-    <footer>
-        <p>Адрес: г. Астана, ул. Туркестан, 4Б. Тел: +7‒776‒200‒06‒12</p>
-        <p>&copy; 2026 Global Coffee.</p>
-    </footer>
+            <label for="time">Время:</label>
+            <select id="time" name="time" required>
+                <option value="">Выберите время</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+                <option value="19:00">19:00</option>
+                <option value="20:00">20:00</option>
+                <option value="21:00">21:00</option>
+                <option value="22:00">22:00</option>
+                <option value="23:00">23:00</option>
+            </select>
+
+            <br><br>
+
+            <label for="guests">Количество гостей:</label>
+            <input type="number" id="guests" name="guests"
+                   min="1" max="10" required>
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>2. Выберите столик</legend>
+
+            <p>
+                Нажмите на номер стола, чтобы выбрать его.
+            </p>
+
+            <table border="1" cellpadding="15">
+
+                <tr>
+                    <td align="center">
+                        <a href="table.html#table1">
+                            Стол 1
+                        </a>
+                        <br>
+                        2 места
+                    </td>
+
+                    <td align="center">
+                        <a href="table.html#table2">
+                            Стол 2
+                        </a>
+                        <br>
+                        2 места
+                    </td>
+
+                    <td align="center">
+                        <a href="table.html#table3">
+                            Стол 3
+                        </a>
+                        <br>
+                        4 места
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <a href="table.html#table4">
+                            Стол 4
+                        </a>
+                        <br>
+                        4 места
+                    </td>
+
+                    <td align="center">
+                        <a href="table.html#table5">
+                            Стол 5
+                        </a>
+                        <br>
+                        6 мест
+                    </td>
+
+                    <td align="center">
+                        <a href="table.html#table6">
+                            Стол 6
+                        </a>
+                        <br>
+                        4 места
+                    </td>
+                </tr>
+
+                <tr>
+                    <td align="center">
+                        <a href="table.html#table7">
+                            Стол 7
+                        </a>
+                        <br>
+                        2 места
+                    </td>
+
+                    <td align="center">
+                        <a href="table.html#table8">
+                            Стол 8
+                        </a>
+                        <br>
+                        4 места
+                    </td>
+
+                    <td align="center">
+                        <a href="table.html#table9">
+                            Стол 9
+                        </a>
+                        <br>
+                        6 мест
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+
+
+        <fieldset>
+
+            <legend>3. Контактные данные</legend>
+
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Введите имя" required>
+
+            <br><br>
+
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="+7 777 000 00 00" required>
+
+            <br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"
+                   placeholder="example@mail.com">
+
+            <br><br>
+
+            <label for="comment">Комментарий:</label>
+            <br>
+            <textarea id="comment" name="comment"
+                      rows="4" cols="40"
+                      placeholder="Дополнительные пожелания"></textarea>
+
+        </fieldset>
+
+
+        <br>
+
+        <button type="submit">
+            Забронировать стол
+        </button>
+
+        <button type="reset">
+            Очистить
+        </button>
+
+    </form>
+
+</main>
+
+<footer>
+    <p>
+        Адрес: г. Астана, ул. Туркестан, 4Б.
+    </p>
+
+    <p>
+        Ежедневно с 08:00 до 24:00.
+    </p>
+
+    <p>
+        &copy; 2026 Global Coffee.
+    </p>
+</footer>
+
 </body>
 </html>
