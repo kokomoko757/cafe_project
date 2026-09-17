@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Онлайн-заказ еды и напитков в Global Coffee">
+    <meta name="author" content="Assylzhan">
+    <title>Онлайн-заказ - Global Coffee</title>
+</head>
+
+<body>
+
+<header>
+    <h1>Global Coffee</h1>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="menu.html">Меню</a></li>
+            <li><a href="booking.html">Бронь столика</a></li>
+            <li><a href="order.html">Онлайн-заказ</a></li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="location.html">Филиалы</a></li>
+            <li><a href="aboutus.html">О нас</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+
+    <h2>Оформление онлайн-заказа</h2>
+
+    <p>
+        Соберите ваш любимый заказ из меню Global Coffee и выберите удобный способ получения!
+    </p>
+
+    <form action="confirmation.html" method="post">
+
+        <!-- СЕКЦИЯ 1: ВЫБОР БЛЮД И НАПИТКОВ -->
+        <fieldset>
+
+            <legend>1. Соберите ваш заказ (Меню Global Coffee)</legend>
+
+            <h3>Кофе и фирменные напитки</h3>
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Выбор</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item1" name="order_items" value="nut_flat_white"></td>
+                        <td><label for="item1">Ореховый Флэт Уайт</label></td>
+                        <td>1 390 ₸</td>
+                        <td><input type="number" name="qty_nut_flat_white" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item2" name="order_items" value="frappe_cocoa"></td>
+                        <td><label for="item2">Фраппе Сливочный-Какао</label></td>
+                        <td>1 790 ₸</td>
+                        <td><input type="number" name="qty_frappe_cocoa" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item3" name="order_items" value="ice_matcha_strawberry"></td>
+                        <td><label for="item3">Айс Матча Клубника</label></td>
+                        <td>1 690 ₸</td>
+                        <td><input type="number" name="qty_ice_matcha_strawberry" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item4" name="order_items" value="tea_orange_strawberry"></td>
+                        <td><label for="item4">Чай Апельсин-Клубника</label></td>
+                        <td>1 090 ₸</td>
+                        <td><input type="number" name="qty_tea_orange_strawberry" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item5" name="order_items" value="lemonade_sakura"></td>
+                        <td><label for="item5">Лимонад Сакура</label></td>
+                        <td>1 490 ₸</td>
+                        <td><input type="number" name="qty_lemonade_sakura" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item6" name="order_items" value="smoothie_kiwi"></td>
+                        <td><label for="item6">Смузи Киви</label></td>
+                        <td>1 790 ₸</td>
+                        <td><input type="number" name="qty_smoothie_kiwi" min="1" max="10" value="1"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+            <h3>Еда и Еда на вынос</h3>
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Выбор</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item7" name="order_items" value="sandwich"></td>
+                        <td><label for="item7">Сэндвич фирменный</label></td>
+                        <td>1 490 ₸</td>
+                        <td><input type="number" name="qty_sandwich" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item8" name="order_items" value="hotdog"></td>
+                        <td><label for="item8">Хот-дог</label></td>
+                        <td>1 190 ₸</td>
+                        <td><input type="number" name="qty_hotdog" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item9" name="order_items" value="donuts"></td>
+                        <td><label for="item9">Пончики (набор)</label></td>
+                        <td>990 ₸</td>
+                        <td><input type="number" name="qty_donuts" min="1" max="10" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td align="center"><input type="checkbox" id="item10" name="order_items" value="onigiri"></td>
+                        <td><label for="item10">Онигири</label></td>
+                        <td>890 ₸</td>
+                        <td><input type="number" name="qty_onigiri" min="1" max="10" value="1"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+            <label for="special_instructions">Пожелания к заказу (например, "без сахара", "на альтернативном молоке"):</label>
+            <br>
+            <textarea id="special_instructions" name="special_instructions" rows="3" cols="50" placeholder="Укажите ваши пожелания"></textarea>
+
+        </fieldset>
+
+        <br>
+
+        <!-- СЕКЦИЯ 2: СПОСОБ ПОЛУЧЕНИЯ -->
+        <fieldset>
+
+            <legend>2. Способ получения заказа</legend>
+
+            <p><strong>Выберите вариант:</strong></p>
+
+            <!-- Вариант 1: Доставка домой -->
+            <p>
+                <input type="radio" id="delivery_home" name="order_type" value="home" required>
+                <label for="delivery_home"><strong>Доставка на дом</strong></label>
+            </p>
+
+            <fieldset>
+                <legend>Адрес доставки (заполните, если выбрали доставку)</legend>
+                
+                <label for="city">Город:</label>
+                <input type="text" id="city" name="city" value="Астана" readonly>
+
+                <br><br>
+
+                <label for="street">Улица и номер дома:</label>
+                <input type="text" id="street" name="street" placeholder="пр. Мангилик Ел, д. 55/1">
+
+                <br><br>
+
+                <label for="apartment">Квартира / Офис:</label>
+                <input type="text" id="apartment" name="apartment" placeholder="кв. 12">
+
+                <br><br>
+
+                <label for="entrance">Подъезд / Этаж:</label>
+                <input type="text" id="entrance" name="entrance" placeholder="подъезд 1, этаж 3">
+            </fieldset>
+
+            <br><hr><br>
+
+            <!-- Вариант 2: Заказ на месте -->
+            <p>
+                <input type="radio" id="delivery_onsite" name="order_type" value="onsite" required>
+                <label for="delivery_onsite"><strong>Заказ в заведении (На месте)</strong></label>
+            </p>
+
+            <fieldset>
+                <legend>Статус бронирования стола</legend>
+
+                <!-- Выбор: Есть стол -->
+                <p>
+                    <input type="radio" id="has_table_yes" name="table_status" value="yes">
+                    <label for="has_table_yes">У меня уже забронирован стол</label>
+                </p>
+
+                <div style="margin-left: 20px;">
+                    <label for="table_number">Номер вашего стола (или имя на бронь):</label>
+                    <input type="text" id="table_number" name="table_number" placeholder="Например: Стол №3 или 'На имя Аскар'">
+                </div>
+
+                <br>
+
+                <!-- Выбор: Нет стола -->
+                <p>
+                    <input type="radio" id="has_table_no" name="table_status" value="no">
+                    <label for="has_table_no">У меня нет забронированного стола</label>
+                </p>
+
+                <div style="margin-left: 20px;">
+                    <p>
+                        <em>Если у вас еще нет стола, вы можете забронировать его прямо сейчас:</em>
+                    </p>
+                    <p>
+                        <a href="booking.html" target="_blank">
+                            <strong>&rarr; Открыть бронирование столика (в новой вкладке)</strong>
+                        </a>
+                    </p>
+                </div>
+
+            </fieldset>
+
+        </fieldset>
+
+        <br>
+
+        <!-- СЕКЦИЯ 3: КОНТАКТЫ И ОПЛАТА -->
+        <fieldset>
+
+            <legend>3. Контактные данные и оплата</legend>
+
+            <label for="customer_name">Ваше имя:</label>
+            <input type="text" id="customer_name" name="customer_name" placeholder="Введите имя" required>
+
+            <br><br>
+
+            <label for="customer_phone">Номер телефона:</label>
+            <input type="tel" id="customer_phone" name="customer_phone" placeholder="+7 777 000 00 00" required>
+
+            <br><br>
+
+            <label for="payment_method">Способ оплаты:</label>
+            <select id="payment_method" name="payment_method" required>
+                <option value="">-- Выберите способ оплаты --</option>
+                <option value="kaspi">Kaspi QR / Kaspi Pay</option>
+                <option value="card">Банковской картой онлайн</option>
+                <option value="cash">Наличными при получении</option>
+            </select>
+
+        </fieldset>
+
+        <br><br>
+
+        <button type="submit">Оформить и оплатить заказ</button>
+        <button type="reset">Сбросить форму</button>
+
+    </form>
+
+</main>
+
+<br><hr>
+
+<footer>
+    <p>
+        Адрес: г. Астана, пр. Мангилик Ел, 55/1.
+    </p>
+
+    <p>
+        Ежедневно с 08:00 до 24:00.
+    </p>
+
+    <p>
+        &copy; 2026 Global Coffee.
+    </p>
+</footer>
+
+</body>
+</html>
