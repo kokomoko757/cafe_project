@@ -19,12 +19,10 @@
             <li><a href="index.html">Главная</a></li>
             <li><a href="menu.html">Меню</a></li>
             <li><a href="booking.html">Бронь столика</a></li>
-            <li><a href="colophon.html">О сайте</a></li>
+            <li><a href="order.html">Онлайн-заказ</a></li>
             <li><a href="reviews.html">Отзывы</a></li>
             <li><a href="location.html">Филиалы</a></li>
-            <li><a href="partner.html">Стать партнером</a></li>
             <li><a href="aboutus.html">О нас</a></li>
-            <li><a href="order.html">Онлайн заказ</a></li>
         </ul>
     </nav>
 </header>
@@ -193,13 +191,49 @@
                 <!-- Выбор: Есть стол -->
                 <p>
                     <input type="radio" id="has_table_yes" name="table_status" value="yes">
-                    <label for="has_table_yes">У меня уже забронирован стол</label>
+                    <label for="has_table_yes"><strong>У меня уже забронирован стол</strong></label>
                 </p>
 
-                <div style="margin-left: 20px;">
-                    <label for="table_number">Номер вашего стола (или имя на бронь):</label>
-                    <input type="text" id="table_number" name="table_number" placeholder="Например: Стол №3 или 'На имя Аскар'">
-                </div>
+                <fieldset style="margin-left: 20px;">
+                    <legend>Информация о брони</legend>
+
+                    <label for="table_number">Номер забронированного стола:</label>
+                    <select id="table_number" name="table_number">
+                        <option value="">-- Выберите номер стола --</option>
+                        <option value="1">Стол 1 (2 места)</option>
+                        <option value="2">Стол 2 (2 места)</option>
+                        <option value="3">Стол 3 (4 места)</option>
+                        <option value="4">Стол 4 (4 места)</option>
+                        <option value="5">Стол 5 (6 мест)</option>
+                        <option value="6">Стол 6 (4 места)</option>
+                        <option value="7">Стол 7 (2 места)</option>
+                        <option value="8">Стол 8 (4 места)</option>
+                        <option value="9">Стол 9 (6 мест)</option>
+                    </select>
+
+                    <br><br>
+
+                    <label for="booking_time">Время, на которое забронирован стол:</label>
+                    <select id="booking_time" name="booking_time">
+                        <option value="">-- Выберите время --</option>
+                        <option value="08:00">08:00</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
+                        <option value="21:00">21:00</option>
+                        <option value="22:00">22:00</option>
+                        <option value="23:00">23:00</option>
+                    </select>
+                </fieldset>
 
                 <br>
 
