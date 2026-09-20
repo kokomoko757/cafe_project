@@ -4,18 +4,27 @@
 
 :root {
   /* Цветовая палитра */
-  --bg-main: #FDFBF7;          /* Богатый кремовый фон */
-  --bg-card: #F2E8DC;          /* Пряный светло-бежевый */
-  --bg-header: #2B1810;        /* Тёмный эспрессо */
-  --bg-header-hover: #3D2314;  
-  
-  --text-primary: #2B1810;     /* Основной тёмно-кофейный текст */
-  --text-muted: #6B5344;       /* Второстепенный текст */
-  --text-light: #FDFBF7;       /* Светлый текст для тёмных фонов */
-  
-  --accent: #C86D3B;           /* Пряная корица / Карамель */
-  --accent-hover: #A0522D;     /* Тёмная корица */
-  --border-color: #E2D2C1;     /* Границы элементов */
+  --bg-main: #FDFBF7;
+  /* Богатый кремовый фон */
+  --bg-card: #F2E8DC;
+  /* Пряный светло-бежевый */
+  --bg-header: #2B1810;
+  /* Тёмный эспрессо */
+  --bg-header-hover: #3D2314;
+
+  --text-primary: #2B1810;
+  /* Основной тёмно-кофейный текст */
+  --text-muted: #6B5344;
+  /* Второстепенный текст */
+  --text-light: #FDFBF7;
+  /* Светлый текст для тёмных фонов */
+
+  --accent: #C86D3B;
+  /* Пряная корица / Карамель */
+  --accent-hover: #A0522D;
+  /* Тёмная корица */
+  --border-color: #E2D2C1;
+  /* Границы элементов */
 
   /* Типографика */
   --font-title: 'Playfair Display', Georgia, serif;
@@ -30,7 +39,9 @@
 }
 
 /* Base Reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -47,7 +58,9 @@ body {
 }
 
 /* Типографика */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-title);
   color: var(--text-primary);
   font-weight: 700;
@@ -163,7 +176,8 @@ caption {
   font-size: 0.9rem;
 }
 
-th, td {
+th,
+td {
   padding: 0.85rem 1.2rem;
   text-align: left;
   border-bottom: 1px solid var(--border-color);
@@ -181,7 +195,8 @@ tbody tr:hover {
 }
 
 /* Списки */
-ul, ol {
+ul,
+ol {
   padding-left: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -262,6 +277,79 @@ footer p:last-child {
 }
 
 /* ==========================================
+   BOOKING TABLES
+   ========================================== */
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  background-color: #FFFFFF;
+  box-shadow: var(--shadow-sm);
+}
+
+legend {
+  padding: 0 0.8rem;
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* table with slots */
+fieldset table {
+  border-collapse: separate;
+  border-spacing: 12px;
+  background: transparent;
+  box-shadow: none;
+}
+
+fieldset td {
+  padding: 0;
+  border: none;
+  text-align: center;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+
+  transition: var(--transition);
+}
+
+/* effect  */
+fieldset td:hover {
+  transform: translateY(-5px);
+  background-color: #EAD8C5;
+  box-shadow: var(--shadow-md);
+}
+
+/* Link on all tables */
+fieldset td a {
+  display: block;
+  padding: 1.8rem 1rem;
+
+  color: var(--text-primary);
+  text-decoration: none;
+
+  border-radius: var(--radius-lg);
+}
+
+fieldset td a:hover {
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+/* Number table */
+fieldset td strong {
+  display: block;
+  margin-bottom: 0.25rem;
+
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+
+  color: var(--accent);
+}
+
+/* ==========================================
    АДАПТИВНОСТЬ (MOBILE)
    ========================================== */
 
@@ -287,8 +375,219 @@ footer p:last-child {
     padding: 1.2rem;
   }
 
-  th, td {
+  th,
+  td {
     padding: 0.6rem 0.8rem;
     font-size: 0.85rem;
+  }
+}
+
+/* ==========================================
+   EXTRA POLISH
+   ========================================== */
+
+/* Более плавная прокрутка */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Немного больше пространства на больших экранах */
+main {
+  max-width: 1050px;
+}
+
+/* Карточки становятся "живее" */
+section {
+  transition: transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Более красивые заголовки */
+h2 {
+  position: relative;
+  border-bottom: none;
+  padding-bottom: 0.7rem;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 3px;
+  margin-top: 8px;
+  background: var(--accent);
+  border-radius: 10px;
+}
+
+/* Изображения */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s ease;
+}
+
+figure img:hover {
+  transform: scale(1.015);
+}
+
+figcaption {
+  margin-top: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* =====================
+   FORMS
+   ===================== */
+
+form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+
+  font: inherit;
+  color: var(--text-primary);
+
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+
+  transition: 0.25s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px rgba(200, 109, 59, 0.15);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* BUTTONS */
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  width: auto;
+  cursor: pointer;
+
+  background: var(--accent);
+  color: white;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  padding: 0.8rem 1.5rem;
+
+  font-weight: 600;
+
+  transition: 0.25s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* =====================
+   TABLE
+   ===================== */
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(242, 232, 220, 0.35);
+}
+
+tbody tr:hover {
+  background: var(--bg-card);
+}
+
+/* =====================
+   NAVIGATION
+   ===================== */
+
+nav a {
+  position: relative;
+}
+
+nav a:focus-visible,
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* =====================
+   MOBILE
+   ===================== */
+
+@media (max-width: 600px) {
+
+  main {
+    width: 94%;
+    margin: 1.5rem auto;
+  }
+
+  section {
+    padding: 1.2rem;
+    border-radius: 8px;
+  }
+
+  section:hover {
+    transform: none;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  button,
+  input[type="submit"] {
+    width: 100%;
   }
 }
