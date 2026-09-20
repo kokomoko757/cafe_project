@@ -397,12 +397,12 @@ main {
 }
 
 /* Карточки становятся "живее" */
-section {
+main>section {
   transition: transform 0.3s ease,
     box-shadow 0.3s ease;
 }
 
-section:hover {
+main>section:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
@@ -425,27 +425,42 @@ h2::after {
 }
 
 /* Изображения */
+/* =====================
+   IMAGES
+   ===================== */
+
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
+figure {
+  margin: 1.8rem 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+}
+
 figure img {
   width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+
   transition: transform 0.4s ease;
 }
 
 figure img:hover {
-  transform: scale(1.015);
+  transform: scale(1.02);
 }
 
 figcaption {
   margin-top: 0.7rem;
   color: var(--text-muted);
   font-size: 0.9rem;
+  font-style: italic;
   text-align: center;
 }
 
@@ -542,6 +557,23 @@ tbody tr:hover {
 }
 
 /* =====================
+   MENU TABLE
+   ===================== */
+
+/* name of drink and eda */
+main table td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* price */
+main table td:last-child {
+  color: var(--accent-hover);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =====================
    NAVIGATION
    ===================== */
 
@@ -589,5 +621,21 @@ button:focus-visible {
   button,
   input[type="submit"] {
     width: 100%;
+  }
+
+  fieldset {
+    padding: 0.8rem;
+  }
+
+  fieldset table {
+    border-spacing: 6px;
+  }
+
+  fieldset td a {
+    padding: 1.2rem 0.5rem;
+  }
+
+  fieldset td strong {
+    font-size: 1rem;
   }
 }
