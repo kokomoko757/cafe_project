@@ -59,8 +59,7 @@ body {
 
 /* Типографика */
 h1,
-h2,
-h3 {
+h2 {
   font-family: var(--font-title);
   color: var(--text-primary);
   font-weight: 700;
@@ -84,6 +83,8 @@ h3 {
 h3 {
   font-size: 1.3rem;
   margin: 1.5rem 0 0.8rem;
+   transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 p {
