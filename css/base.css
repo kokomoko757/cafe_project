@@ -59,7 +59,8 @@ body {
 
 /* Типографика */
 h1,
-h2 {
+h2,
+h3 {
   font-family: var(--font-title);
   color: var(--text-primary);
   font-weight: 700;
@@ -226,7 +227,8 @@ dd {
 }
 
 /* Отзывы / Цитаты */
-blockquote {
+blockquote,
+h3 {
   background-color: var(--bg-card);
   border-left: 5px solid var(--accent);
   padding: 1.2rem 1.5rem;
