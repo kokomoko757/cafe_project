@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Global Coffee - уютная кофейня в Астане на улице Туркестан.">
+    <meta property="og:title" content="Global Coffee в Астане">
+    <meta property="og:description" content="Global Coffee - уютная кофейня в Астане на улице Туркестан.">
+    <meta name="author" content="Yeraidyn">
+    <title>Главная - Global Coffee Астана</title>
+
+    <!-- Подключение веб-шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Using Bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Подключение собственного файла стилей (минимальный слой коррекций) -->
+    <link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+    <header class="site-header py-3" id="top">
+        <!-- container-fluid chosen here for header/navbar to span full width across the browser window while maintaining consistent edge gutters -->
+        <div class="container-fluid px-3 px-lg-4">
+            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <a class="navbar-brand fs-3 fw-bold text-white text-decoration-none" href="index.html">
+                    Global Coffee <span class="badge bg-warning text-dark fs-6 align-middle d-none d-md-inline">Астана</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Переключить навигацию">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Меню</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Бронь столика</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colophon.html">О сайте</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reviews.html">Отзывы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="location.html">Филиалы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="partner.html">Стать партнером</a></li>
+                        <li class="nav-item"><a class="nav-link" href="aboutus.html">О нас</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Онлайн заказ</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- container chosen here for page content to keep maximum readable width centered on desktop screens -->
+    <main class="page-content container py-5">
+        <!-- Вводная приветственная секция -->
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-8 text-center text-md-start">
+                    <span class="badge bg-secondary mb-2">Кофейня третьей волны</span>
+                    <h2 class="section-title display-5 fw-bold mb-3">Добро пожаловать в мир настоящего кофе</h2>
+                    <p class="lead text-muted mb-4">
+                        Global Coffee на улице Туркестан, 4Б — это пространство тепла, вдохновения и свежеобжаренных кофейных зерен со всего мира.
+                    </p>
+
+                    <!-- Демонстрация 4 классов кнопок: стандартная primary, outline, size-variant (lg/sm) и disabled state -->
+                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+                        <a href="menu.html" class="btn btn-primary btn-lg">Посмотреть меню</a>
+                        <a href="booking.html" class="btn btn-outline-primary btn-lg">Забронировать стол</a>
+                        <a href="order.html" class="btn btn-outline-dark btn-sm align-self-center">Быстрый заказ</a>
+                        <button type="button" class="btn btn-secondary btn-sm align-self-center" disabled>Сезонная скидка (Завершено)</button>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-4 text-center">
+                    <img src="images/coffee-shop.jpg" alt="Фасад кофейни Global Coffee в Астане" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+
+            <!-- Nested row inside a column demonstration as required by the assignment instructions -->
+            <div class="row mt-4 pt-4 border-top">
+                <div class="col-12">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <h3 class="h6 fw-bold mb-1 text-primary">Свежая обжарка 100% Арабики</h3>
+                                <p class="small text-muted mb-0">Зерна прямого импорта из Эфиопии, Бразилии и Колумбии с контролем экстракции.</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="p-3 rounded-3 bg-light border">
+                                <h3 class="h6 fw-bold mb-1 text-primary">Комфортная атмосфера</h3>
+                                <p class="small text-muted mb-0">Быстрый Wi-Fi, розетки у каждого столика и дружелюбные профессиональные бариста.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Адаптивный блок 1 (3 колонки: col-12 col-md-6 col-lg-4) -->
+        <section class="mb-5">
+            <h2 class="section-title h3 fw-bold mb-4 border-bottom pb-2">Преимущества Global Coffee</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border rounded-3 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge rounded-pill bg-primary p-2 me-2">☕</span>
+                            <h3 class="h5 fw-bold mb-0">Авторские напитки</h3>
+                        </div>
+                        <p class="text-muted small mb-0">От нежного рафа с корицей до освежающего бамбла на натуральном фреше.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border rounded-3 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge rounded-pill bg-success p-2 me-2">⏰</span>
+                            <h3 class="h5 fw-bold mb-0">Удобный график</h3>
+                        </div>
+                        <p class="text-muted small mb-0">Открыты ежедневно с 08:00 до 24:00 без выходных и перерывов.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border rounded-3 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <span class="badge rounded-pill bg-warning text-dark p-2 me-2">📍</span>
+                            <h3 class="h5 fw-bold mb-0">Центр столицы</h3>
+                        </div>
+                        <p class="text-muted small mb-0">Удобная локация на улице Туркестан, 4Б с парковочными местами.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция: График работы и загруженность (Таблица) -->
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white" id="details">
+            <h2 class="section-title h3 fw-bold mb-3 border-bottom pb-2">График работы и загруженность</h2>
+            <p class="text-muted small">Ознакомьтесь с посещаемостью кофейни, чтобы спланировать визит или рабочую встречу.</p>
+
+            <div class="table-responsive my-3">
+                <table class="table table-hover table-bordered align-middle">
+                    <caption class="text-muted small pt-2">Анализ посещаемости кофейни по времени суток</caption>
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col" class="fw-bold">Время дня</th>
+                            <th scope="col" class="fw-bold">Часы работы</th>
+                            <th scope="col" class="fw-bold">Среднее количество гостей</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="fw-semibold">Утренние часы (Пик)</th>
+                            <td>08:00 - 11:00</td>
+                            <td><span class="badge bg-danger">Высокая загруженность</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-semibold">Дневное затишье</th>
+                            <td>12:00 - 18:00</td>
+                            <td><span class="badge bg-success">Свободные столики</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="fw-semibold">Вечерний отдых</th>
+                            <td>19:00 - 24:00</td>
+                            <td><span class="badge bg-warning text-dark">Средняя загруженность</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Bootstrap Component: Accordion (Adapted from official Bootstrap 5 documentation for FAQ & Coffee Guide) -->
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
+            <h2 class="section-title h3 fw-bold mb-3 border-bottom pb-2">Гид по напиткам и профессии</h2>
+            <p class="text-muted small mb-4">Нажмите на любой пункт аккордеона, чтобы узнать подробности о меню и стандартах сервиса.</p>
+
+            <div class="accordion" id="coffeeAccordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Что мы предлагаем гостям: Классические напитки
+                        </button>
+                    </h3>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#coffeeAccordion">
+                        <div class="accordion-body">
+                            <ul class="mb-0">
+                                <li><strong>Эспрессо и Американо</strong> — чистый вкус кофейного зерна с яркой кислинкой и плотной крема.</li>
+                                <li><strong>Молочная классика</strong> — шелковистый капучино, воздушный латте и нежный флэт уайт на отборном молоке.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Фирменные и холодные напитки
+                        </button>
+                    </h3>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#coffeeAccordion">
+                        <div class="accordion-body">
+                            <p class="mb-0">Айс Матча со свежей клубникой, авторские фруктовые смузи, натуральные лимонады и бодрящий холодный бамбл на апельсиновом соке.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Этапы обслуживания и профессия Бариста
+                        </button>
+                    </h3>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#coffeeAccordion">
+                        <div class="accordion-body">
+                            <ol class="mb-3">
+                                <li>Выбор напитка и десерта у кассы или через онлайн-заказ</li>
+                                <li>Быстрая оплата и приготовление напитка по строгой рецептуре</li>
+                                <li>Наслаждение непревзойденным вкусом в уютном зале или навынос</li>
+                            </ol>
+                            <dl class="mb-0">
+                                <dt class="fw-bold">Бариста:</dt>
+                                <dd class="text-muted">Специалист по приготовлению кофе эспрессо и напитков на его основе, прошедший сертификацию SCA.</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Показной отзыв клиента -->
+        <section class="card shadow-sm border rounded-3 p-4 mb-4 bg-light">
+            <blockquote class="blockquote mb-2 text-center text-md-start">
+                <p class="lead mb-2">«Замечательное место! Очень вкусный Латте матча и приветливый персонал. Часто захаживаю сюда после работы.»</p>
+                <footer class="blockquote-footer mt-1 text-muted">Аружан Серикова, <cite title="Дата отзыва">12 октября 2023</cite></footer>
+            </blockquote>
+            <p class="mb-0 text-center text-md-start small text-muted">
+                Свяжитесь с нами: позвоните по номеру <a href="tel:+77762000612" class="fw-bold text-decoration-none">+7‒776‒200‒06‒12</a>.
+            </p>
+            <div class="mt-3 text-end">
+                <a href="#top" class="btn btn-outline-secondary btn-sm">Наверх страницы &uarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-1">Адрес: г. Астана, ул. Туркестан, 4Б. Ежедневно с 08:00 до 24:00.</p>
+            <p class="small text-white-50 mb-0">&copy; 2026 Global Coffee. Все права защищены &amp; Мы любим кофе &hearts; &trade;</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+
+</html>

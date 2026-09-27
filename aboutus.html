@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="О нас - история, философия и стандарты качества кофейни Global Coffee в Астане.">
+    <meta property="og:title" content="О нас - Global Coffee Астана">
+    <meta property="og:description" content="Узнайте больше о философии, миссии и отборных зернах Global Coffee в Астане.">
+    <meta name="author" content="Yeraidyn">
+    <title>О нас - Global Coffee Астана</title>
+
+    <!-- Подключение веб-шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Using Bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <header class="site-header py-3" id="top">
+        <!-- container-fluid chosen here for header/navbar to span full width across the browser window while maintaining consistent edge gutters -->
+        <div class="container-fluid px-3 px-lg-4">
+            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <a class="navbar-brand fs-3 fw-bold text-white text-decoration-none" href="index.html">
+                    Global Coffee <span class="badge bg-warning text-dark fs-6 align-middle d-none d-md-inline">О нас</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Переключить навигацию">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Меню</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Бронь столика</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colophon.html">О сайте</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reviews.html">Отзывы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="location.html">Филиалы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="partner.html">Стать партнером</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="aboutus.html">О нас</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Онлайн заказ</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- container chosen here for page content to keep maximum readable width centered on desktop screens -->
+    <main class="page-content container py-5">
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
+            <div class="row align-items-center g-4">
+                <div class="col-12 col-lg-7 text-center text-md-start">
+                    <span class="badge bg-secondary mb-2">История и ценности</span>
+                    <h1 class="section-title display-5 fw-bold mb-3">Добро пожаловать в мир настоящего кофе</h1>
+                    <article>
+                        <h2 class="h4 fw-bold text-primary mb-3">Наша философия</h2>
+                        <p class="lead text-muted">
+                            Мы открыли двери <strong>Global Coffee</strong> в самом сердце столицы, на улице Туркестан, 4Б, чтобы предложить жителям города идеальное место для встреч, работы и душевного отдыха.
+                        </p>
+                        <p class="text-secondary">
+                            Наш шеф-бариста всегда говорит: <q class="fst-italic fw-semibold text-dark">«Кофе объединяет людей лучше любых слов»</q>. Мы <em>действительно</em> верим, что каждая чашка способна сделать день немного ярче и теплее. Мы работаем ежедневно с 08:00 до 24:00, чтобы вы могли насладиться любимым напитком в любое время.
+                        </p>
+                    </article>
+                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-md-start mt-4">
+                        <a href="menu.html" class="btn btn-primary btn-lg">Ознакомиться с меню</a>
+                        <a href="booking.html" class="btn btn-outline-primary btn-lg">Забронировать столик</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5 text-center">
+                    <figure class="figure mb-0">
+                        <img src="images/coffee-shop.jpg" alt="Фасад кофейни Global Coffee на улице Туркестан" class="figure-img img-fluid rounded-3 shadow">
+                        <figcaption class="figure-caption text-muted mt-2 fw-semibold">Вход в Global Coffee в Астане</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Nested row inside a column demonstration -->
+            <div class="row mt-4 pt-4 border-top">
+                <div class="col-12">
+                    <aside class="p-4 bg-light rounded-3 border">
+                        <h2 class="h5 fw-bold text-primary mb-3">Интересный факт о нас</h2>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <p class="small text-muted mb-2">
+                                    Наша кофейня использует только свежеобжаренные зерна. Слово <abbr title="Эспрессо" class="text-decoration-none border-bottom">Эспрессо</abbr> переводится как «выдавленный», а сама <abbr title="Республика Казахстан" class="text-decoration-none border-bottom">РК</abbr> с каждым годом пьет всё больше качественного specialty-кофе!
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <p class="small text-muted mb-2">
+                                    Температура идеальной экстракции — около <strong>92<sup>&deg;</sup>C</strong>, а для заваривания мы используем чистейшую фильтрованную воду (<strong>H<sub>2</sub>O</strong>).
+                                </p>
+                                <p class="small text-muted mb-0">
+                                    <span class="badge bg-warning text-dark">Не забудьте попробовать наши фирменные напитки!</span> <small class="text-muted d-block mt-1">Цены в меню могут незначительно меняться.</small>
+                                </p>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-top d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+                <p class="small text-muted mb-0">
+                    Узнать больше о культуре кофе можно в <a href="https://ru.wikipedia.org/wiki/Кофе" target="_blank" rel="noopener noreferrer" class="text-decoration-none fw-semibold">статье на Википедии &rarr;</a>
+                </p>
+                <a href="#top" class="btn btn-outline-secondary btn-sm">Наверх страницы &uarr;</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-1">Адрес: г. Астана, ул. Туркестан, 4Б. Ежедневно с 08:00 до 24:00.</p>
+            <p class="small text-white-50 mb-0">&copy; 2026 Global Coffee. Все права защищены &amp; Мы любим кофе &hearts; &trade;</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

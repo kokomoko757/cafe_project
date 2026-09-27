@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Онлайн-заказ кофе, напитков и еды с доставкой и самовывозом в Global Coffee Астана.">
+    <meta property="og:title" content="Онлайн-заказ - Global Coffee">
+    <meta property="og:description" content="Оформите заказ на любимый кофе, онигири и десерты онлайн в Global Coffee.">
+    <meta name="author" content="Assylzhan">
+    <title>Онлайн-заказ - Global Coffee</title>
+
+    <!-- Подключение веб-шрифтов -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Using Bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+
+<body>
+    <header class="site-header py-3" id="top">
+        <!-- container-fluid chosen here for header/navbar to span full width across the browser window while maintaining consistent edge gutters -->
+        <div class="container-fluid px-3 px-lg-4">
+            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <a class="navbar-brand fs-3 fw-bold text-white text-decoration-none" href="index.html">
+                    Global Coffee <span class="badge bg-warning text-dark fs-6 align-middle d-none d-md-inline">Заказ</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Переключить навигацию">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Меню</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Бронь столика</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colophon.html">О сайте</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reviews.html">Отзывы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="location.html">Филиалы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="partner.html">Стать партнером</a></li>
+                        <li class="nav-item"><a class="nav-link" href="aboutus.html">О нас</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="order.html">Онлайн заказ</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- container chosen here for page content to keep maximum readable width centered on desktop screens -->
+    <main class="page-content container py-5">
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
+            <div class="text-center text-md-start mb-4">
+                <h1 class="section-title display-6 fw-bold mb-2">Оформление онлайн-заказа</h1>
+                <p class="lead text-muted mb-0">Соберите ваш любимый заказ из меню Global Coffee и выберите удобный способ получения!</p>
+            </div>
+
+            <form action="order.html" method="get">
+                <!-- СЕКЦИЯ 1: ВЫБОР БЛЮД И НАПИТКОВ -->
+                <fieldset class="border rounded-3 p-3 p-md-4 mb-4">
+                    <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">1. Соберите ваш заказ (Меню Global Coffee)</legend>
+
+                    <h2 class="h5 fw-bold mb-3 mt-2">Кофе и фирменные напитки</h2>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col" class="text-center">Выбор</th>
+                                    <th scope="col">Название</th>
+                                    <th scope="col">Цена</th>
+                                    <th scope="col">Количество</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item1" name="order_items" value="nut_flat_white"></td>
+                                    <td><label for="item1" class="form-check-label fw-semibold">Ореховый Флэт Уайт</label></td>
+                                    <td><span class="badge bg-secondary">1 390 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_nut_flat_white" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item2" name="order_items" value="frappe_cocoa"></td>
+                                    <td><label for="item2" class="form-check-label fw-semibold">Фраппе Сливочный-Какао</label></td>
+                                    <td><span class="badge bg-secondary">1 790 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_frappe_cocoa" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item3" name="order_items" value="ice_matcha_strawberry"></td>
+                                    <td><label for="item3" class="form-check-label fw-semibold">Айс Матча Клубника</label></td>
+                                    <td><span class="badge bg-secondary">1 690 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_ice_matcha_strawberry" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item4" name="order_items" value="tea_orange_strawberry"></td>
+                                    <td><label for="item4" class="form-check-label fw-semibold">Чай Апельсин-Клубника</label></td>
+                                    <td><span class="badge bg-secondary">1 090 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_tea_orange_strawberry" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item5" name="order_items" value="lemonade_sakura"></td>
+                                    <td><label for="item5" class="form-check-label fw-semibold">Лимонад Сакура</label></td>
+                                    <td><span class="badge bg-secondary">1 490 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_lemonade_sakura" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item6" name="order_items" value="smoothie_kiwi"></td>
+                                    <td><label for="item6" class="form-check-label fw-semibold">Смузи Киви</label></td>
+                                    <td><span class="badge bg-secondary">1 790 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_smoothie_kiwi" min="1" max="10" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2 class="h5 fw-bold mb-3">Еда и Перекус на вынос</h2>
+                    <div class="table-responsive mb-3">
+                        <table class="table table-hover table-bordered align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th scope="col" class="text-center">Выбор</th>
+                                    <th scope="col">Название</th>
+                                    <th scope="col">Цена</th>
+                                    <th scope="col">Количество</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item7" name="order_items" value="sandwich"></td>
+                                    <td><label for="item7" class="form-check-label fw-semibold">Сэндвич фирменный с курицей</label></td>
+                                    <td><span class="badge bg-secondary">1 490 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_sandwich" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item8" name="order_items" value="hotdog"></td>
+                                    <td><label for="item8" class="form-check-label fw-semibold">Хот-дог гриль</label></td>
+                                    <td><span class="badge bg-secondary">1 190 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_hotdog" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item9" name="order_items" value="donuts"></td>
+                                    <td><label for="item9" class="form-check-label fw-semibold">Пончики шоколадные (набор)</label></td>
+                                    <td><span class="badge bg-secondary">990 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_donuts" min="1" max="10" value="1"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item10" name="order_items" value="onigiri"></td>
+                                    <td><label for="item10" class="form-check-label fw-semibold">Онигири с лососем</label></td>
+                                    <td><span class="badge bg-secondary">890 ₸</span></td>
+                                    <td><input type="number" class="form-control form-control-sm w-auto" name="qty_onigiri" min="1" max="10" value="1"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="special_instructions" class="form-label fw-semibold">Пожелания к заказу (например, «без сахара», «на кокосовом молоке»):</label>
+                        <textarea class="form-control" id="special_instructions" name="special_instructions" rows="3" placeholder="Укажите ваши индивидуальные предпочтения"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- СЕКЦИЯ 2: СПОСОБ ПОЛУЧЕНИЯ -->
+                <fieldset class="border rounded-3 p-3 p-md-4 mb-4">
+                    <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">2. Способ получения заказа</legend>
+
+                    <div class="mb-3">
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" id="delivery_home" name="order_type" value="home" required checked>
+                            <label class="form-check-label fw-bold" for="delivery_home">Доставка на дом / в офис</label>
+                        </div>
+
+                        <!-- Замена старого inline style="margin-left: 20px" на нативный класс Bootstrap ms-4 -->
+                        <div class="ms-4 p-3 bg-light rounded-3 border mb-3">
+                            <div class="row g-3">
+                                <div class="col-12 col-md-4">
+                                    <label for="city" class="form-label fw-semibold">Город:</label>
+                                    <input type="text" class="form-control" id="city" name="city" value="Астана" readonly>
+                                </div>
+                                <div class="col-12 col-md-8">
+                                    <label for="street" class="form-label fw-semibold">Улица и номер дома:</label>
+                                    <input type="text" class="form-control" id="street" name="street" placeholder="пр. Мангилик Ел, д. 55/1">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="apartment" class="form-label fw-semibold">Квартира / Офис:</label>
+                                    <input type="text" class="form-control" id="apartment" name="apartment" placeholder="кв. 12">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="entrance" class="form-label fw-semibold">Подъезд / Этаж:</label>
+                                    <input type="text" class="form-control" id="entrance" name="entrance" placeholder="подъезд 1, этаж 3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" id="delivery_onsite" name="order_type" value="onsite" required>
+                            <label class="form-check-label fw-bold" for="delivery_onsite">Заказ в заведении (На месте)</label>
+                        </div>
+
+                        <!-- Замена старого inline style="margin-left: 20px" на нативный класс Bootstrap ms-4 -->
+                        <div class="ms-4 p-3 bg-light rounded-3 border">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="radio" id="has_table_yes" name="table_status" value="yes">
+                                <label class="form-check-label fw-semibold" for="has_table_yes">У меня уже забронирован стол</label>
+                            </div>
+
+                            <div class="row g-3 ms-2 mb-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="table_number" class="form-label small fw-semibold">Номер забронированного стола:</label>
+                                    <select class="form-select form-select-sm" id="table_number" name="table_number">
+                                        <option value="">-- Выберите номер стола --</option>
+                                        <option value="1">Стол 1 (2 места)</option>
+                                        <option value="2">Стол 2 (2 места)</option>
+                                        <option value="3">Стол 3 (4 места)</option>
+                                        <option value="4">Стол 4 (4 места)</option>
+                                        <option value="5">Стол 5 (6 мест)</option>
+                                        <option value="6">Стол 6 (4 места)</option>
+                                        <option value="7">Стол 7 (2 места)</option>
+                                        <option value="8">Стол 8 (4 места)</option>
+                                        <option value="9">Стол 9 (6 мест)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="booking_time" class="form-label small fw-semibold">Время бронирования:</label>
+                                    <select class="form-select form-select-sm" id="booking_time" name="booking_time">
+                                        <option value="">-- Выберите время --</option>
+                                        <option value="08:00">08:00</option>
+                                        <option value="09:00">09:00</option>
+                                        <option value="10:00">10:00</option>
+                                        <option value="11:00">11:00</option>
+                                        <option value="12:00">12:00</option>
+                                        <option value="13:00">13:00</option>
+                                        <option value="14:00">14:00</option>
+                                        <option value="15:00">15:00</option>
+                                        <option value="16:00">16:00</option>
+                                        <option value="17:00">17:00</option>
+                                        <option value="18:00">18:00</option>
+                                        <option value="19:00">19:00</option>
+                                        <option value="20:00">20:00</option>
+                                        <option value="21:00">21:00</option>
+                                        <option value="22:00">22:00</option>
+                                        <option value="23:00">23:00</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" id="has_table_no" name="table_status" value="no" checked>
+                                <label class="form-check-label fw-semibold" for="has_table_no">У меня нет забронированного стола</label>
+                            </div>
+                            <p class="small text-muted ms-4 mt-1 mb-0">
+                                Желаете забронировать столик заранее? <a href="booking.html" class="fw-semibold text-decoration-none">Перейти к схеме зала &rarr;</a>
+                            </p>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- СЕКЦИЯ 3: КОНТАКТЫ И ОПЛАТА -->
+                <fieldset class="border rounded-3 p-3 p-md-4 mb-4">
+                    <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">3. Контактные данные и способ оплаты</legend>
+
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
+                            <label for="customer_name" class="form-label fw-semibold">Ваше имя <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Введите имя" required>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <label for="customer_phone" class="form-label fw-semibold">Номер телефона <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="customer_phone" name="customer_phone" placeholder="+7 777 000 00 00" required>
+                        </div>
+
+                        <div class="col-12">
+                            <label for="payment_method" class="form-label fw-semibold">Способ оплаты <span class="text-danger">*</span></label>
+                            <select class="form-select" id="payment_method" name="payment_method" required>
+                                <option value="">-- Выберите способ оплаты --</option>
+                                <option value="kaspi">Kaspi QR / Kaspi Pay (быстрый перевод)</option>
+                                <option value="card">Банковской картой онлайн (Visa / Mastercard)</option>
+                                <option value="cash">Наличными при получении курьеру / на кассе</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="d-flex flex-wrap gap-2 justify-content-end">
+                    <button type="reset" class="btn btn-outline-secondary">Сбросить форму</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Оформить и оплатить заказ &rarr;</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-1">Адрес флагмана: г. Астана, ул. Туркестан, 4Б. Ежедневно с 08:00 до 24:00.</p>
+            <p class="small text-white-50 mb-0">&copy; 2026 Global Coffee. Все права защищены &hearts;</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

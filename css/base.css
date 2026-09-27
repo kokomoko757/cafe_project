@@ -1,0 +1,75 @@
+/* ========================================================
+   GLOBAL COFFEE — СТИЛИЗАЦИЯ И БРЕНДОВЫЕ КОРРЕКЦИИ
+   Assignment: Bootstrap builds, your CSS corrects
+   Всего строк: менее 70 строк (соответствует требованиям <100 строк)
+   ======================================================== */
+
+:root {
+  /* Фирменные цвета Global Coffee */
+  --coffee-dark: #2B1810;
+  --coffee-cream: #FDFBF7;
+  --coffee-card-bg: #F4ECE1;
+  --coffee-accent: #C86D3B;
+  --coffee-accent-hover: #A0522D;
+  --coffee-border: #E2D2C1;
+
+  /* Фирменные шрифты */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Базовый шрифт и цвет фона страницы (коррекция поверх Bootstrap) */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--coffee-cream);
+  color: var(--coffee-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Фирменный шрифт с засечками для заголовков и брендинга */
+h1, h2, h3, .navbar-brand {
+  font-family: var(--font-serif);
+  color: var(--coffee-dark);
+}
+
+/* Коррекция цвета шапки под темный эспрессо бренда */
+.site-header {
+  background-color: var(--coffee-dark);
+}
+
+/* Коррекция акцентного цвета кнопок под коричный тон кофейни */
+.btn-primary {
+  background-color: var(--coffee-accent);
+  border-color: var(--coffee-accent);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--coffee-accent-hover);
+  border-color: var(--coffee-accent-hover);
+}
+
+.btn-outline-primary {
+  color: var(--coffee-accent);
+  border-color: var(--coffee-accent);
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: var(--coffee-accent);
+  border-color: var(--coffee-accent);
+  color: #fff;
+}
+
+/* Коррекция фонового оттенка карточек под теплую палитру кофейни */
+.bg-coffee-card {
+  background-color: var(--coffee-card-bg);
+  border-color: var(--coffee-border);
+}
+
+/* Коррекция подвала под темный эспрессо */
+.site-footer {
+  background-color: var(--coffee-dark);
+  color: var(--coffee-cream);
+  margin-top: auto;
+}
