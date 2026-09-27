@@ -1,644 +1,71 @@
-/* ==========================================
-   GLOBAL COFFEE — СТИЛИ И ПАЛИТРА
-   ========================================== */
+/* ========================================================
+   GLOBAL COFFEE — СТИЛИЗАЦИЯ И БРЕНДОВЫЕ КОРРЕКЦИИ
+   Assignment: Bootstrap builds, your CSS corrects
+   Bootstrap отвечает за структуру; здесь только брендовые коррекции
+   ======================================================== */
 
 :root {
-  /* Цветовая палитра */
-  --bg-main: #FDFBF7;
-  /* Богатый кремовый фон */
-  --bg-card: #F2E8DC;
-  /* Пряный светло-бежевый */
-  --bg-header: #2B1810;
-  /* Тёмный эспрессо */
-  --bg-header-hover: #3D2314;
+  /* Фирменные цвета Global Coffee */
+  --coffee-dark: #2B1810;
+  --coffee-cream: #FDFBF7;
+  --coffee-card-bg: #F4ECE1;
+  --coffee-accent: #C86D3B;
+  --coffee-accent-hover: #A0522D;
+  --coffee-border: #E2D2C1;
 
-  --text-primary: #2B1810;
-  /* Основной тёмно-кофейный текст */
-  --text-muted: #6B5344;
-  /* Второстепенный текст */
-  --text-light: #FDFBF7;
-  /* Светлый текст для тёмных фонов */
-
-  --accent: #C86D3B;
-  /* Пряная корица / Карамель */
-  --accent-hover: #A0522D;
-  /* Тёмная корица */
-  --border-color: #E2D2C1;
-  /* Границы элементов */
-
-  /* Типографика */
-  --font-title: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
-
-  /* Оформление */
-  --radius-sm: 6px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 2px 8px rgba(43, 24, 16, 0.06);
-  --shadow-md: 0 8px 20px rgba(43, 24, 16, 0.1);
-  --transition: all 0.3s ease;
+  /* Фирменные шрифты */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Base Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Базовый шрифт и цвет фона страницы (коррекция поверх Bootstrap) */
 body {
-  background-color: var(--bg-main);
-  color: var(--text-primary);
-  font-family: var(--font-body);
-  line-height: 1.7;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: var(--coffee-cream);
+  color: var(--coffee-dark);
 }
 
-/* Типографика */
-h1,
-h2,
-h3 {
-  font-family: var(--font-title);
-  color: var(--text-primary);
-  font-weight: 700;
-  line-height: 1.3;
+/* Фирменный шрифт с засечками для заголовков и брендинга */
+h1, h2, h3, .navbar-brand {
+  font-family: var(--font-serif);
+  color: var(--coffee-dark);
 }
 
-.site-title {
-  font-size: 2.2rem;
-  color: var(--text-light);
-  text-align: center;
-  margin-bottom: 1.2rem;
-}
-
-.section-title {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.4rem;
-}
-
-h3 {
-  font-size: 1.3rem;
-  margin: 1.5rem 0 0.8rem;
-   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
-/* ==========================================
-   HEADER & NAV
-   ========================================== */
-
+/* Коррекция цвета шапки под темный эспрессо бренда */
 .site-header {
-  background-color: var(--bg-header);
-  padding: 2rem 1.5rem 1.5rem;
-  box-shadow: var(--shadow-md);
+  background-color: var(--coffee-dark);
 }
 
-.main-nav .nav-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.8rem 1.2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+/* Коррекция акцентного цвета кнопок под коричный тон кофейни */
+.btn-primary {
+  background-color: var(--coffee-accent);
+  border-color: var(--coffee-accent);
 }
 
-.main-nav .nav-link {
-  color: var(--text-light);
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-sm);
-  background-color: rgba(255, 255, 255, 0.05);
-  display: inline-block;
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--coffee-accent-hover);
+  border-color: var(--coffee-accent-hover);
 }
 
-.main-nav .nav-link:hover {
-  background-color: var(--accent);
-  color: var(--text-light);
-  text-decoration: none;
-  transform: translateY(-2px);
+.btn-outline-primary {
+  color: var(--coffee-accent);
+  border-color: var(--coffee-accent);
 }
 
-/* ==========================================
-   MAIN CONTENT & SECTIONS
-   ========================================== */
-
-.page-content {
-  max-width: 900px;
-  width: 90%;
-  margin: 2.5rem auto;
-  flex: 1;
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: var(--coffee-accent);
+  border-color: var(--coffee-accent);
+  color: #fff;
 }
 
-.content-section {
-  background-color: #FFFFFF;
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--border-color);
-  margin-bottom: 2rem;
+/* Коррекция фонового оттенка карточек под теплую палитру кофейни */
+.bg-coffee-card {
+  background-color: var(--coffee-card-bg);
+  border-color: var(--coffee-border);
 }
 
-/* Таблица загруженности */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  background-color: var(--bg-main);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-caption {
-  font-style: italic;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-}
-
-th,
-td {
-  padding: 0.85rem 1.2rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
-}
-
-thead th {
-  background-color: var(--bg-card);
-  font-family: var(--font-title);
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-tbody tr:hover {
-  background-color: rgba(230, 213, 195, 0.3);
-}
-
-/* Списки */
-ul,
-ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-li {
-  margin-bottom: 0.4rem;
-}
-
-dl {
-  background-color: var(--bg-card);
-  padding: 1.2rem;
-  border-radius: var(--radius-sm);
-  border-left: 4px solid var(--accent);
-  margin: 1.5rem 0;
-}
-
-dt {
-  font-weight: 600;
-  font-size: 1.1rem;
-  color: var(--text-primary);
-}
-
-dd {
-  margin-top: 0.2rem;
-  color: var(--text-muted);
-}
-
-/* Отзывы / Цитаты */
-blockquote,
-h3 {
-  background-color: var(--bg-card);
-  border-left: 5px solid var(--accent);
-  padding: 1.2rem 1.5rem;
-  margin: 2rem 0;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-style: italic;
-}
-
-blockquote p {
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
-}
-
-cite {
-  display: block;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--accent-hover);
-  text-align: right;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid var(--border-color);
-  margin: 1.5rem 0;
-}
-
-/* ==========================================
-   FOOTER
-   ========================================== */
-
+/* Коррекция подвала под темный эспрессо */
 .site-footer {
-  background-color: var(--bg-header);
-  color: #D9C4B1;
-  text-align: center;
-  padding: 1.8rem 1rem;
-  font-size: 0.9rem;
-  margin-top: auto;
-}
-
-footer p {
-  margin-bottom: 0.4rem;
-}
-
-footer p:last-child {
-  margin-bottom: 0;
-  color: var(--accent);
-}
-
-/* ==========================================
-   BOOKING TABLES
-   ========================================== */
-
-fieldset {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  background-color: #FFFFFF;
-  box-shadow: var(--shadow-sm);
-}
-
-legend {
-  padding: 0 0.8rem;
-  font-family: var(--font-title);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-/* table with slots */
-fieldset table {
-  border-collapse: separate;
-  border-spacing: 12px;
-  background: transparent;
-  box-shadow: none;
-}
-
-fieldset td {
-  padding: 0;
-  border: none;
-  text-align: center;
-  background-color: var(--bg-card);
-  border-radius: var(--radius-lg);
-
-  transition: var(--transition);
-}
-
-/* effect  */
-fieldset td:hover {
-  transform: translateY(-5px);
-  background-color: #EAD8C5;
-  box-shadow: var(--shadow-md);
-}
-
-/* Link on all tables */
-fieldset td a {
-  display: block;
-  padding: 1.8rem 1rem;
-
-  color: var(--text-primary);
-  text-decoration: none;
-
-  border-radius: var(--radius-lg);
-}
-
-fieldset td a:hover {
-  color: var(--accent-hover);
-  text-decoration: none;
-}
-
-/* Number table */
-fieldset td strong {
-  display: block;
-  margin-bottom: 0.25rem;
-
-  font-family: var(--font-title);
-  font-size: 1.2rem;
-
-  color: var(--accent);
-}
-
-/* ==========================================
-   АДАПТИВНОСТЬ (MOBILE)
-   ========================================== */
-
-@media (max-width: 600px) {
-  .site-header {
-    padding: 1.5rem 1rem;
-  }
-
-  .site-title {
-    font-size: 1.7rem;
-  }
-
-  .main-nav .nav-list {
-    gap: 0.5rem;
-  }
-
-  .main-nav .nav-link {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.7rem;
-  }
-
-  .content-section {
-    padding: 1.2rem;
-  }
-
-  th,
-  td {
-    padding: 0.6rem 0.8rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* ==========================================
-   EXTRA POLISH
-   ========================================== */
-
-/* Более плавная прокрутка */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Немного больше пространства на больших экранах */
-.page-content {
-  max-width: 1050px;
-}
-
-/* Карточки становятся "живее" */
-.page-content > .content-section {
-  transition: transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.page-content > .content-section:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Более красивые заголовки */
-.section-title {
-  position: relative;
-  border-bottom: none;
-  padding-bottom: 0.7rem;
-}
-
-.section-title::after {
-  content: "";
-  display: block;
-  width: 55px;
-  height: 3px;
-  margin-top: 8px;
-  background: var(--accent);
-  border-radius: 10px;
-}
-
-/* Изображения */
-/* =====================
-   IMAGES
-   ===================== */
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-figure {
-  margin: 1.8rem 0;
-  overflow: hidden;
-  border-radius: var(--radius-lg);
-}
-
-figure img {
-  width: 100%;
-  max-height: 480px;
-  object-fit: cover;
-
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-
-  transition: transform 0.4s ease;
-}
-
-figure img:hover {
-  transform: scale(1.02);
-}
-
-figcaption {
-  margin-top: 0.7rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-style: italic;
-  text-align: center;
-}
-
-/* =====================
-   FORMS
-   ===================== */
-
-form {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 600;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  margin-bottom: 1rem;
-
-  font: inherit;
-  color: var(--text-primary);
-
-  background: var(--bg-main);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-sm);
-
-  transition: 0.25s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-
-  box-shadow:
-    0 0 0 3px rgba(200, 109, 59, 0.15);
-}
-
-textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-/* BUTTONS */
-
-button,
-input[type="submit"],
-input[type="reset"] {
-  width: auto;
-  cursor: pointer;
-
-  background: var(--accent);
-  color: white;
-
-  border: none;
-  border-radius: var(--radius-sm);
-
-  padding: 0.8rem 1.5rem;
-
-  font-weight: 600;
-
-  transition: 0.25s ease;
-}
-
-button:hover,
-input[type="submit"]:hover {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-
-  box-shadow: var(--shadow-sm);
-}
-
-/* =====================
-   TABLE
-   ===================== */
-
-tbody tr {
-  transition: background-color 0.2s ease;
-}
-
-tbody tr:nth-child(even) {
-  background: rgba(242, 232, 220, 0.35);
-}
-
-tbody tr:hover {
-  background: var(--bg-card);
-}
-
-/* =====================
-   MENU TABLE
-   ===================== */
-
-/* name of drink and eda */
-.page-content table td:first-child {
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-/* price */
-.page-content table td:last-child {
-  color: var(--accent-hover);
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-/* =====================
-   NAVIGATION
-   ===================== */
-
-.main-nav .nav-link {
-  position: relative;
-}
-
-.main-nav .nav-link:focus-visible,
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
-/* =====================
-   MOBILE
-   ===================== */
-
-@media (max-width: 600px) {
-
-  .page-content {
-    width: 94%;
-    margin: 1.5rem auto;
-  }
-
-  .content-section {
-    padding: 1.2rem;
-    border-radius: 8px;
-  }
-
-  .content-section:hover {
-    transform: none;
-  }
-
-  .section-title {
-    font-size: 1.5rem;
-  }
-
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  button,
-  input[type="submit"] {
-    width: 100%;
-  }
-
-  fieldset {
-    padding: 0.8rem;
-  }
-
-  fieldset table {
-    border-spacing: 6px;
-  }
-
-  fieldset td a {
-    padding: 1.2rem 0.5rem;
-  }
-
-  fieldset td strong {
-    font-size: 1rem;
-  }
+  background-color: var(--coffee-dark);
+  color: var(--coffee-cream);
 }
