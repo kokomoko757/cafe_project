@@ -1,65 +1,106 @@
-# Global Coffee — Website
+# Global Coffee — Website (Assignment 3: Bootstrap Rebuild)
 
-A static HTML website for Global Coffee, built as part of the **Assignment 1 — HTML Basics** coursework.
+Репозиторий проекта кофейни **Global Coffee в Астане**, переработанный в рамках задания **«Assignment 3 — Rebuild with Bootstrap»**.
 
-## Theme
+---
 
-**Global Coffee** — a popular coffee shop chain in Kazakhstan. This project provides details about our coffee menu, table booking, location info, customer reviews, and technical site documentation for our branch located on Streets in Astana.
+## Концепция: «Bootstrap builds, your CSS corrects»
+Вся сетка, макет, адаптивность, навигация, кнопки и таблицы построены на нативных классах **Bootstrap 5.3.3**.
+Собственный файл `css/base.css` сокращен с **645 строк до 71 строки** (строго меньше 100 строк) и представляет собой тонкий корректирующий слой: фирменные цвета (эспрессо, корица, сливочный), шрифты (`Playfair Display`, `Inter`) и минимальные стилистические уточнения без единого правила `!important` или инлайн-стиля `style=""`.
 
-- **Location:** Astana, Kazakhstan
+Подробный журнал удаленных правил и заменяющих их классов Bootstrap приведен в файле [`css-cleanup.md`](css-cleanup.md).
 
-## Pages
+---
 
-| Page | Description |
-|---|---|
-| `index.html` | Homepage featuring the brand introduction, welcome section, and general overview |
-| `booking.html` | Table reservation page with a booking request form |
-| `colophon.html` | Technical details about site development, HTML specifications, and browser compatibility |
-| `location.html` | Branch address details, working hours, and location information |
-| `menu.html` | Coffee and food menu showcase with prices and descriptions |
-| `reviews.html` | Customer feedback, ratings, and submission form for reviews |
+## Выполненные требования (Checklist)
 
-## Project Structure
+1. **Подключение Bootstrap 5.3.3**:
+   - CDN Bootstrap 5.3.3 подключен в `<head>` каждой страницы первым, а собственный файл `css/base.css` — после него.
+   - JS-бандл Bootstrap (`bootstrap.bundle.min.js`) подключен перед закрывающим тегом `</body>`.
+   - На каждой странице добавлен комментарий с версией: `<!-- Using Bootstrap v5.3.3 -->`.
 
+2. **Контейнеры и сетка (Grid & Containers)**:
+   - Использованы оба типа контейнеров с поясняющими комментариями:
+     - `container-fluid` для полноширинной адаптивной навигационной панели и шапки.
+     - `container` для центрированного, удобного для чтения контента на экранах настольных ПК.
+   - Более 4 различных адаптивных блоков реагируют на ширину экрана (`col-12 col-md-6 col-lg-4`):
+     - Карточки преимуществ на главной (`index.html`)
+     - Карточки категорий меню (`menu.html`)
+     - Карточки отзывов клиентов (`reviews.html`)
+     - Флагманские локации (`location.html`)
+     - Статистика франчайзинга (`partner.html`)
+   - Использованы классы отступов сетки и выравнивания (`g-3`, `g-4`, `align-items-center`, `justify-content-center`) вместо собственных внешних отступов (`margin`).
+   - Реализована демонстрация вложенных сеток (`nested row inside a column`) с соответствующим комментарием в коде.
+
+3. **Адаптивное поведение (Responsive Breakpoints)**:
+   - Проверено на 3 ключевых ширинах:
+     - **375px (смартфон)**: полное отсутствие горизонтальной полосы прокрутки, все таблицы обернуты в `table-responsive`, изображения адаптивны (`img-fluid`).
+     - **768px (планшет)**: корректная 2-колоночная компоновка карточек.
+     - **Десктоп (1200px+)**: 3- и 4-колоночная раскладка.
+   - Адаптивный гамбургер-тогглер меню (`navbar-toggler` + `collapse navbar-collapse`) плавно сворачивает навигацию на мобильных экранах.
+   - Использованы утилиты адаптивного отображения и выравнивания (`text-center text-md-start`, `d-none d-md-inline`).
+
+4. **Типографика, кнопки и утилиты**:
+   - Заголовки `display-5`, `display-6`, вводный текст `lead`, приглушенный текст `text-muted`, `small`, `fw-bold`.
+   - Более 4 классов кнопок:
+     1. Заливка: `btn-primary`
+     2. Контурный стиль: `btn-outline-primary`, `btn-outline-secondary`, `btn-outline-dark`
+     3. Варианты размеров: `btn-lg` и `btn-sm`
+     4. Отключенное состояние: `disabled` / `btn-secondary disabled`
+     Все кнопки являются реальными ссылками или элементами форм (`<button type="submit">`, `<button type="reset">`).
+   - Более 10 утилит Bootstrap: отступы (`p-4`, `py-5`, `mb-4`, `gap-2`), цвета (`bg-light`, `bg-white`, `bg-dark`, `text-white`), границы (`border`, `rounded-3`, `rounded-pill`), тени (`shadow-sm`, `shadow`), флексбокс (`d-flex`, `justify-content-between`, `align-items-center`).
+
+5. **Компоненты Bootstrap**:
+   - **Accordion**: в `index.html` для интерактивного гида по напиткам и профессии бариста.
+   - **Alert**: в `booking.html` и `location.html` для важных оповещений гостей.
+   - **Card & List Group with Badges**: в `menu.html` для категорий напитков с ценами и объемами.
+   - **Card & Badge**: в `reviews.html` для отзывов гостей с верификационными значками.
+   - **Breadcrumb**: в `colophon.html` для демонстрации цепочки навигации.
+   Каждый компонент скопирован из документации, адаптирован под проект и снабжен комментарием.
+
+6. **Полное отсутствие запрещенных приемов**:
+   - 0 сторонних тем или шаблонов.
+   - 0 сторонних CSS-фреймворков.
+   - 0 самописного JavaScript-кода (только официальный бандл Bootstrap).
+   - 0 инлайн-стилей `style=""`.
+   - 0 правил `!important`.
+
+---
+
+## Структура проекта
 ```
 cafe_project/
-├── images/  
-          ├── coffee-shop.jpg
-          ├── cold-drinks.jpg
-          └── latte-art.jpg
-├── booking.html
-├── colophon.html
-├── index.html
-├── location.html
-├── menu.html
-├── reviews.html
-├── aboutus.html
-└── partner.html
+├── css/
+│   └── base.css              # Минимальный слой брендовых коррекций (71 строка)
+├── images/
+│   ├── coffee-shop.jpg
+│   ├── cold-drinks.jpg
+│   ├── latte-art.jpg
+│   └── task3.pdf
+├── screenshots/
+│   ├── index-375.png
+│   ├── index-768.png
+│   ├── index-desktop.png
+│   └── index-375-nav-open.png
+├── index.html                # Главная страница (Аккордеон, вложенная сетка, кнопки)
+├── menu.html                 # Меню с карточками и бейджами цен
+├── booking.html              # Бронирование столика со схемой зала и Alert
+├── details.html              # Форма выбора даты и времени
+├── location.html             # 28 филиалов в Астане, таблица и карточки
+├── order.html                # Онлайн-заказ напитков и еды
+├── partner.html              # Франчайзинг, статистика и форма заявки
+├── reviews.html              # Отзывы гостей в виде адаптивных карточек
+├── aboutus.html              # О нас, история и стандарты кофейни
+├── colophon.html             # Технический отчёт с компонентом Breadcrumb
+├── css-cleanup.md            # Отчет по удалению старого CSS и замене на Bootstrap
+├── ai-log.txt                # Журнал запросов к искусственному интеллекту
+└── README.md
 ```
 
-## Team
+## Команда
+- **Tazhmaganbetov Yeraidyn (SE-2533)**: Архитектура разметки, сетка, `index.html`, `menu.html`, `aboutus.html`.
+- **Ibraev Tamerlan (SE-2533)**: Формы, таблицы данных, `location.html`, `reviews.html`.
+- **Bolatuly Assylzhan (SE-2533)**: Компоненты Bootstrap, `booking.html`, `details.html`, `order.html`, `colophon.html`.
 
-| Student | Group | Role / Contribution |
-|---|---|---|
-| Tazhmaganbetov Yeraidyn | SE-2533 | HTML Architecture, Semantic Markup & Page Structure |
-| Ibraev Tamerlan | SE-2533 | Forms, Data Tables & Content Development |
-| Bolatuly Assylzhan | SE-2533 | Technical Documentation & Quality Assurance |
-
-## Technologies
-
-- Pure HTML5 — no CSS, no JavaScript, no external frameworks
-- Semantic markup (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<figure>`, `<table>`, `<dl>`, `<form>`)
-- Responsive viewport meta tag
-- W3C-compliant markup
-
-## How to View
-
-Download or clone this repository, then open any `.html` file directly in your web browser. No server required.
-
-```bash
-git clone https://github.com/kokomoko757/cafe_project.git
-```
-
-## License
-
-© 2026 Global Coffee. All rights reserved.
+## Лицензия
+&copy; 2026 Global Coffee. Все права защищены.
