@@ -1,91 +1,250 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Global Coffee - уютная кофейня в Астане на улице Туркестан.">
+    <meta name="description" content="Меню Global Coffee в Астане: классический кофе, фирменные напитки, холодный кофе и смузи.">
+    <meta property="og:title" content="Меню - Global Coffee Астана">
+    <meta property="og:description" content="Меню Global Coffee в Астане: актуальные цены и объемы напитков.">
     <meta name="author" content="Yeraidyn">
-   
-    
+    <title>Меню - Global Coffee</title>
+
     <!-- Подключение веб-шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <!-- Подключение файла стилей -->
+
+    <!-- Using Bootstrap v5.3.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/yeraidyn.css">
-    <title>Меню - Global Coffee</title>
 </head>
-<body>
-    <header class="site-header">
-        <h1 class="site-title">Наше Меню Напитков</h1>
-        <nav class="main-nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="menu.html">Меню</a></li>
-                <li class="nav-item"><a class="nav-link" href="booking.html">Бронь столика</a></li>
-                <li class="nav-item"><a class="nav-link" href="colophon.html">О сайте</a></li>
-                <li class="nav-item"><a class="nav-link" href="reviews.html">Отзывы</a></li>
-                <li class="nav-item"><a class="nav-link" href="location.html">Филиалы</a></li>
-                <li class="nav-item"><a class="nav-link" href="partner.html">Стать партнером</a></li>
-                <li class="nav-item"><a class="nav-link" href="aboutus.html">О нас</a></li>
-                <li class="nav-item"><a class="nav-link" href="order.html">Онлайн заказ</a></li>
-            </ul>
-        </nav>
+
+<body class="min-vh-100 d-flex flex-column">
+    <header class="site-header py-3" id="top">
+        <!-- container-fluid chosen here for header/navbar to span full width across the browser window while maintaining consistent edge gutters -->
+        <div class="container-fluid px-3 px-lg-4">
+            <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <a class="navbar-brand fs-3 fw-bold text-white text-decoration-none" href="index.html">
+                    Global Coffee <span class="badge bg-warning text-dark fs-6 align-middle d-none d-md-inline">Меню</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Переключить навигацию">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="menu.html">Меню</a></li>
+                        <li class="nav-item"><a class="nav-link" href="booking.html">Бронь столика</a></li>
+                        <li class="nav-item"><a class="nav-link" href="colophon.html">О сайте</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reviews.html">Отзывы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="location.html">Филиалы</a></li>
+                        <li class="nav-item"><a class="nav-link" href="partner.html">Стать партнером</a></li>
+                        <li class="nav-item"><a class="nav-link" href="aboutus.html">О нас</a></li>
+                        <li class="nav-item"><a class="nav-link" href="order.html">Онлайн заказ</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <main class="page-content">
-        <section class="content-section">
-            <h2 class="section-title">Классические и Фирменные напитки</h2>
-            <p>В Global Coffee мы тщательно отбираем зерна для каждого напитка. Ниже представлен список наших самых популярных позиций с актуальными ценами за разные объемы (200 мл / 300 мл / 400 мл).</p>
+    <!-- container chosen here for page content to keep maximum readable width centered on desktop screens -->
+    <main class="page-content container py-5">
+        <!-- Заголовок страницы и вводный текст -->
+        <div class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white text-center text-md-start">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h1 class="display-6 fw-bold mb-2">Наше Меню Напитков</h1>
+                    <p class="lead text-muted mb-0">
+                        В Global Coffee мы тщательно отбираем зерна для каждого напитка. Актуальные цены указаны за разные объемы (200 мл / 300 мл / 400 мл).
+                    </p>
+                </div>
+                <div class="d-flex gap-2 justify-content-center justify-content-md-end">
+                    <a href="order.html" class="btn btn-primary btn-lg">Оформить онлайн-заказ</a>
+                    <a href="booking.html" class="btn btn-outline-primary btn-lg">Забронировать стол</a>
+                </div>
+            </div>
+        </div>
 
-            <!-- Маркированный список меню -->
-            <ul>
-                <li><strong>Классика (кофе):</strong>
-                    <ul>
-                        <li>Эспрессо — 850 ₸ / 950 ₸</li>
-                        <li>Американо — 890 ₸ / 1090 ₸ / 1290 ₸</li>
-                        <li>Капучино — 1190 ₸ / 1390 ₸ / 1590 ₸</li>
-                        <li>Латте — 1190 ₸ / 1390 ₸ / 1590 ₸</li>
-                        <li>Раф — 1390 ₸ / 1590 ₸ / 1790 ₸</li>
-                    </ul>
-                </li>
-                <li><strong>Фирменные напитки:</strong>
-                    <ul>
-                        <li>Кокосовое суфле — 1290 ₸ / 1490 ₸ / 1690 ₸</li>
-                        <li>Латте матча — 1290 ₸ / 1490 ₸ / 1690 ₸</li>
-                        <li>Какао — 1090 ₸ / 1290 ₸ / 1490 ₸</li>
-                    </ul>
-                </li>
-                <li><strong>Холодные напитки:</strong>
-                    <ul>
-                        <li>Бамбл — 1390 ₸ / 1590 ₸</li>
-                        <li>Айс Латте — 1590 ₸ / 1790 ₸</li>
-                        <li>Смузи (фруктовый, ягодный) — 1590 ₸ / 1790 ₸</li>
-                    </ul>
-                </li>
-            </ul>
+        <!-- Bootstrap Component: Card & List Group with Badges (Adapted from official Bootstrap 5 documentation for categorizing coffee, signatures, and cold drinks) -->
+        <!-- Адаптивный блок 2 (3 колонки: col-12 col-md-6 col-lg-4) -->
+        <section class="mb-5">
+            <h2 class="section-title h3 fw-bold mb-4 border-bottom pb-2">Классические и Фирменные напитки</h2>
+            <div class="row g-4">
+                <!-- Колонка 1: Классический кофе -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                        <div class="card-header bg-dark text-white py-3">
+                            <h3 class="h5 fw-bold mb-0">Классика (кофе)</h3>
+                            <small class="text-white-50">100% свежеобжаренная Арабика</small>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Эспрессо</span>
+                                    <div class="small text-muted">200 мл / 300 мл</div>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">850 ₸ / 950 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Американо</span>
+                                    <div class="small text-muted">200 / 300 / 400 мл</div>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">890 ₸ – 1290 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Капучино</span>
+                                    <div class="small text-muted">200 / 300 / 400 мл</div>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1190 ₸ – 1590 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Латте</span>
+                                    <div class="small text-muted">200 / 300 / 400 мл</div>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1190 ₸ – 1590 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Раф кофе</span>
+                                    <div class="small text-muted">200 / 300 / 400 мл</div>
+                                </div>
+                                <span class="badge bg-secondary rounded-pill">1390 ₸ – 1790 ₸</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Колонка 2: Фирменные напитки -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                        <div class="card-header bg-dark text-white py-3">
+                            <h3 class="h5 fw-bold mb-0">Фирменные напитки</h3>
+                            <small class="text-white-50">Авторские рецепты шеф-бариста</small>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Кокосовое суфле</span>
+                                    <div class="small text-muted">Сливочно-кокосовая пенка</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1290 ₸ – 1690 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Латте матча</span>
+                                    <div class="small text-muted">Церемониальная матча</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1290 ₸ – 1690 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Какао бельгийский</span>
+                                    <div class="small text-muted">Густой насыщенный шоколад</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1090 ₸ – 1490 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Ореховый Флэт Уайт</span>
+                                    <div class="small text-muted">Фундучная паста и эспрессо</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1390 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Чай Апельсин-Клубника</span>
+                                    <div class="small text-muted">Натуральные ягоды и цитрус</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1090 ₸</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Колонка 3: Холодные напитки -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border rounded-3 overflow-hidden">
+                        <div class="card-header bg-dark text-white py-3">
+                            <h3 class="h5 fw-bold mb-0">Холодные напитки</h3>
+                            <small class="text-white-50">Освежающие напитки со льдом</small>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Бамбл кофе</span>
+                                    <div class="small text-muted">Эспрессо, карамель, фреш</div>
+                                </div>
+                                <span class="badge bg-info text-dark rounded-pill">1390 ₸ / 1590 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Айс Латте</span>
+                                    <div class="small text-muted">Холодная молочная пенка</div>
+                                </div>
+                                <span class="badge bg-info text-dark rounded-pill">1590 ₸ / 1790 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Смузи фруктовый</span>
+                                    <div class="small text-muted">Киви, банан, яблоко</div>
+                                </div>
+                                <span class="badge bg-info text-dark rounded-pill">1590 ₸ / 1790 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Лимонад Сакура</span>
+                                    <div class="small text-muted">Цветочный авторский тоник</div>
+                                </div>
+                                <span class="badge bg-info text-dark rounded-pill">1490 ₸</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div>
+                                    <span class="fw-semibold">Фраппе Сливочный-Какао</span>
+                                    <div class="small text-muted">Дробленый лед и сливки</div>
+                                </div>
+                                <span class="badge bg-info text-dark rounded-pill">1790 ₸</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="content-section">
-            <h2 class="section-title">Галерея наших напитков</h2>
-            <p>Наши бариста не только варят вкусный кофе, но и создают настоящие шедевры латте-арта.</p>
-            <figure>
-                <img src="images/latte-art.jpg" alt="Красивый латте-арт в чашке капучино">
-                <figcaption>Классический Капучино в Global Coffee</figcaption>
-            </figure>
-            <br>
-            <figure>
-                <img src="images/cold-drinks.jpg" alt="Холодные напитки Бамбл и Айс Латте">
-                <figcaption>Освежающие холодные напитки для жаркого дня</figcaption>
-            </figure>
+        <!-- Галерея напитков -->
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
+            <h2 class="section-title h3 fw-bold mb-3 border-bottom pb-2">Галерея наших напитков</h2>
+            <p class="text-muted small mb-4">Наши бариста не только варят вкусный кофе, но и создают настоящие шедевры латте-арта.</p>
+
+            <div class="row g-4 align-items-center justify-content-center">
+                <div class="col-12 col-md-6 text-center">
+                    <figure class="figure mb-0">
+                        <img src="images/latte-art.jpg" alt="Красивый латте-арт в чашке капучино" class="figure-img img-fluid rounded-3 shadow">
+                        <figcaption class="figure-caption text-muted mt-2 fw-semibold">Классический Капучино в Global Coffee</figcaption>
+                    </figure>
+                </div>
+                <div class="col-12 col-md-6 text-center">
+                    <figure class="figure mb-0">
+                        <img src="images/cold-drinks.jpg" alt="Холодные напитки Бамбл и Айс Латте" class="figure-img img-fluid rounded-3 shadow">
+                        <figcaption class="figure-caption text-muted mt-2 fw-semibold">Освежающие холодные напитки для жаркого дня</figcaption>
+                    </figure>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>Адрес: г. Астана, ул. Туркестан, 4Б. Тел: +7‒776‒200‒06‒12</p>
-        <p>&copy; 2026 Global Coffee.</p>
+    <footer class="site-footer py-4 mt-auto">
+        <div class="container text-center">
+            <p class="mb-1">Адрес: г. Астана, ул. Туркестан, 4Б. Тел: <a href="tel:+77762000612" class="text-white text-decoration-none">+7‒776‒200‒06‒12</a></p>
+            <p class="small text-white-50 mb-0">&copy; 2026 Global Coffee. Все права защищены &hearts;</p>
+        </div>
     </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
