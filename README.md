@@ -72,9 +72,6 @@
 cafe_project/
 ├── css/
 │   ├── base.css              # Минимальный слой брендовых коррекций (67 строк)
-│   ├── yeraidyn.css          # Дополнительный пустой файл авторов
-│   ├── assylzhan.css
-│   └── tamerlan.css
 ├── images/
 │   ├── coffee-shop.jpg
 │   ├── cold-drinks.jpg
