@@ -43,7 +43,7 @@ h1, h2, h3, .navbar-brand {
 .btn-primary {
   background-color: var(--coffee-accent);
   border-color: var(--coffee-accent);
-   font-size: 200px
+   font-size: 12px
 }
 
 .btn-primary:hover, .btn-primary:focus {
