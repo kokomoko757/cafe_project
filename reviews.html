@@ -13,7 +13,7 @@
     <!-- Подключение веб-шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
 
     <!-- Using Bootstrap v5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -65,7 +65,7 @@
             </div>
         </div>
 
-        <!-- Bootstrap Component: Card & Badge (Adapted from official Bootstrap 5 documentation for guest reviews with rating badges) -->
+        <!-- Bootstrap Component: Card and Badge (Adapted from official Bootstrap 5 documentation for guest reviews with rating badges) -->
         <!-- Адаптивный блок 3 (3 колонки: col-12 col-md-6 col-lg-4) -->
         <section class="mb-5">
             <h2 class="section-title h3 fw-bold mb-4 border-bottom pb-2">Мнения наших гостей</h2>
@@ -166,6 +166,67 @@
                     </article>
                 </div>
             </div>
+        </section>
+
+        <!-- Секция: Форма добавления отзыва гостя (требование: a feedback box) -->
+        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
+            <h2 class="section-title h3 fw-bold mb-3 border-bottom pb-2">Оставить отзыв о визите</h2>
+            <p class="text-muted small mb-4">Поделитесь вашим мнением о качестве напитков и обслуживании в Global Coffee:</p>
+
+            <!-- Блок ошибки валидации (hidden по умолчанию) -->
+            <div id="reviewError" class="alert alert-danger hidden" role="alert">
+                Пожалуйста, заполните все обязательные поля формы отзыва.
+            </div>
+
+            <!-- Блок подтверждения отправки (отображается при action="#reviewConfirmation") -->
+            <div id="reviewConfirmation" class="alert alert-success hidden mb-4" role="alert">
+                <h4 class="alert-heading fw-bold mb-2">Спасибо за ваш отзыв!</h4>
+                <p class="mb-1">Ваш отзыв успешно принят и будет опубликован после быстрой модерации.</p>
+                <hr>
+                <p class="small mb-0">Приятных визитов в Global Coffee!</p>
+            </div>
+
+            <!-- Контейнер для динамического списка отзывов через JavaScript -->
+            <div id="reviewResult" class="mb-3"></div>
+
+            <form id="reviewForm" action="#reviewConfirmation" method="get">
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label for="review_author" class="form-label fw-semibold">Ваше имя <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="review_author" name="review_author" placeholder="Например, Асель" required>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="review_branch" class="form-label fw-semibold">Филиал визита <span class="text-danger">*</span></label>
+                        <select class="form-select" id="review_branch" name="review_branch" required>
+                            <option value="">-- Выберите кофейню --</option>
+                            <option value="turkestan">ул. Туркестан, 4Б (Флагман)</option>
+                            <option value="mangilik">пр. Мангилик Ел, 38</option>
+                            <option value="mega">ТРЦ MEGA Silk Way</option>
+                            <option value="dostyk">ул. Достык, 9</option>
+                            <option value="other">Другой филиал в Астане</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="review_rating" class="form-label fw-semibold">Ваша оценка <span class="text-danger">*</span></label>
+                        <select class="form-select" id="review_rating" name="review_rating" required>
+                            <option value="5" selected>★ ★ ★ ★ ★ (Отлично, 5/5)</option>
+                            <option value="4">★ ★ ★ ★ ☆ (Хорошо, 4/5)</option>
+                            <option value="3">★ ★ ★ ☆ ☆ (Нормально, 3/5)</option>
+                            <option value="2">★ ★ ☆ ☆ ☆ (Есть замечания, 2/5)</option>
+                            <option value="1">★ ☆ ☆ ☆ ☆ (Плохо, 1/5)</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="review_text" class="form-label fw-semibold">Текст отзыва <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="review_text" name="review_text" rows="3" placeholder="Что вам понравилось больше всего? Напитки, десерты, атмосфера или сервис?" required></textarea>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+                    <button type="reset" id="reviewResetBtn" class="btn btn-outline-secondary">Очистить</button>
+                    <button type="submit" id="reviewSubmitBtn" class="btn btn-primary">Опубликовать отзыв &rarr;</button>
+                </div>
+            </form>
         </section>
 
         <!-- Сводка: Что отмечают гости -->

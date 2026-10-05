@@ -1,7 +1,7 @@
 /* ========================================================
    GLOBAL COFFEE — СТИЛИЗАЦИЯ И БРЕНДОВЫЕ КОРРЕКЦИИ
    Assignment: Bootstrap builds, your CSS corrects
-   Всего строк: менее 70 строк (соответствует требованиям <100 строк)
+   Всего строк: менее 100 строк (соответствует требованиям)
    ======================================================== */
 
 :root {
@@ -18,7 +18,7 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Базовый шрифт и цвет фона страницы (коррекция поверх Bootstrap) */
+/* Базовый шрифт и цвет фона страницы */
 body {
   font-family: var(--font-sans);
   background-color: var(--coffee-cream);
@@ -43,7 +43,7 @@ h1, h2, h3, .navbar-brand {
 .btn-primary {
   background-color: var(--coffee-accent);
   border-color: var(--coffee-accent);
-   font-size: 12px
+  font-size: 12px;
 }
 
 .btn-primary:hover, .btn-primary:focus {
@@ -74,3 +74,11 @@ h1, h2, h3, .navbar-brand {
   color: var(--coffee-cream);
   margin-top: auto;
 }
+
+/* Интерактивные состояния и подготовка к JavaScript */
+.hidden { display: none !important; }
+.hidden:target { display: block !important; }
+.active { font-weight: 600; }
+.selected { outline: 2px solid var(--coffee-accent); background-color: var(--coffee-card-bg); }
+.error { border-color: #dc3545 !important; color: #dc3545; }
+.success { border-color: #198754 !important; color: #198754; }

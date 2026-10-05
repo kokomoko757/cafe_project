@@ -13,7 +13,7 @@
     <!-- Подключение веб-шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,400&amp;display=swap" rel="stylesheet">
 
     <!-- Using Bootstrap v5.3.3 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -58,7 +58,37 @@
                         <a href="booking.html" class="btn btn-outline-secondary btn-sm">&larr; Выбрать другой стол</a>
                     </div>
 
-                    <form action="booking.html" method="get">
+                    <!-- Контейнер подтверждения бронирования (Подготовка к JavaScript / CSS :target состояние) -->
+                    <div id="bookingConfirmation" class="alert alert-success hidden p-4 mb-4 rounded-3 shadow-sm" role="alert">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="fs-4 me-2">✅</span>
+                            <h2 class="h5 fw-bold mb-0 text-success">Столик успешно забронирован!</h2>
+                        </div>
+                        <p class="mb-2">Ваша бронь принята в Global Coffee (г. Астана, ул. Туркестан, 4Б). Номер брони: <strong>#BK-7702</strong>.</p>
+                        <div id="bookingResult" class="p-3 bg-white rounded border mb-3">
+                            <h3 class="h6 fw-bold mb-2">Детали вашей брони:</h3>
+                            <p class="small mb-1">Статус: <span class="badge bg-success">Подтверждено</span></p>
+                            <p class="small mb-1">Срок удержания стола: <strong>15 минут</strong> от назначенного времени.</p>
+                            <p class="small mb-0 text-muted">Мы отправили SMS с деталями брони на ваш номер телефона.</p>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <a href="menu.html" class="btn btn-primary btn-sm">Посмотреть меню кофейни</a>
+                            <a href="booking.html" class="btn btn-outline-secondary btn-sm">Забронировать другой стол</a>
+                        </div>
+                    </div>
+
+                    <!-- Контейнер ошибки (Подготовка к JavaScript) -->
+                    <div id="bookingError" class="alert alert-danger hidden p-3 mb-4 rounded-3" role="alert">
+                        <div class="d-flex align-items-center">
+                            <span class="fs-5 me-2">⚠️</span>
+                            <div>
+                                <h3 class="h6 fw-bold mb-1">Ошибка оформления бронирования!</h3>
+                                <p class="small mb-0">Пожалуйста, проверьте заполнение всех обязательных полей (дата, время, имя, телефон).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="bookingDetailsForm" action="#bookingConfirmation" method="get">
                         <!-- Fieldset 1: Дата и время посещения -->
                         <fieldset class="border rounded-3 p-3 p-md-4 mb-4">
                             <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">1. Дата и время посещения</legend>
@@ -128,8 +158,8 @@
                         </fieldset>
 
                         <div class="d-flex flex-wrap gap-2 justify-content-end">
-                            <button type="reset" class="btn btn-outline-secondary">Очистить поля</button>
-                            <button type="submit" class="btn btn-primary btn-lg">Подтвердить бронь &rarr;</button>
+                            <button type="reset" id="bookingResetBtn" class="btn btn-outline-secondary">Очистить поля</button>
+                            <button type="submit" id="bookingSubmitBtn" class="btn btn-primary btn-lg">Подтвердить бронь &rarr;</button>
                         </div>
                     </form>
                 </div>
