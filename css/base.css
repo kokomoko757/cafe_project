@@ -82,3 +82,15 @@ h1, h2, h3, .navbar-brand {
 .selected { outline: 2px solid var(--coffee-accent); background-color: var(--coffee-card-bg); }
 .error { border-color: #dc3545 !important; color: #dc3545; }
 .success { border-color: #198754 !important; color: #198754; }
+
+/* Единый размер и пропорции фотографий позиций меню */
+.card-product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Компактное поле ввода количества товара */
+.qty-input {
+  width: 65px;
+}

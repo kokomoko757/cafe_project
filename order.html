@@ -34,9 +34,7 @@
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
                         <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                        <li class="nav-item"><a class="nav-link" href="menu.html">Меню</a></li>
                         <li class="nav-item"><a class="nav-link" href="booking.html">Бронь столика</a></li>
-                        <li class="nav-item"><a class="nav-link" href="colophon.html">О сайте</a></li>
                         <li class="nav-item"><a class="nav-link" href="reviews.html">Отзывы</a></li>
                         <li class="nav-item"><a class="nav-link" href="location.html">Филиалы</a></li>
                         <li class="nav-item"><a class="nav-link" href="partner.html">Стать партнером</a></li>
@@ -92,95 +90,249 @@
                     <legend class="float-none w-auto px-2 fs-5 fw-bold text-primary">1. Соберите ваш заказ (Меню Global Coffee)</legend>
 
                     <h2 class="h5 fw-bold mb-3 mt-2">Кофе и фирменные напитки</h2>
-                    <div class="table-responsive mb-4">
-                        <table class="table table-hover table-bordered align-middle">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col" class="text-center">Выбор</th>
-                                    <th scope="col">Название</th>
-                                    <th scope="col">Цена</th>
-                                    <th scope="col">Количество</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item1" name="order_items" value="nut_flat_white"></td>
-                                    <td><label for="item1" class="form-check-label fw-semibold">Ореховый Флэт Уайт</label></td>
-                                    <td><span class="badge bg-secondary">1 390 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_nut_flat_white" name="qty_nut_flat_white" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item2" name="order_items" value="frappe_cocoa"></td>
-                                    <td><label for="item2" class="form-check-label fw-semibold">Фраппе Сливочный-Какао</label></td>
-                                    <td><span class="badge bg-secondary">1 790 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_frappe_cocoa" name="qty_frappe_cocoa" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item3" name="order_items" value="ice_matcha_strawberry"></td>
-                                    <td><label for="item3" class="form-check-label fw-semibold">Айс Матча Клубника</label></td>
-                                    <td><span class="badge bg-secondary">1 690 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_ice_matcha_strawberry" name="qty_ice_matcha_strawberry" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item4" name="order_items" value="tea_orange_strawberry"></td>
-                                    <td><label for="item4" class="form-check-label fw-semibold">Чай Апельсин-Клубника</label></td>
-                                    <td><span class="badge bg-secondary">1 090 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_tea_orange_strawberry" name="qty_tea_orange_strawberry" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item5" name="order_items" value="lemonade_sakura"></td>
-                                    <td><label for="item5" class="form-check-label fw-semibold">Лимонад Сакура</label></td>
-                                    <td><span class="badge bg-secondary">1 490 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_lemonade_sakura" name="qty_lemonade_sakura" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item6" name="order_items" value="smoothie_kiwi"></td>
-                                    <td><label for="item6" class="form-check-label fw-semibold">Смузи Киви</label></td>
-                                    <td><span class="badge bg-secondary">1 790 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_smoothie_kiwi" name="qty_smoothie_kiwi" min="1" max="10" value="1"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row g-4 mb-4">
+                        <!-- Позиция 1: Ореховый Флэт Уайт -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-nut-flat-white.jpg" class="card-img-top card-product-img" alt="Ореховый Флэт Уайт в чашке">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Ореховый Флэт Уайт</h3>
+                                        <span class="badge bg-secondary">1 390 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Двойной эспрессо, бархатистое молоко и натуральный сироп из лесного ореха.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item1" name="order_items" value="nut_flat_white">
+                                            <label for="item1" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_nut_flat_white" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_nut_flat_white" name="qty_nut_flat_white" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 2: Фраппе Сливочный-Какао -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-frappe-cocoa.jpg" class="card-img-top card-product-img" alt="Фраппе Сливочный-Какао с взбитыми сливками">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Фраппе Сливочный-Какао</h3>
+                                        <span class="badge bg-secondary">1 790 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Освежающий ледяной напиток со взбитыми сливками, какао и шоколадным топингом.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item2" name="order_items" value="frappe_cocoa">
+                                            <label for="item2" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_frappe_cocoa" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_frappe_cocoa" name="qty_frappe_cocoa" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 3: Айс Матча Клубника -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-matcha-strawberry.jpg" class="card-img-top card-product-img" alt="Айс Матча Клубника слоистый напиток">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Айс Матча Клубника</h3>
+                                        <span class="badge bg-secondary">1 690 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Слоистый напиток из японского чая матча, молока и спелого клубничного пюре.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item3" name="order_items" value="ice_matcha_strawberry">
+                                            <label for="item3" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_ice_matcha_strawberry" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_ice_matcha_strawberry" name="qty_ice_matcha_strawberry" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 4: Чай Апельсин-Клубника -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-tea-orange.jpg" class="card-img-top card-product-img" alt="Горячий чай Апельсин-Клубника">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Чай Апельсин-Клубника</h3>
+                                        <span class="badge bg-secondary">1 090 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Ароматный согревающий чай с натуральными дольками апельсина, ягодами и корицей.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item4" name="order_items" value="tea_orange_strawberry">
+                                            <label for="item4" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_tea_orange_strawberry" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_tea_orange_strawberry" name="qty_tea_orange_strawberry" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 5: Лимонад Сакура -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-lemonade-sakura.jpg" class="card-img-top card-product-img" alt="Освежающий розовый лимонад Сакура">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Лимонад Сакура</h3>
+                                        <span class="badge bg-secondary">1 490 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Искрящийся лимонад с цветочными нотами японской сакуры, соком лимона и мятой.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item5" name="order_items" value="lemonade_sakura">
+                                            <label for="item5" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_lemonade_sakura" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_lemonade_sakura" name="qty_lemonade_sakura" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 6: Смузи Киви -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-smoothie-kiwi.jpg" class="card-img-top card-product-img" alt="Витаминный зеленый смузи Киви">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Смузи Киви</h3>
+                                        <span class="badge bg-secondary">1 790 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Густой витаминный смузи из спелого киви, сочного зелёного яблока и льда.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item6" name="order_items" value="smoothie_kiwi">
+                                            <label for="item6" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_smoothie_kiwi" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_smoothie_kiwi" name="qty_smoothie_kiwi" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <h2 class="h5 fw-bold mb-3">Еда и Перекус на вынос</h2>
-                    <div class="table-responsive mb-3">
-                        <table class="table table-hover table-bordered align-middle">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col" class="text-center">Выбор</th>
-                                    <th scope="col">Название</th>
-                                    <th scope="col">Цена</th>
-                                    <th scope="col">Количество</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item7" name="order_items" value="sandwich"></td>
-                                    <td><label for="item7" class="form-check-label fw-semibold">Сэндвич фирменный с курицей</label></td>
-                                    <td><span class="badge bg-secondary">1 490 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_sandwich" name="qty_sandwich" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item8" name="order_items" value="hotdog"></td>
-                                    <td><label for="item8" class="form-check-label fw-semibold">Хот-дог гриль</label></td>
-                                    <td><span class="badge bg-secondary">1 190 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_hotdog" name="qty_hotdog" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item9" name="order_items" value="donuts"></td>
-                                    <td><label for="item9" class="form-check-label fw-semibold">Пончики шоколадные (набор)</label></td>
-                                    <td><span class="badge bg-secondary">990 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_donuts" name="qty_donuts" min="1" max="10" value="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center"><input class="form-check-input" type="checkbox" id="item10" name="order_items" value="onigiri"></td>
-                                    <td><label for="item10" class="form-check-label fw-semibold">Онигири с лососем</label></td>
-                                    <td><span class="badge bg-secondary">890 ₸</span></td>
-                                    <td><input type="number" class="form-control form-control-sm w-auto" id="qty_onigiri" name="qty_onigiri" min="1" max="10" value="1"></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row g-4 mb-4">
+                        <!-- Позиция 7: Сэндвич фирменный с курицей -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-chicken-sandwich.jpg" class="card-img-top card-product-img" alt="Подрумяненный сэндвич с курицей">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Сэндвич с курицей</h3>
+                                        <span class="badge bg-secondary">1 490 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Тост с филе цыплёнка, сыром чеддер, томатами и зеленью.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item7" name="order_items" value="sandwich">
+                                            <label for="item7" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_sandwich" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_sandwich" name="qty_sandwich" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 8: Хот-дог гриль -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-hotdog-grill.jpg" class="card-img-top card-product-img" alt="Гриль хот-дог с горчицей и луком">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Хот-дог гриль</h3>
+                                        <span class="badge bg-secondary">1 190 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Сосиска гриль в бриоши с дижонской горчицей и хрустящим луком.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item8" name="order_items" value="hotdog">
+                                            <label for="item8" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_hotdog" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_hotdog" name="qty_hotdog" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 9: Пончики шоколадные (набор) -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-donuts-chocolate.jpg" class="card-img-top card-product-img" alt="Шоколадные пончики с посыпкой">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Пончики шоколадные</h3>
+                                        <span class="badge bg-secondary">990 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Пышные донаты в глазури из тёмного шоколада с посыпкой.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item9" name="order_items" value="donuts">
+                                            <label for="item9" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_donuts" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_donuts" name="qty_donuts" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Позиция 10: Онигири с лососем -->
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="card h-100 shadow-sm border rounded-3 overflow-hidden bg-white">
+                                <img src="images/item-onigiri-salmon.jpg" class="card-img-top card-product-img" alt="Онигири с лососем в нори">
+                                <div class="card-body d-flex flex-column p-3">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h3 class="h6 fw-bold mb-0">Онигири с лососем</h3>
+                                        <span class="badge bg-secondary">890 ₸</span>
+                                    </div>
+                                    <p class="small text-muted mb-3 flex-grow-1">Рис с начинкой из слабосолёного лосося в хрустящих нори.</p>
+                                    <div class="pt-2 border-top mt-auto d-flex justify-content-between align-items-center">
+                                        <div class="form-check mb-0">
+                                            <input class="form-check-input" type="checkbox" id="item10" name="order_items" value="onigiri">
+                                            <label for="item10" class="form-check-label fw-semibold small">В заказ</label>
+                                        </div>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <label for="qty_onigiri" class="small text-muted">Кол-во:</label>
+                                            <input type="number" class="form-control form-control-sm text-center qty-input" id="qty_onigiri" name="qty_onigiri" min="1" max="10" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Место для подсчета итоговой стоимости заказа (требование: a place for a total) -->
@@ -336,6 +488,10 @@
     <footer class="site-footer py-4 mt-auto">
         <div class="container text-center">
             <p class="mb-1">Адрес флагмана: г. Астана, ул. Туркестан, 4Б. Ежедневно с 08:00 до 24:00.</p>
+            <div class="mb-2">
+                <a href="menu.html" class="text-white-50 text-decoration-none small me-3">Полное меню</a>
+                <a href="colophon.html" class="text-white-50 text-decoration-none small">О создании сайта (Colophon)</a>
+            </div>
             <p class="small text-white-50 mb-0">&copy; 2026 Global Coffee. Все права защищены &hearts;</p>
         </div>
     </footer>
