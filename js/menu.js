@@ -1,24 +1,7 @@
-/**
- * GLOBAL COFFEE — Живой каталог, фильтрация и поиск меню (js/menu.js)
- * WEB Technologies 1 (Front End) — Assignment 4-5
- * Ответственный студент: Tazhmaganbetov Yeraidyn (SE-2533)
- * 
- * Реализует:
- * 1. Строгий режим ('use strict') и единые стандарты ES6+ (const/let, ===, !==, 0 var).
- * 2. Массив из 16 реальных объектов каталога с 8 свойствами у каждого объекта.
- * 3. Переиспользуемые функции с параметрами и возвращаемыми значениями (с взаимными вызовами).
- * 4. Операции фильтрации (.filter), поиска (.find), подсчета (.reduce) и трансформации.
- * 5. Связанные контролы: текстовый живой поиск (#menuSearchInput) + кнопки категорий (#filterAll, #filterCoffee, #filterCold, #filterFood).
- * 6. Динамический счетчик найденных позиций, состояние «Ничего не найдено» (empty state) с кнопкой сброса.
- * 7. Осмысленное целевое действие для каждого найденного элемента (переход к онлайн-заказу).
- * 8. Безопасный вывод через textContent и DOM-методы без небезопасного innerHTML.
- */
+
 
 'use strict';
 
-/**
- * Массив объектов меню кофейни (16 позиций, 8 свойств на каждый объект)
- */
 const MENU_CATALOG = [
     {
         id: 'espresso',
@@ -184,14 +167,6 @@ const MENU_CATALOG = [
 
 let activeCategory = 'all';
 
-/**
- * Переиспользуемая функция фильтрации каталога по категории и поисковой строке
- * ВЫЗЫВАЕТ: sanitizeText из window.GlobalCoffee
- * @param {Array<Object>} catalog 
- * @param {string} category 
- * @param {string} searchQuery 
- * @returns {Array<Object>}
- */
 function filterMenuCatalog(catalog, category, searchQuery) {
     if (!Array.isArray(catalog)) {
         return [];
@@ -211,11 +186,6 @@ function filterMenuCatalog(catalog, category, searchQuery) {
     });
 }
 
-/**
- * Переиспользуемая функция подсчета доступных позиций в каталоге
- * @param {Array<Object>} items 
- * @returns {number}
- */
 function countAvailableItems(items) {
     if (!Array.isArray(items)) {
         return 0;
@@ -231,9 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMenuResetControl();
 });
 
-/**
- * 1. Инициализация кнопок выбора категорий
- */
 function initMenuFilterControls() {
     const filterButtons = {
         all: document.getElementById('filterAll'),
@@ -271,9 +238,6 @@ function initMenuFilterControls() {
     });
 }
 
-/**
- * 2. Инициализация поля живого поиска
- */
 function initMenuSearchInput() {
     const searchInput = document.getElementById('menuSearchInput');
     if (!searchInput) {
@@ -292,9 +256,6 @@ function initMenuSearchInput() {
     });
 }
 
-/**
- * 3. Кнопка сброса фильтров
- */
 function initMenuResetControl() {
     const searchCard = document.querySelector('#menuSearchInput')?.closest('.card');
     if (!searchCard || document.getElementById('menuResetBtn')) {
@@ -318,9 +279,6 @@ function initMenuResetControl() {
     }
 }
 
-/**
- * Полный сброс фильтров к начальному состоянию
- */
 function resetAllMenuFilters() {
     const searchInput = document.getElementById('menuSearchInput');
     if (searchInput) {
@@ -342,9 +300,6 @@ function resetAllMenuFilters() {
     applyMenuFilters();
 }
 
-/**
- * Основная функция применения фильтров и поиска
- */
 function applyMenuFilters() {
     const searchInput = document.getElementById('menuSearchInput');
     const rawQuery = searchInput ? searchInput.value : '';
@@ -392,9 +347,8 @@ function applyMenuFilters() {
         }
     });
 
-    // Управление контейнером обратной связи и состоянием «Ничего не найдено»
     if (resultsContainer) {
-        resultsContainer.replaceChildren(); // Очищаем контейнер через DOM-метод
+        resultsContainer.replaceChildren();
 
         if (cleanQuery !== '' || activeCategory !== 'all') {
             if (totalVisible > 0) {
@@ -409,7 +363,7 @@ function applyMenuFilters() {
                 resultsContainer.appendChild(countBadge);
                 resultsContainer.appendChild(textSpan);
             } else {
-                // Пустое состояние (empty state)
+
                 const emptyCard = document.createElement('div');
                 emptyCard.className = 'alert alert-warning d-flex align-items-center justify-content-between p-3 mt-2 rounded-3';
 

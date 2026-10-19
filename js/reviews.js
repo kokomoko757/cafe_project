@@ -1,11 +1,4 @@
-/**
- * GLOBAL COFFEE — Динамические отзывы и сохранение (js/reviews.js)
- * Реализует:
- * 1. Валидацию формы добавления отзыва (#reviewForm)
- * 2. Мгновенный динамический рендеринг новой карточки отзыва в начало списка
- * 3. Сохранение отзывов в localStorage для персистентности между перезагрузками
- * 4. Загрузку ранее сохраненных отзывов при старте страницы
- */
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initReviewsForm();
@@ -62,13 +55,10 @@ function initReviewsForm() {
             date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
         };
 
-        // Рендерим новую карточку в DOM
         renderReviewCard(newReview, reviewsGrid, true);
 
-        // Сохраняем в localStorage
         saveReviewToStorage(newReview);
 
-        // Показываем подтверждение
         if (confirmAlert) {
             confirmAlert.classList.remove('hidden');
             confirmAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });

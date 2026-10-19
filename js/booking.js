@@ -1,32 +1,7 @@
-/**
- * GLOBAL COFFEE — Логика бронирования столиков (js/booking.js)
- * WEB Technologies 1 (Front End) — Assignment 4-5
- * Ответственный студент: Bolatuly Assylzhan (SE-2533)
- * 
- * Реализует:
- * 1. Строгий режим ('use strict') и единые стандарты ES6+ (const/let, ===, !==, 0 var).
- * 2. Массив объектов столиков зала (8 столов с 4+ свойствами: id, name, seats, zone, minDeposit).
- * 3. Логику на booking.html: интерактивный выбор столика на схеме 3x3, сохранение в localStorage.
- * 4. Логику на details.html:
- *    - Автоподстановка выбранного столика и показ баннера (#selectedTableBanner);
- *    - Полная поэлементная валидация (field-level validation):
- *      * Имя гостя (текст >= 2 символов);
- *      * Телефон (+7 (7XX)...);
- *      * Дата (запрет прошедших дат);
- *      * Время (обязательный выбор);
- *      * Комбинированное правило: сравнение количества гостей с вместимостью столика!
- *    - Вывод ошибок beside fields с фокусом на первом ошибочном поле;
- *    - Автоочистка ошибок при вводе;
- *    - Расчет гарантийного депозита (гости × 1 000 ₸);
- *    - Формирование подтверждения брони через чистые DOM-методы (без небезопасного innerHTML);
- *    - Обязательное демонстрационное уведомление (no real booking).
- */
+
 
 'use strict';
 
-/**
- * Каталог столиков зала кофейни (8 доступных столиков, 5 свойств)
- */
 const TABLES_CATALOG = [
     { id: 1, name: 'Стол 1', seats: 2, zone: 'Зона у окна (Тихая)', depositPerGuest: 1000 },
     { id: 2, name: 'Стол 2', seats: 2, zone: 'Центральный зал', depositPerGuest: 1000 },
@@ -43,30 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initBookingDetailsPage();
 });
 
-/**
- * Поиск столика по ID через .find()
- * @param {number|string} tableId 
- * @returns {Object|undefined}
- */
 function findTableById(tableId) {
     const numId = parseInt(tableId, 10);
     return TABLES_CATALOG.find(t => t.id === numId);
 }
 
-/**
- * Расчет суммы депозита бронирования (переиспользуемая функция с параметрами)
- * @param {number} guestCount 
- * @param {number} ratePerGuest 
- * @returns {number}
- */
 function calculateBookingDeposit(guestCount, ratePerGuest = 1000) {
     const guests = typeof guestCount === 'number' && guestCount > 0 ? guestCount : 1;
     return guests * ratePerGuest;
 }
 
-/**
- * 1. Логика на странице booking.html (Выбор столика на интерактивной схеме)
- */
 function initTableSelectionGrid() {
     const tableButtons = document.querySelectorAll('[id^="table-btn-"]');
     const quickSelectBtn = document.getElementById('quickSelectBtn');
@@ -111,11 +72,6 @@ function initTableSelectionGrid() {
     }
 }
 
-/**
- * Поэлементная валидация: отображение ошибки рядом с полем
- * @param {HTMLElement} fieldEl 
- * @param {string} message 
- */
 function setBookingFieldError(fieldEl, message) {
     if (!fieldEl) {
         return;
@@ -132,10 +88,6 @@ function setBookingFieldError(fieldEl, message) {
     feedback.textContent = message;
 }
 
-/**
- * Очистка ошибки конкретного поля
- * @param {HTMLElement} fieldEl 
- */
 function clearBookingFieldError(fieldEl) {
     if (!fieldEl) {
         return;
@@ -149,9 +101,6 @@ function clearBookingFieldError(fieldEl) {
     }
 }
 
-/**
- * Очистка всех ошибок формы бронирования
- */
 function clearAllBookingErrors() {
     document.querySelectorAll('#bookingDetailsForm .is-invalid, #bookingDetailsForm .error').forEach(el => {
         el.classList.remove('is-invalid');
@@ -166,9 +115,6 @@ function clearAllBookingErrors() {
     }
 }
 
-/**
- * 2. Логика на странице details.html (Форма оформления брони)
- */
 function initBookingDetailsPage() {
     const form = document.getElementById('bookingDetailsForm');
     const dateInput = document.getElementById('date');
@@ -184,14 +130,12 @@ function initBookingDetailsPage() {
         return;
     }
 
-    // Автоочистка ошибок при вводе
     const formInputs = form.querySelectorAll('input, select, textarea');
     formInputs.forEach(input => {
         input.addEventListener('input', () => clearBookingFieldError(input));
         input.addEventListener('change', () => clearBookingFieldError(input));
     });
 
-    // Ограничение даты: нельзя выбрать прошедшую дату
     const today = new Date().toISOString().split('T')[0];
     if (dateInput) {
         dateInput.min = today;
@@ -200,7 +144,6 @@ function initBookingDetailsPage() {
         }
     }
 
-    // Извлечение выбранного столика из localStorage
     let selectedTable = null;
     try {
         const saved = localStorage.getItem('global_coffee_selected_table');
@@ -211,7 +154,6 @@ function initBookingDetailsPage() {
         console.warn('Error reading selected table:', e);
     }
 
-    // Показ информационного баннера выбранного столика через чистые DOM-методы
     if (selectedTable && !document.getElementById('selectedTableBanner')) {
         const banner = document.createElement('div');
         banner.id = 'selectedTableBanner';
@@ -248,7 +190,6 @@ function initBookingDetailsPage() {
         }
     }
 
-    // Обработка отправки формы бронирования
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         clearAllBookingErrors();
@@ -256,7 +197,6 @@ function initBookingDetailsPage() {
         let firstInvalidField = null;
         let hasErrors = false;
 
-        // Поле 1: Имя гостя (текст >= 2 символов)
         const trimmedName = nameInput ? nameInput.value.trim() : '';
         if (trimmedName.length < 2) {
             setBookingFieldError(nameInput, 'Пожалуйста, укажите ваше имя (минимум 2 символа).');
@@ -264,7 +204,6 @@ function initBookingDetailsPage() {
             hasErrors = true;
         }
 
-        // Поле 2: Телефон (+7 7XX...)
         const phoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
         if (phoneDigits.length < 10) {
             setBookingFieldError(phoneInput, 'Укажите контактный номер телефона (+7 7XX XXX-XX-XX).');
@@ -272,7 +211,6 @@ function initBookingDetailsPage() {
             hasErrors = true;
         }
 
-        // Поле 3: Дата (не ранее сегодняшнего дня)
         const selectedDate = dateInput ? dateInput.value : '';
         if (!selectedDate || selectedDate < today) {
             setBookingFieldError(dateInput, 'Выберите корректную дату бронирования (не ранее сегодня).');
@@ -280,7 +218,6 @@ function initBookingDetailsPage() {
             hasErrors = true;
         }
 
-        // Поле 4: Время визита
         const selectedTime = timeSelect ? timeSelect.value : '';
         if (!selectedTime) {
             setBookingFieldError(timeSelect, 'Пожалуйста, выберите удобное время посещения.');
@@ -288,7 +225,6 @@ function initBookingDetailsPage() {
             hasErrors = true;
         }
 
-        // Поле 5: Количество гостей
         const guestCount = guestsInput ? parseInt(guestsInput.value, 10) : 0;
         if (isNaN(guestCount) || guestCount < 1 || guestCount > 10) {
             setBookingFieldError(guestsInput, 'Количество гостей должно быть от 1 до 10 человек.');
@@ -296,7 +232,6 @@ function initBookingDetailsPage() {
             hasErrors = true;
         }
 
-        // Поле 6: КОМБИНИРОВАННОЕ ПРАВИЛО (сравнение гостей с вместимостью выбранного стола)
         if (selectedTable && typeof selectedTable.seats === 'number') {
             if (guestCount > selectedTable.seats) {
                 setBookingFieldError(guestsInput, `Количество гостей (${guestCount}) превышает вместимость выбранного столика (${selectedTable.seats} мест). Пожалуйста, выберите столик большего размера или укажите до ${selectedTable.seats} гостей.`);
@@ -305,7 +240,6 @@ function initBookingDetailsPage() {
             }
         }
 
-        // Если обнаружены ошибки — фокусируем первое поле
         if (hasErrors) {
             if (errorAlert) {
                 errorAlert.classList.remove('hidden');
@@ -320,7 +254,6 @@ function initBookingDetailsPage() {
             errorAlert.classList.add('hidden');
         }
 
-        // Генерация кода брони с использованием Math.random()
         const bookingCode = window.GlobalCoffee && typeof window.GlobalCoffee.generateReferenceCode === 'function'
             ? window.GlobalCoffee.generateReferenceCode('BK')
             : `#BK-2026-${Math.floor(1000 + Math.random() * 9000)}`;
@@ -340,7 +273,6 @@ function initBookingDetailsPage() {
             ? window.GlobalCoffee.formatPrice(depositTotal)
             : `${depositTotal} ₸`;
 
-        // Формирование подробной сводки через DOM-методы
         if (resultBox) {
             resultBox.replaceChildren();
 
@@ -364,7 +296,6 @@ function initBookingDetailsPage() {
             headerBox.appendChild(guestLine);
             resultBox.appendChild(headerBox);
 
-            // Детали столика и времени
             const gridRow = document.createElement('div');
             gridRow.className = 'row g-2 mb-2 small';
 
@@ -390,7 +321,6 @@ function initBookingDetailsPage() {
             gridRow.appendChild(col4);
             resultBox.appendChild(gridRow);
 
-            // Депозит и пожелания
             const depositBox = document.createElement('div');
             depositBox.className = 'small border-top pt-2 mb-1';
             depositBox.textContent = `Расчетный депозит: ${formattedDeposit} (засчитывается в счет счета кофейни)`;
@@ -406,7 +336,6 @@ function initBookingDetailsPage() {
             statusBox.textContent = '✓ Столик зарезервирован! Срок удержания столика: 15 минут от указанного времени.';
             resultBox.appendChild(statusBox);
 
-            // ОБЯЗАТЕЛЬНОЕ ДЕМОНСТРАЦИОННОЕ УВЕДОМЛЕНИЕ
             const demoAlert = document.createElement('div');
             demoAlert.className = 'alert alert-info mt-3 mb-0 p-2 small border rounded';
             demoAlert.textContent = 'ℹ️ Демонстрационный режим: Данные не отправляются на сервер, реальная бронь не создается. Заявка смоделирована для учебного проекта.';
@@ -418,7 +347,6 @@ function initBookingDetailsPage() {
             confirmAlert.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Очищаем выбранный столик после успешного оформления
         try {
             localStorage.removeItem('global_coffee_selected_table');
         } catch (e) {

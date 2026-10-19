@@ -1,28 +1,9 @@
-/**
- * GLOBAL COFFEE — Основной общий скрипт (js/main.js)
- * WEB Technologies 1 (Front End) — Assignment 4-5
- * 
- * Реализует:
- * 1. Строгий режим ('use strict') и единые стандарты ES6+ (const/let, ===, !==, 0 var).
- * 2. Переиспользуемые утилиты: formatPrice, calculateLineSubtotal, calculateOrderTotals,
- *    generateReferenceCode (Math.random), formatDateDisplay, sanitizeText.
- * 3. Общесайтовые функции команды (All Students):
- *    - Индикатор режима работы кофейни («● Открыто сейчас» / «○ Откроется в 08:00»);
- *    - Маска ввода казахстанских номеров +7 (7XX) XXX-XX-XX;
- *    - Автосворачивание мобильной навигации Bootstrap Navbar;
- *    - Динамический бейдж корзины в шапке сайта (#navCartCountBadge);
- *    - Случайная рекомендация бариста дня (Math.random).
- */
+
 
 'use strict';
 
-// Глобальный объект утилит проекта Global Coffee
 window.GlobalCoffee = {
-    /**
-     * Форматирует число в строку цены с пробелами и знаком тенге
-     * @param {number} amount 
-     * @returns {string} Например: "1 390 ₸"
-     */
+
     formatPrice(amount) {
         if (typeof amount !== 'number' || isNaN(amount)) {
             return '0 ₸';
@@ -32,24 +13,12 @@ window.GlobalCoffee = {
         return `${formatted} ₸`;
     },
 
-    /**
-     * Вычисляет промежуточную стоимость позиции (unitPrice * quantity)
-     * @param {number} unitPrice 
-     * @param {number} quantity 
-     * @returns {number}
-     */
     calculateLineSubtotal(unitPrice, quantity) {
         const price = typeof unitPrice === 'number' && unitPrice > 0 ? unitPrice : 0;
         const qty = typeof quantity === 'number' && quantity > 0 ? quantity : 0;
         return price * qty;
     },
 
-    /**
-     * Переиспользуемая функция расчета итогов заказа
-     * ВЫЗЫВАЕТ ДРУГУЮ ФУНКЦИЮ: calculateLineSubtotal
-     * @param {Array<{price: number, qty: number}>} items 
-     * @returns {{ totalQty: number, totalPrice: number }}
-     */
     calculateOrderTotals(items) {
         if (!Array.isArray(items) || items.length === 0) {
             return { totalQty: 0, totalPrice: 0 };
@@ -69,22 +38,12 @@ window.GlobalCoffee = {
         return { totalQty, totalPrice };
     },
 
-    /**
-     * Генерирует уникальный демонстрационный номер заказа/брони с использованием Math.random()
-     * @param {string} prefix Например "GC" или "BK" или "FR"
-     * @returns {string} Например "#GC-2026-7842"
-     */
     generateReferenceCode(prefix) {
         const cleanPrefix = typeof prefix === 'string' && prefix.trim().length > 0 ? prefix.trim() : 'GC';
         const randomNum = Math.floor(1000 + Math.random() * 9000);
         return `#${cleanPrefix}-2026-${randomNum}`;
     },
 
-    /**
-     * Преобразует дату ISO (YYYY-MM-DD) в читаемый формат DD.MM.YYYY
-     * @param {string} isoDate 
-     * @returns {string}
-     */
     formatDateDisplay(isoDate) {
         if (typeof isoDate !== 'string' || !isoDate.includes('-')) {
             return '';
@@ -96,11 +55,6 @@ window.GlobalCoffee = {
         return isoDate;
     },
 
-    /**
-     * Безопасная очистка текста
-     * @param {string} str 
-     * @returns {string}
-     */
     sanitizeText(str) {
         if (typeof str !== 'string') {
             return '';
@@ -117,10 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initDailySpecialRecommendation();
 });
 
-/**
- * 1. Проверка текущего времени работы кофейни (Ежедневно с 08:00 до 24:00)
- * Использует логические операторы &&, условия if/else, строгое сравнение >= и <
- */
 function initBusinessHoursBadge() {
     const currentHour = new Date().getHours();
     const isOpen = currentHour >= 8 && currentHour < 24;
@@ -136,16 +86,12 @@ function initBusinessHoursBadge() {
     }
 }
 
-/**
- * 2. Интерактивная маска ввода для телефонных номеров формата Казахстана +7 (7XX) XXX-XX-XX
- * Поддерживает клавиатурные события input, focus, blur
- */
 function initPhoneMasks() {
     const phoneInputs = document.querySelectorAll('input[type="tel"], input[name*="phone"], #customer_phone, #phone');
 
     phoneInputs.forEach(input => {
         input.addEventListener('input', () => {
-            let val = input.value.replace(/\D/g, ''); // Удаляем нецифровые символы
+            let val = input.value.replace(/\D/g, '');
 
             if (val.startsWith('8') || val.startsWith('7')) {
                 val = val.substring(1);
@@ -182,9 +128,6 @@ function initPhoneMasks() {
     });
 }
 
-/**
- * 3. Автоматическое закрытие мобильного гамбургер-меню при клике по ссылке
- */
 function initMobileNavAutoClose() {
     const navCollapse = document.getElementById('mainNav');
     if (!navCollapse) {
@@ -204,10 +147,6 @@ function initMobileNavAutoClose() {
     });
 }
 
-/**
- * 4. Обновление бейджа с количеством позиций в корзине в шапке навигации
- * Синхронизируется с состоянием localStorage
- */
 function updateNavCartBadge() {
     const orderNavLink = document.querySelector('a.nav-link[href="order.html"]');
     if (!orderNavLink) {
@@ -247,10 +186,6 @@ function updateNavCartBadge() {
     }
 }
 
-/**
- * 5. Осмысленное применение Math.random(): Рекомендация бариста дня
- * Выбирает случайный напиток из фирменного меню и показывает рекомендацию на главной странице
- */
 function initDailySpecialRecommendation() {
     const featuredDrinks = [
         { name: 'Ореховый Флэт Уайт', note: 'Двойной эспрессо и натуральная паста из лесного фундука' },
@@ -273,13 +208,13 @@ function initDailySpecialRecommendation() {
 
         const card = document.createElement('div');
         card.className = 'alert alert-light border shadow-sm p-3 rounded-3 mt-3 d-flex align-items-center gap-3';
-        
+
         const iconSpan = document.createElement('span');
         iconSpan.className = 'fs-3';
         iconSpan.textContent = '⭐';
 
         const textDiv = document.createElement('div');
-        
+
         const titleEl = document.createElement('strong');
         titleEl.className = 'd-block text-primary';
         titleEl.textContent = `Рекомендация бариста сегодня: ${drink.name}`;
@@ -298,5 +233,4 @@ function initDailySpecialRecommendation() {
     }
 }
 
-// Экспорт для кросс-модульного использования
 window.updateNavCartBadge = updateNavCartBadge;

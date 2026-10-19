@@ -1,30 +1,7 @@
-/**
- * GLOBAL COFFEE — Логика интерактивного онлайн-заказа и корзины (js/order.js)
- * WEB Technologies 1 (Front End) — Assignment 4-5
- * Ответственный студент: Bolatuly Assylzhan (SE-2533)
- * 
- * Реализует:
- * 1. Строгий режим ('use strict') и единые стандарты ES6+ (const/let, ===, !==, 0 var).
- * 2. Массив из 10 объектов меню с подробными свойствами (id, name, price, category, unit, image).
- * 3. Интерактивная корзина: добавление/снятие позиций, увеличение/уменьшение количества,
- *    очистка корзины (#orderResetBtn).
- * 4. Мгновенный пересчет промежуточных подытогов строк (subtotals), общего количества позиций (#orderItemsCount)
- *    и итоговой стоимости (#orderTotalPrice) при каждом изменении.
- * 5. Состояние пустой корзины (empty state) с блокировкой кнопки заказа (disabled).
- * 6. Полная поэлементная валидация формы (field-level validation) с подсветкой ошибок beside fields,
- *    фокусом на первом ошибочном поле и автоочисткой ошибок при вводе.
- * 7. Проверка 4+ правил: текстовое имя (>= 2 символов), телефон (+7 format), выбор оплаты,
- *    комбинированное правило (при доставке обязателен адрес, при самовывозе — время визита).
- * 8. Формирование динамического чека через DOM-методы без небезопасного innerHTML с пользовательским вводом.
- * 9. Обязательное демонстрационное уведомление (no real order / demonstration only).
- * 10. Персистентное сохранение состояния корзины в localStorage.
- */
+
 
 'use strict';
 
-/**
- * Каталог позиций для онлайн-заказа (10 объектов с 6 свойствами)
- */
 const ORDER_ITEMS_CATALOG = [
     { id: 'nut_flat_white', name: 'Ореховый Флэт Уайт', price: 1390, category: 'coffee', unit: '350 мл', image: 'images/item-nut-flat-white.jpg' },
     { id: 'frappe_cocoa', name: 'Фраппе Сливочный-Какао', price: 1790, category: 'cold', unit: '400 мл', image: 'images/item-frappe-cocoa.jpg' },
@@ -47,18 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     recalculateCart();
 });
 
-/**
- * Поиск позиции в каталоге через .find()
- * @param {string} itemId 
- * @returns {Object|undefined}
- */
 function findCatalogItem(itemId) {
     return ORDER_ITEMS_CATALOG.find(item => item.id === itemId);
 }
 
-/**
- * 1. Инициализация калькулятора корзины и событий изменения
- */
 function initOrderCalculator() {
     const checkboxes = document.querySelectorAll('input[name="order_items"]');
     const qtyInputs = document.querySelectorAll('.qty-input, input[id^="qty_"]');
@@ -114,10 +83,6 @@ function initOrderCalculator() {
     }
 }
 
-/**
- * Подсветка карточки при выборе
- * @param {HTMLInputElement} checkbox 
- */
 function updateCardSelectionState(checkbox) {
     const card = checkbox.closest('.card');
     if (!card) {
@@ -130,11 +95,6 @@ function updateCardSelectionState(checkbox) {
     }
 }
 
-/**
- * Пересчет общей суммы, подытогов и количества
- * ВЫЗЫВАЕТ: window.GlobalCoffee.calculateLineSubtotal и formatPrice
- * @returns {{ totalItems: number, totalPrice: number, cartState: Object }}
- */
 function recalculateCart() {
     const checkboxes = document.querySelectorAll('input[name="order_items"]:checked');
     let totalItems = 0;
@@ -171,13 +131,11 @@ function recalculateCart() {
         };
     });
 
-    // Обновляем бейдж количества
     const itemsCountEl = document.getElementById('orderItemsCount');
     if (itemsCountEl) {
         itemsCountEl.textContent = `${totalItems} шт.`;
     }
 
-    // Обновляем итоговую цену
     const totalPriceEl = document.getElementById('orderTotalPrice');
     if (totalPriceEl) {
         const priceStr = window.GlobalCoffee && typeof window.GlobalCoffee.formatPrice === 'function'
@@ -186,7 +144,6 @@ function recalculateCart() {
         totalPriceEl.textContent = priceStr;
     }
 
-    // Управление состоянием кнопки оформления заказа (блокировка при пустой корзине)
     const submitBtn = document.getElementById('orderSubmitBtn');
     let emptyStateMsg = document.getElementById('orderEmptyStateMsg');
 
@@ -215,7 +172,6 @@ function recalculateCart() {
         }
     }
 
-    // Сохранение в localStorage
     try {
         localStorage.setItem('global_coffee_cart', JSON.stringify(cartState));
     } catch (e) {
@@ -229,9 +185,6 @@ function recalculateCart() {
     return { totalItems, totalPrice, cartState };
 }
 
-/**
- * 2. Переключение способов доставки (доставка курьером vs на месте)
- */
 function initDeliveryTypeToggle() {
     const radioHome = document.getElementById('delivery_home');
     const radioOnsite = document.getElementById('delivery_onsite');
@@ -261,11 +214,6 @@ function initDeliveryTypeToggle() {
     updateDeliveryUI();
 }
 
-/**
- * Поэлементная валидация: отображение ошибки рядом с конкретным полем
- * @param {HTMLElement} fieldEl 
- * @param {string} message 
- */
 function setFieldError(fieldEl, message) {
     if (!fieldEl) {
         return;
@@ -282,10 +230,6 @@ function setFieldError(fieldEl, message) {
     feedback.textContent = message;
 }
 
-/**
- * Очистка ошибки конкретного поля
- * @param {HTMLElement} fieldEl 
- */
 function clearFieldError(fieldEl) {
     if (!fieldEl) {
         return;
@@ -299,9 +243,6 @@ function clearFieldError(fieldEl) {
     }
 }
 
-/**
- * Очистка всех ошибок формы
- */
 function clearAllFieldErrors() {
     document.querySelectorAll('.is-invalid, .error').forEach(el => {
         el.classList.remove('is-invalid');
@@ -316,9 +257,6 @@ function clearAllFieldErrors() {
     }
 }
 
-/**
- * Автоматическая очистка ошибки при вводе в поле
- */
 function initFieldInputErrorClearers() {
     const fields = document.querySelectorAll('#orderForm input, #orderForm select, #orderForm textarea');
     fields.forEach(field => {
@@ -331,9 +269,6 @@ function initFieldInputErrorClearers() {
     });
 }
 
-/**
- * 3. Валидация и отправка формы заказа
- */
 function initOrderFormSubmit() {
     const form = document.getElementById('orderForm');
     const errorAlert = document.getElementById('orderError');
@@ -353,7 +288,6 @@ function initOrderFormSubmit() {
         let firstInvalidField = null;
         let hasErrors = false;
 
-        // Правило 1: проверка наличия выбранных позиций
         if (totalItems === 0 || totalPrice === 0) {
             if (errorAlert) {
                 errorAlert.classList.remove('hidden');
@@ -366,7 +300,6 @@ function initOrderFormSubmit() {
             return;
         }
 
-        // Правило 2: Имя клиента (не пустое, >= 2 символов)
         const nameInput = document.getElementById('customer_name');
         const trimmedName = nameInput ? nameInput.value.trim() : '';
         if (trimmedName.length < 2) {
@@ -375,7 +308,6 @@ function initOrderFormSubmit() {
             hasErrors = true;
         }
 
-        // Правило 3: Телефон клиента (содержит цифры номера)
         const phoneInput = document.getElementById('customer_phone');
         const digitsOnly = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
         if (digitsOnly.length < 10) {
@@ -384,7 +316,6 @@ function initOrderFormSubmit() {
             hasErrors = true;
         }
 
-        // Правило 4: Способ оплаты
         const paymentInput = document.getElementById('payment_method');
         if (!paymentInput || paymentInput.value === '') {
             setFieldError(paymentInput, 'Выберите удобный для вас способ оплаты.');
@@ -392,7 +323,6 @@ function initOrderFormSubmit() {
             hasErrors = true;
         }
 
-        // Правило 5: Комбинированное правило (доставка vs на месте)
         const isDelivery = document.getElementById('delivery_home')?.checked === true;
         const streetInput = document.getElementById('street');
         const arrivalTimeInput = document.getElementById('arrival_time');
@@ -413,7 +343,6 @@ function initOrderFormSubmit() {
             }
         }
 
-        // Если обнаружены ошибки — фокусируем первое поле
         if (hasErrors) {
             if (errorAlert) {
                 errorAlert.classList.remove('hidden');
@@ -432,12 +361,10 @@ function initOrderFormSubmit() {
             errorAlert.classList.add('hidden');
         }
 
-        // Генерация демонстрационного номера заказа
         const orderId = window.GlobalCoffee && typeof window.GlobalCoffee.generateReferenceCode === 'function'
             ? window.GlobalCoffee.generateReferenceCode('GC')
             : `#GC-2026-${Math.floor(1000 + Math.random() * 9000)}`;
 
-        // Сбор информации о способе доставки
         const deliveryText = isDelivery ? 'Курьерская доставка по г. Астана' : 'Самовывоз / Заказ в кофейне';
         const addressText = isDelivery
             ? `${document.getElementById('city')?.value || 'г. Астана'}, ${streetInput ? streetInput.value.trim() : ''}`
@@ -448,11 +375,9 @@ function initOrderFormSubmit() {
             ? instructionsInput.value.trim()
             : 'Без дополнительных пожеланий';
 
-        // Формирование подробного чека через чистые DOM-методы (БЕЗ небезопасного innerHTML с данными пользователя)
         if (orderResult) {
             orderResult.replaceChildren();
 
-            // Шапка чека
             const headerBox = document.createElement('div');
             headerBox.className = 'border-bottom pb-3 mb-3';
 
@@ -478,7 +403,6 @@ function initOrderFormSubmit() {
             headerBox.appendChild(wishesInfo);
             orderResult.appendChild(headerBox);
 
-            // Список выбранных позиций с ценами
             const listGroup = document.createElement('ul');
             listGroup.className = 'list-group list-group-flush mb-3';
 
@@ -515,7 +439,6 @@ function initOrderFormSubmit() {
             });
             orderResult.appendChild(listGroup);
 
-            // Итоговая стоимость
             const totalBox = document.createElement('div');
             totalBox.className = 'd-flex justify-content-between align-items-center pt-2 border-top';
 
@@ -533,26 +456,22 @@ function initOrderFormSubmit() {
             totalBox.appendChild(totalAmount);
             orderResult.appendChild(totalBox);
 
-            // Способ оплаты
             const paymentBox = document.createElement('div');
             paymentBox.className = 'small text-success mt-2 fw-semibold';
             paymentBox.textContent = `✓ Способ оплаты: ${paymentInput.options[paymentInput.selectedIndex].text}`;
             orderResult.appendChild(paymentBox);
 
-            // ОБЯЗАТЕЛЬНОЕ ДЕМОНСТРАЦИОННОЕ УВЕДОМЛЕНИЕ
             const demoAlert = document.createElement('div');
             demoAlert.className = 'alert alert-info mt-3 mb-0 p-2 small border rounded';
             demoAlert.textContent = 'ℹ️ Демонстрационный режим: Данные не отправляются на сервер, реальная оплата и доставка не производятся. Заказ смоделирован на клиенте.';
             orderResult.appendChild(demoAlert);
         }
 
-        // Показ блока подтверждения
         if (confirmAlert) {
             confirmAlert.classList.remove('hidden');
             confirmAlert.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
-        // Очистка состояния в localStorage
         try {
             localStorage.removeItem('global_coffee_cart');
         } catch (e) {
@@ -565,9 +484,6 @@ function initOrderFormSubmit() {
     });
 }
 
-/**
- * 4. Восстановление сохраненной корзины из localStorage
- */
 function restoreCartFromLocalStorage() {
     try {
         const saved = localStorage.getItem('global_coffee_cart');

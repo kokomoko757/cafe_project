@@ -1,9 +1,4 @@
-/**
- * GLOBAL COFFEE — Логика подачи заявки на франшизу (js/partner.js)
- * Реализует:
- * 1. Валидацию данных кандидата-партнера (#partnerForm)
- * 2. Генерацию номера заявки и динамический вывод подтверждения (#partnerConfirmation)
- */
+
 
 document.addEventListener('DOMContentLoaded', () => {
     initPartnerForm();
