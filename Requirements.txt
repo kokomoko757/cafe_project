@@ -1,22 +1,85 @@
-Step 0. This is a continuation
-You now rebuild the layout of the same site with Bootstrap. Same team, same theme, same repository - the theme is locked until the end of the course and you do not create new pages. Your HTML stays as it is: you may add classes, and wrap existing content in the container, row and column elements the grid needs, but you do not replace your structure and you do not start a page over. The site still runs from local files; no domain, no hosting.
-The rule for this assignment: Bootstrap builds, your CSS corrects
-Bootstrap must do the heavy work - the page structure, the columns, the spacing, the navigation, the buttons and the responsive behaviour all come from its classes. Your own stylesheet becomes a small correction layer on top of it: your brand colours, your fonts, and the few details Bootstrap does not cover. As a guide, expect to keep well under a hundred lines of your own CSS in the whole project. If a block can be built with Bootstrap classes and you built it by hand instead, it is wrong even when it looks right.
-Connecting Bootstrap
-Link Bootstrap from a CDN in the head of every page, and link your own stylesheet after it, so that your rules win where they conflict. You may also link the Bootstrap JavaScript bundle - you are not writing any JavaScript, but some components need it. Write in a comment on each page which version of Bootstrap you are using.
-Containers and the grid
-Every page sits inside a container. Use both container and container-fluid somewhere in the project and put a comment where you chose one over the other, saying why. Build your content with rows and columns, and make at least three different blocks respond to screen width - for example col-12 col-md-6 col-lg-4 on a set of cards, services or prices. Use the gutter and alignment classes rather than your own margins, and show that you understand nesting by putting one row inside a column at least once.
-Responsive behaviour
-Your pages must work at three widths: a phone around 375px, a tablet around 768px, and a normal desktop window. Nothing may overflow sideways and no horizontal scrollbar may appear at 375px - that is the single most common failure and it costs 10 points. Your navigation collapses into a working toggler on small screens. Use the responsive display and text-alignment utilities to hide, show or re-align at least two elements at different breakpoints.
-Typography, buttons and utilities
-Style your text with Bootstrap classes - display headings, lead, text alignment and colour, muted and small text - instead of writing your own font rules. Use at least four button classes, including one outline style, one size variant and one disabled state, and make sure every button is a real link or a real form control, not decoration. Across the project use at least ten different utility classes covering spacing, colour or background, borders, shadow, and flex or display - and use them on real elements, not on empty ones added to tick a box.
-One Bootstrap component
-Add one component from the Bootstrap documentation that genuinely suits your project - cards, accordion, carousel, alert, badge, breadcrumb, table styling, list group or modal. Copy its markup from the documentation, then adapt it to your own content, and write a comment above it naming the component and what you changed.
-Cleaning up your old CSS
-Bootstrap now does much of what you wrote in Assignment 2. Delete the rules it replaced - your hand-written grid, most of your spacing and alignment, your button styling - and keep a short file listing what you removed and which Bootstrap class took its place. A stylesheet that still fights Bootstrap with its own layout rules is the main thing I will be looking for. Your remaining CSS may set colours, fonts and small corrections, and may override a Bootstrap rule where you can justify it in a comment.
+WEB Technologies 1 (Front End) -Assignment 4–5
+JavaScript fundamentals · arrays, loops & functions · DOM · events · form validation
+Main requirement: treat it as a real project
+Continue the same website, team, real organization and Git repository used in Assignments 1–3 and the Midterm Project. The result must be a complete, logical and usable front-end product for that organization—not a collection of JavaScript demonstrations.
+•	Review every page and every visitor journey. Add functionality wherever a real visitor needs to search, choose, calculate, submit, confirm, edit or remove something.
+•	Consider the complete logic of every feature: initial state, user input, valid result, invalid result, empty state, repeated action and final confirmation.
+•	Every action must finish clearly. No dead buttons, blank result areas, unfinished forms, meaningless effects or features unrelated to the organization.
+•	All data, prices, services, schedules, restrictions and messages must be realistic and consistent across the whole site.
+HTML/CSS freeze
+•	Start from the midterm tag. Do not directly add, delete or rewrite interface elements in HTML files; only script links may be added.
+•	Do not add or delete CSS rules. Create, insert, update and remove new elements through JavaScript DOM methods.
+•	Change visual states through classList using the CSS classes prepared at midterm. Do not generate CSS rules or use element.style to replace missing CSS.
+•	Document any essential midterm correction in README before using it; the correction receives no points.
+Required stages
+Stage	Topics	Milestone
+Assignment 4	Variables, operators, Math.random(), conditions, logical operators, === / !==, arrays, loops, functions	Working data and logic; tag assignment-4
+Assignment 5	DOM creation/removal, attributes/classes, events, form validation	Complete interactions; tag assignment-5
+Planning and individual contribution
+•	Add a Functionality Plan to README: page, visitor goal, planned function, expected result and responsible student.
+•	Each student implements at least two substantial features on their pages. The team implements at least one shared site-wide feature.
+•	A substantial feature completes a visitor task. A colour change, alert, console output, decorative animation or isolated random value does not count.
+Required JavaScript
+•	Create a js folder; use main.js for shared behaviour and clearly named page-specific files. Load scripts with defer and use 'use strict'.
+•	Use const by default and let only for changing values. Do not use var, ==, !=, inline event attributes or document.write().
+•	Use an array of at least six objects with real project data and at least four meaningful properties per object.
+•	Use a loop/traversal and operations that filter, find, transform or total data.
+•	Write at least four reusable functions with parameters and return values; at least one function calls another.
+•	Use arithmetic, if/else or switch, at least two logical operators, === and !== in meaningful project logic.
+•	Use Math.random() meaningfully, for example for a featured item or temporary reference number; it must not create a false business promise.
+•	Render repeated cards, rows, items or options from the array through one reusable function and DOM methods.
+•	Use textContent for user-provided text. Never insert user input through innerHTML.
+Required interactive functionality
+•	Add useful search, filter, sort or category controls. Show the result count, no-results state and reset option.
+•	Add a meaningful calculation or selection flow: total price, quantity, duration, participants, selected services or another theme-related result.
+•	Use addEventListener() and at least three event types: submit, click and one appropriate event such as input, change or keydown.
+•	Use DOM methods to create/remove elements and classList for hidden, active, selected, error and success states.
+•	Every generated list must have an empty state. Every user action must produce clear feedback. The console must contain no errors.
+Form validation
+•	Complete one important form flow: input → field-level validation → invalid/valid state → useful confirmation.
+•	Validate at least four fields: trimmed required text; email or telephone; numeric, date or selection rule; and one rule comparing/combining fields.
+•	Show specific errors beside fields, focus the first invalid field and clear outdated errors. alert() is not accepted as validation output.
+•	On success, show a summary of the visitor's choices. State that no data is sent to a server and no real booking, payment or order is created.
+Theme-specific requirements
+Implement every module that logically applies to the chosen project.
+Reviews/comments
+•	Create each review as a separate card through one function. Existing and newly submitted reviews use the same rendering function.
+•	Show name, text, rating/category where relevant, and automatic date/time. Validate content and length and show a character counter.
+Menu/catalogue
+•	Render real items from an array. Provide at least two connected controls such as category filtering plus search, sorting or availability filtering.
+•	Show matching count, no-results state, reset option and a meaningful next action for the selected item.
+Cart/order
+•	If the project sells products, food, tickets or services, show the cart in a prepared Bootstrap modal or equivalent prepared container.
+•	Allow add, quantity increase/decrease, remove and clear. Recalculate line subtotals, total quantity and final total after every change.
+•	Show an empty state, disable checkout when empty, display a summary and produce only a demonstration confirmation/reference number.
+Booking/appointment
+•	Validate dates, participant counts and related selections; reject past dates and conflicting or impossible values.
+•	Show a live summary with selected service/event, date, time, quantity and calculated price where relevant.
+•	Present success as a demonstration request, not a confirmed real-world booking.
+Login/registration
+•	Required only when these pages already exist and are logical. No database is required; implement front-end validation only.
+•	Use regular expressions to require at least eight characters with uppercase, lowercase, digit and special character; show a live checklist.
+•	Require exact password confirmation and an accessible Show/Hide Password control.
+•	Do not claim that an account was created or a user authenticated. Show an explicit front-end demonstration message.
+•	Never store passwords in localStorage/sessionStorage or arrays, place them in a URL, print them or include them in output.
+Quality requirements
+•	All controls work by keyboard and actions use real buttons. Dynamic messages do not rely on colour alone.
+•	Generated content works at approximately 375 px, 768 px and desktop width without horizontal overflow.
+•	HTML/CSS remain valid; all links, images, forms and Bootstrap components work.
 Forbidden
-No downloaded themes, templates or admin dashboards, no other CSS framework, no site builders, no JavaScript of your own. Do not rebuild the grid by hand with float or with your own flex rules - that costs 10 points each time. Inline style attributes and !important cost 5 points each; if you need one, Bootstrap already has a utility class for it.
-Screenshots instead of a report
-There is no written report in this assignment. Submit three screenshots of one page at the three widths above, plus one screenshot of your navigation collapsed on a phone width. Nothing else is written up - everything else is checked in your code and at the defense.
-Submission
-The same Git repository, extended: your updated pages, your reduced stylesheet, the list of what you removed, the four screenshots, an updated AI log and README. Everyone commits from their own account - at least four commits across three different days, six if you work alone. Your HTML must still pass the W3C validator with zero errors.
+No jQuery yet, other libraries/frameworks, copied widgets, templates, AI-generated code, eval(), document.write(), inline events, unsafe innerHTML with user input, fake authentication, databases or server-side code.
+Submission and defense
+•	Submit the same repository with js folder, README/Functionality Plan, JavaScript checklist with exact files and line numbers, evidence, AI log and assignment-4/assignment-5 tags. Keep the midterm tag unchanged.
+•	Each team member makes at least four meaningful commits across three days; an individual student makes at least six.
+•	At defense, every student explains code from any team page, traces input to result and performs a small live change. No defense or inability to explain the code results in zero.
+Grading — 100 points
+Criterion	Points
+Real-project logic and completed visitor journeys	20
+Variables, conditions, arrays, loops and functions	16
+Dynamic DOM creation/removal and states	18
+Theme-specific substantial features	20
+Events and complete form validation	14
+Quality, accessibility and responsiveness	7
+README, checklist, evidence, tags and commits	5
+Penalties: −15 for jQuery/framework/copied widget; −10 per directly added HTML block or CSS feature after the freeze; −10 per incomplete core flow; −5 per console error, broken control, loose equality, inline event or unsafe user-input insertion; −5 for irrelevant JavaScript.
+
