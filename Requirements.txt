@@ -66,9 +66,7 @@ Quality requirements
 •	All controls work by keyboard and actions use real buttons. Dynamic messages do not rely on colour alone.
 •	Generated content works at approximately 375 px, 768 px and desktop width without horizontal overflow.
 •	HTML/CSS remain valid; all links, images, forms and Bootstrap components work.
-Forbidden
-No jQuery yet, other libraries/frameworks, copied widgets, templates, AI-generated code, eval(), document.write(), inline events, unsafe innerHTML with user input, fake authentication, databases or server-side code.
-Submission and defense
+
 •	Submit the same repository with js folder, README/Functionality Plan, JavaScript checklist with exact files and line numbers, evidence, AI log and assignment-4/assignment-5 tags. Keep the midterm tag unchanged.
 •	Each team member makes at least four meaningful commits across three days; an individual student makes at least six.
 •	At defense, every student explains code from any team page, traces input to result and performs a small live change. No defense or inability to explain the code results in zero.
