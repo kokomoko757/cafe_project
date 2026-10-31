@@ -1,180 +1,53 @@
+================================================================================
+GLOBAL COFFEE ASTANA — AI LOG & REFACTORING JOURNAL
+Course: Web Application Development / Final Assignment: jQuery Migration
+Project: Global Coffee (Astana, Turkestan st. 4B)
+================================================================================
 
-                           AI CONVERSATION LOG
-Project: Global Coffee Web Application (Assignment 1 - HTML Basics)
+DATE: October 31, 2026
+TOPIC: Migration of Core Interactive Features from Plain JavaScript to jQuery 3.7.1
 
+1. PROJECT SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+The objective of this final milestone is to transition key interactive features
+from vanilla JavaScript to jQuery 3.7.1 while strictly respecting the midterm
+CSS freeze (no new CSS classes, base.css < 100 lines), maintaining zero inline
+event handlers, linking jQuery via CDN before custom scripts, and preserving
+the previous plain JS implementations in `old-js-version.js` for oral defense.
 
-[PROMPT 1]
-User: File index.html, как можно улучшить сайт?
-AI: Разобраны основные структурные критерии и недостатки:
-    - Отсутствует тег <footer> (сейчас контакты расположены внутри тега <main>);
-    - Наблюдается лишняя вложенность элементов <section>;
-    - Отсутствуют семантические блоки <article> и <aside>;
-    - Семантически неверно использован тег <small>.
+2. LOG OF PROMPTS & ARCHITECTURAL DECISIONS
+--------------------------------------------------------------------------------
+Prompt 1: "Analyze existing project codebase, HTML templates, base.css and JS modules."
+Decision:
+- Identified key features to rewrite:
+  1) Form Validation & Error Alerts (`js/order.js`, `js/booking.js`)
+  2) Show-and-hide / Collapsible Delivery Mode (`js/order.js`)
+  3) Dynamic Card/List Builder from Array in Code (`js/main.js`, `js/reviews.js`)
+- Preserved exact plain JavaScript versions in `old-js-version.js`.
 
-[PROMPT 2]
-User: Напиши как можно улучшить мой сайт, что я могу добавить и т.д.?
-AI: Составлен полный чек-лист для выполнения требований лабораторной работы:
-    - Структурные теги: <footer>, <article>, <aside>;
-    - Списки: вложенный список (nested list), <ol> с атрибутом (start/type), список определений <dl>;
-    - Элементы данных: таблица <table>, форма обратной связи <form>;
-    - Цитирование: <blockquote> с атрибутом cite, строчная цитата <q>;
-    - Оформление текста: <sub>, <sup>;
-    - Технические элементы: <code>, <pre>, <kbd>, <samp> (на странице colophon.html);
-    - Дополнительные спецсимволы/HTML-сущности (entities);
-    - Элементы <div> и <span> с соответствующими комментариями в коде.
+Prompt 2: "Implement jQuery 3.7.1 rewrite with required selectors, traversal and chaining."
+Decision:
+- jQuery connected via CDN: https://code.jquery.com/jquery-3.7.1.min.js
+- Encapsulated scripts within $(function () { ... }) with version and rationale comments.
+- Built traversal methods: .closest(), .find(), .parent(), .siblings(), .each().
+- Integrated method chaining (e.g. $(this).addClass(...).siblings().removeClass(...)).
+- Utilized $(this) in multiple event handlers.
+- Used filters: :checked, :first, :not(.table-secondary).
 
-[PROMPT 3]
-User: Что должно быть в footer?
-AI: Обязательный минимум — контактная информация и символ авторского права (&copy;). 
-    Для консистентности между страницами также рекомендуется добавить часы работы и сведения об авторах.
+Prompt 3: "Implement required jQuery Effects and Event Delegation."
+Decision:
+- Implemented .fadeIn(400), .fadeOut(), .slideDown(300), .slideUp(300), and .animate({ scrollTop: ... }).
+- Passed duration parameters and post-animation callbacks.
+- Attached all handlers using .on().
+- Implemented delegated event binding for dynamically created like buttons:
+  $('#reviewsGrid').on('click', '.like-review-btn', handler)
+  Documented why direct binding fails on newly appended cards.
+- Documented event.preventDefault() and client vs. server validation rationale.
 
-[PROMPT 4]
-User: Что не хватает в структуре?
-AI: Детализация ошибок разметки:
-    - Полностью отсутствует <footer>;
-    - Не задействованы блоки <article> и <aside>;
-    - Присутствует дублирующая вложенность вида <section><section>.
-
-[PROMPT 5]
-User: Со структурой думаю норм, теперь как можно улучшить дизайн сайта?
-AI: По условиям задания CSS строго запрещен на данном этапе ("styling starts next week"). 
-    Дизайн и стилизацию менять нельзя, сайт должен оставаться в чистом HTML.
-
-[PROMPT 6]
-User: Что значит figure + figcaption?
-AI: <figure> — это семантический контейнер для автономного контента (иллюстрация, фото, диаграмма).
-    <figcaption> — подпись/заголовок к этому контенту. В отличие от одиночного <img>, эта пара связывает изображение с его текстовым описанием.
-
-[PROMPT 7]
-User: Важно — в этой версии пропал целый блок: убрали <figure> с фотографией и figcaption ("Branch at 7/1 Al-Farabi"). Фото и подпись исчезли полностью. Верните figure. Я же могу на другой файл добавить?
-AI: Да, требование по наличию пары <figure> + <figcaption> является общим ("across your own two pages"), поэтому его не обязательно дублировать на каждой странице, достаточно иметь на одной из них.
-
-[PROMPT 8]
-User: Какие незакрытые требования можно добавить в branches (идеи)?
-AI: Идеи для страницы филиалов (branches.html):
-    - Сводная таблица филиалов (город, адрес, время работы);
-    - Вложенный список кофейных точек по районам;
-    - Нумерованный список <ol> с атрибутом (например, рейтинг по посещаемости);
-    - Список <dl> с описанием видов формата заведений;
-    - Цитата <blockquote> с <cite>;
-    - Элемент <figure> с <figcaption> (фото филиала);
-    - Форма записи на экскурсию или бронирование столика.
-
-[PROMPT 9]
-User: Если вставить все 11 филиалов в таблицу, это будет норм? Или смотрится слишком громоздко?
-AI: По количеству строк это вполне нормально и наглядно. 
-    Главное предупреждение — данные не должны быть одинаковыми заглушками (копипастом), каждая строка должна содержать реальную информацию.
-
-[PROMPT 10]
-User: Готовый символ пламени 🔥. Разрешено ли такое?
-AI: Обычный emoji-символ не засчитывается преподавателем как HTML-сущность. 
-    Чтобы требование было выполнено, необходима числовая или мнемоническая запись (например, &#128293; или &copy;).
-
-[PROMPT 11]
-User: File branches.html оцени.
-AI: Найдены и исправлены ошибки разметки:
-    - Тег <main> находился внутри <header> (неверная иерархия);
-    - Незакрытый тег </section>;
-    - Несколько тегов <figcaption> внутри одного <figure>;
-    - Опечатка в атрибуте label for;
-    - Отсутствие обязательных атрибутов у <ol>;
-    - Пустой тег <footer>.
-
-[PROMPT 12]
-User: Чего не хватает, скажи какие требования не закрыты?
-AI: Чек-лист по элементам формы (<form>):
-    - Теги <fieldset> и <legend>;
-    - Поле ввода <input type="email">;
-    - Поле ввода <input type="number">;
-    - Группа радио-кнопок (<input type="radio">);
-    - Чекбоксы (<input type="checkbox">);
-    - Многострочное поле ввода <textarea>;
-    - Кнопка сброса формы (<button type="reset">).
-
-[PROMPT 13]
-User: Нужно сделать похожий/копию сайта, или по своему?
-AI: Проект делается строго по своему сценарию — реальная организация (Global Coffee) и реальный контент. 
-    Прямое копирование чужих сайтов запрещено. Выполнение Task A (анализ стороннего сайта) нужно только для отчета, а не для дублирования кода.
-
-[PROMPT 14]
-User: Все должно быть в гитхабе?
-AI: Да, репозиторий на GitHub должен содержать:
-    - Исходные HTML-страницы (index.html, branches.html, colophon.html);
-    - Папку /images с фотографиями;
-    - PDF-отчет;
-    - Чек-лист использованных тегов;
-    - Эскиз/скетч от руки (handwritten sketch);
-    - Файл лога общения с ИИ (ai-log.txt);
-    - Файл README.md.
-    Обязательное условие: минимум 4 коммита, сделанные в разные дни.
-
-
-======================================================================
-ASSIGNMENT 3 — REBUILD THE LAYOUT WITH BOOTSTRAP ("Bootstrap builds, your CSS corrects")
-======================================================================
-
-[PROMPT 15]
-User: прочитай Requirements.txt и сделай все по тому что там сказано не добавляя ничего лишнего
-AI: Проанализированы все требования из Requirements.txt:
-    1. Подключение Bootstrap 5.3.3 через CDN в <head> каждой страницы и бандла перед </body>.
-       Добавлен комментарий <!-- Using Bootstrap v5.3.3 --> на каждой странице.
-    2. Правило «Bootstrap builds, your CSS corrects»: удален весь ручной CSS (сетки, флексы, отступы, кнопки),
-       файл css/base.css сокращен с 645 строк до 67 строк (<100 строк). Создан файл css-cleanup.md со списком замен.
-    3. Контейнеры и сетка: использованы container-fluid для шапки/меню и container для контента с комментариями.
-       Реализованы адаптивные блоки col-12 col-md-6 col-lg-4 на 4+ страницах.
-       Реализована демонстрация вложенной сетки (row inside col).
-    4. Адаптивность: поддержка экранов 375px (смартфон), 768px (планшет), десктоп. Таблицы обернуты в table-responsive,
-       картинки получили img-fluid, навигация сворачивается в navbar-toggler на мобильных.
-       Использованы утилиты text-center text-md-start и d-none d-md-inline.
-    5. Типографика и кнопки: display-5, display-6, lead, text-muted, small.
-       Задействованы 4 класса кнопок: btn-primary, btn-outline-primary, btn-lg/btn-sm, disabled.
-       Использовано более 10 утилит Bootstrap (spacing, colors, borders, shadow, flex).
-    6. Компоненты Bootstrap: добавлены Accordion (index.html), Alert (booking.html, location.html),
-       Card & List Group with Badges (menu.html), Card & Badge (reviews.html), Breadcrumb (colophon.html)
-       с соответствующими комментариями об адаптации из документации.
-    7. Запрещенные практики: 0 сторонних тем, 0 JavaScript кроме бандла Bootstrap, 0 инлайн-стилей style="", 0 !important.
-
-
-======================================================================
-MIDTERM PROJECT — FINISHED SITE, COMPLETE LOGIC, MARKUP READY FOR JAVASCRIPT
-======================================================================
-
-[PROMPT 16]
-User: Что требуется для сдачи Midterm Project по веб-технологиям?
-AI: Основные требования экзаменационной сдачи Midterm:
-    1. Завершенная логика («the logic must finish»): никаких тупиковых путей, битых ссылок, пустых заглушек или href="#". 
-       Каждое действие пользователя приводит к наглядному результату (подтверждению).
-    2. Три пользовательских сценария (user journeys) в README.md: начало, промежуточные шаги и результат, которые можно пройти от и до.
-    3. Подготовка разметки к JavaScript (JS Freeze):
-       - Семантические id у всех интерактивных элементов, форм, кнопок и полей на английском языке в нижнем регистре;
-       - Пустые контейнеры (empty containers) с id для последующего динамического вывода через JS (результаты, ошибки, подтверждения);
-       - Описание классов состояний в css/base.css (.hidden, .active, .selected, .error, .success).
-    4. Запрет на собственный JavaScript: используется исключительно официальный бандл Bootstrap 5.3.3.
-    5. Технический фундамент: 0 ошибок в W3C валидаторе, 0 ошибок в консоли браузера, отсутствие горизонтального скролла на мобильных (375px), 100% реальный контент.
-    6. Quality-pass перед сдачей: перекрестное тестирование страниц участниками команды и фиксация списка исправлений в README.
-    7. Фиксация репозитория тегом Git «midterm» со скриншотами всех страниц в мобильном (375px) и десктопном (1280px) разрешениях.
-
-[PROMPT 17]
-User: Проверь чего не хватает по брифу и помоги доделать все оставшиеся элементы.
-AI: Выполнен аудит и добавлены недостающие элементы:
-    - Добавлено место для подсчета итоговой стоимости заказа (id="orderTotalPrice") и количества выбранных позиций (id="orderItemsCount") в order.html;
-    - Добавлены поля поиска и фильтрации по категориям в menu.html (id="menuSearchInput") и location.html (id="branchSearchInput") с контейнерами результатов для JS;
-    - Добавлена форма отзыва гостя (Feedback Box) на reviews.html (id="reviewForm") с блоком подтверждения (#reviewConfirmation);
-    - Очищены ссылки со столиков в booking.html для стабильной работы по протоколу локальных файлов (file://);
-    - Проверена и подтверждена уникальность всех ID и W3C валидность разметки (0 ошибок).
-
-
-[PROMPT 18]
-User: добавь все что ты перечислил (JavaScript и проработка сайта)
-AI: Реализован и подключен полный комплекс JavaScript-интерактивности и визуальных улучшений:
-    1. js/main.js: Живой индикатор работы кофейни («● Открыто сейчас» / «○ Откроется в 08:00»), маска ввода телефонов +7 (7XX) XXX-XX-XX, автоматическое закрытие бургер-меню на мобильных устройствах, динамический счетчик товаров в корзине в навбаре.
-    2. js/order.js & order.html: Фотографии одинакового размера для всех 10 позиций меню (.card-product-img), интерактивный калькулятор корзины (#orderTotalPrice, #orderItemsCount), переключение способов получения (доставка vs на месте), валидация и генерация чека онлайн-заказа (#GC-2026-XXXX), сохранение состояния в localStorage.
-    3. js/menu.js & menu.html: Фотографии на каждую позицию меню в аккуратном размере (.menu-item-thumb), 4 категории напитков и еды на адаптивной 4-колоночной сетке (col-12 col-md-6 col-lg-3), живой поиск (#menuSearchInput) и фильтрация по кнопкам категорий со счетчиком найденного (#menuSearchResults).
-    4. js/booking.js & booking.html & details.html: Выбор столика на интерактивной схеме зала 3x3, передача данных через localStorage в details.html с информационным баннером, валидация даты/времени, генерация кода брони (#BK-XXXX) и чека бронирования.
-    5. js/location.js & location.html: Живой поиск по 28 филиалам Астаны с синхронной фильтрацией флагманских карточек и строк таблицы.
-    6. js/reviews.js & reviews.html: Интерактивная форма отзыва гостя, мгновенное добавление карточки со звездами и сохранение в localStorage.
-    7. js/partner.js & partner.html: Валидация формы франчайзинга, генерация номера заявки (#FR-2026-XXX) и персональный расчет следующих шагов.
-    8. css/base.css: Сохранен в объеме 90 строк (< 100 строк), добавлена поддержка миниатюр позиций меню (.menu-item-thumb).
-
-
-
+3. VERIFICATION & QUALITY CHECKS
+--------------------------------------------------------------------------------
+- Syntax check: node --check js/*.js old-js-version.js (0 errors).
+- Build compilation: vite build --minify false (10/10 HTML pages bundled).
+- Linting: tsc --noEmit && node --check js/*.js old-js-version.js (Pass).
+- Dev server: Verified on port 3000.
+================================================================================

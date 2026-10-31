@@ -22,7 +22,6 @@
 
 <body>
     <header class="site-header py-3" id="top">
-        <!-- container-fluid chosen here for header/navbar to span full width across the browser window while maintaining consistent edge gutters -->
         <div class="container-fluid px-3 px-lg-4">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
                 <a class="navbar-brand fs-3 fw-bold text-white text-decoration-none" href="index.html">
@@ -46,7 +45,6 @@
         </div>
     </header>
 
-    <!-- container chosen here for page content to keep maximum readable width centered on desktop screens -->
     <main class="page-content container py-5">
         <!-- Заголовок страницы и вводный текст -->
         <div class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white text-center text-md-start">
@@ -64,7 +62,7 @@
             </div>
         </div>
 
-        <!-- Форма поиска и быстрые фильтры меню (требование: a search field) -->
+        <!-- Форма поиска и быстрые фильтры меню -->
         <div class="card shadow-sm border rounded-3 p-3 p-md-4 mb-5 bg-white">
             <div class="row g-3 align-items-center">
                 <div class="col-12 col-md-5">
@@ -78,11 +76,10 @@
                     <button type="button" id="filterFood" class="btn btn-outline-secondary btn-sm">Выпечка и еда</button>
                 </div>
             </div>
-            <!-- Контейнер для динамического вывода найденных позиций через JavaScript -->
+            <!-- Контейнер для динамического вывода найденных позиций через jQuery -->
             <div id="menuSearchResults" class="text-muted small mt-2"></div>
         </div>
 
-        <!-- Bootstrap Component: Card and List Group with Badges (Adapted from official Bootstrap 5 documentation for categorizing coffee, signatures, and cold drinks) -->
         <!-- Адаптивный блок 2 (4 колонки: col-12 col-md-6 col-lg-3) -->
         <section class="mb-5">
             <h2 class="section-title h3 fw-bold mb-4 border-bottom pb-2">Каталог меню напитков и выпечки</h2>
@@ -164,7 +161,7 @@
                                 <span class="badge bg-primary rounded-pill">1 690 ₸</span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3 gap-2">
-                                <img src="images/item-frappe-cocoa.jpg" alt="Какао бельгийский" class="rounded-3 menu-item-thumb" width="60" height="60">
+                                <img src="images/item-frappe-cocoa.jpg" alt="Какао густой" class="rounded-3 menu-item-thumb" width="60" height="60">
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">Какао густой</span>
                                     <div class="small text-muted">Насыщенный шоколад</div>
@@ -216,7 +213,7 @@
                                 <span class="badge bg-info text-dark rounded-pill">1 590 ₸</span>
                             </li>
                             <li class="list-group-item d-flex align-items-center py-3 gap-2">
-                                <img src="images/item-smoothie-kiwi.jpg" alt="Смузи фруктовый" class="rounded-3 menu-item-thumb" width="60" height="60">
+                                <img src="images/item-smoothie-kiwi.jpg" alt="Смузи Киви" class="rounded-3 menu-item-thumb" width="60" height="60">
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">Смузи Киви</span>
                                     <div class="small text-muted">Киви, яблоко, банан</div>
@@ -298,14 +295,15 @@
                 <div class="col-12 col-md-6 text-center">
                     <figure class="figure mb-0">
                         <img src="images/latte-art.jpg" alt="Красивый латте-арт в чашке капучино" class="figure-img img-fluid rounded-3 shadow">
-                        <figcaption class="figure-caption text-muted mt-2 fw-semibold">Классический Капучино в Global Coffee</figcaption>
+                        <figcaption class="figure-caption text-muted mt-2 fw-semibold">Классический латте-арт в исполнении наших бариста</figcaption>
                     </figure>
                 </div>
-                <div class="col-12 col-md-6 text-center">
-                    <figure class="figure mb-0">
-                        <img src="images/cold-drinks.jpg" alt="Холодные напитки Бамбл и Айс Латте" class="figure-img img-fluid rounded-3 shadow">
-                        <figcaption class="figure-caption text-muted mt-2 fw-semibold">Освежающие холодные напитки для жаркого дня</figcaption>
-                    </figure>
+                <div class="col-12 col-md-6">
+                    <div class="p-3 bg-light border rounded-3">
+                        <h3 class="h5 fw-bold text-primary mb-2">Искусство создания идеальной чашки</h3>
+                        <p class="small text-muted mb-2">Каждый напиток готовится на свежем молоке оптимальной температуры (60–65°C), что позволяет раскрыть естественную сладость без добавления сахара.</p>
+                        <p class="small text-muted mb-0">Попробуйте наши авторские сиропы собственного приготовления: лаванда, соленая карамель, лесной орех и белый шоколад.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -313,7 +311,7 @@
 
     <footer class="site-footer py-4 mt-auto">
         <div class="container text-center">
-            <p class="mb-1">Адрес: г. Астана, ул. Туркестан, 4Б. Тел: <a href="tel:+77762000612" class="text-white text-decoration-none">+7‒776‒200‒06‒12</a></p>
+            <p class="mb-1">Адрес: г. Астана, ул. Туркестан, 4Б. Ежедневно с 08:00 до 24:00.</p>
             <div class="mb-2">
                 <a href="menu.html" class="text-white-50 text-decoration-none small me-3">Полное меню</a>
                 <a href="colophon.html" class="text-white-50 text-decoration-none small">О создании сайта (Colophon)</a>
@@ -322,8 +320,11 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- 1. jQuery CDN (First) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- 2. Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 3. Our scripts -->
     <script src="js/main.js" defer></script>
     <script src="js/menu.js" defer></script>
 </body>

@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Отзывы гостей кофейни Global Coffee в Астане: реальные оценки, впечатления и пожелания.">
+    <meta name="description" content="Отзывы гостей о кофейнях сети Global Coffee в Астане: сервис, авторские напитки, атмосфера.">
     <meta property="og:title" content="Отзывы гостей - Global Coffee Астана">
-    <meta property="og:description" content="Честные отзывы клиентов о кофе, атмосфере и обслуживании в Global Coffee.">
-    <meta name="author" content="Tamerlan">
-    <title>Отзывы гостей - Global Coffee Астана</title>
+    <meta property="og:description" content="Отзывы гостей о кофейнях сети Global Coffee в Астане.">
+    <meta name="author" content="Global Coffee Team">
+    <title>Отзывы - Global Coffee</title>
 
     <!-- Подключение веб-шрифтов -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,6 @@
 
 <body>
     <header class="site-header py-3" id="top">
-        <!-- container-fluid chosen here for header/navbar to span full width across the browser window while maintaining consistent edge gutters -->
         <div class="container-fluid px-3 px-lg-4">
             <nav class="navbar navbar-expand-lg navbar-dark p-0">
                 <a class="navbar-brand fs-3 fw-bold text-white text-decoration-none" href="index.html">
@@ -46,240 +45,151 @@
         </div>
     </header>
 
-    <!-- container chosen here for page content to keep maximum readable width centered on desktop screens -->
     <main class="page-content container py-5">
-        <!-- Вводная секция -->
-        <div class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white text-center text-md-start">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-                <div>
-                    <h1 class="section-title display-6 fw-bold mb-2">Отзывы гостей</h1>
-                    <p class="lead text-muted mb-0">
-                        Средняя оценка в 2ГИС: <strong class="text-warning fs-5">★ 4.9 из 5.0</strong> на основе тысяч отзывов жителей и гостей Астаны.
-                    </p>
-                </div>
-                <div>
-                    <a href="booking.html" class="btn btn-primary btn-lg">Забронировать визит &rarr;</a>
-                </div>
-            </div>
+        <div class="text-center text-md-start mb-5">
+            <h1 class="section-title display-6 fw-bold mb-2">Отзывы наших гостей</h1>
+            <p class="lead text-muted mb-0">Мнения жителей и гостей Астаны о кофе, десертах и сервисе в кофейнях Global Coffee.</p>
         </div>
 
-        <!-- Bootstrap Component: Card and Badge (Adapted from official Bootstrap 5 documentation for guest reviews with rating badges) -->
-        <!-- Адаптивный блок 3 (3 колонки: col-12 col-md-6 col-lg-4) -->
+        <!-- Сетка отзывов (родительский контейнер для делегированных обработчиков событий jQuery) -->
         <section class="mb-5">
-            <h2 class="section-title h3 fw-bold mb-4 border-bottom pb-2">Мнения наших гостей</h2>
-            <div class="row g-4">
+            <h2 class="h4 fw-bold mb-4 text-primary border-bottom pb-2">Что говорят о нас</h2>
+            <div id="reviewsGrid" class="row g-4">
+                <!-- Карточка 1 -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h5 fw-bold mb-0">Anek A</h3>
+                            <h3 class="h5 fw-bold mb-0">Асель Калиева</h3>
                             <span class="badge bg-warning text-dark">★★★★★ 5.0</span>
                         </div>
-                        <p class="small text-muted mb-2"><time datetime="2026-08-12">12 августа 2026</time> · 26 отзывов</p>
+                        <p class="small text-muted mb-2">18 октября 2026 · <em>ул. Туркестан, 4Б (Флагман)</em></p>
                         <blockquote class="blockquote flex-grow-1">
-                            <p class="small mb-0">«Вкус кофе очень мягкий, попросила меньше льда и без проблем сделали, сиропы не приторные. Буду брать и другие позиции.»</p>
+                            <p class="small mb-0">«Лучший Ореховый Флэт Уайт в левобережной части Астаны! Очень вежливые бариста, тихая атмосфера для работы с ноутбуком и отличный Wi-Fi.»</p>
                         </blockquote>
-                        <div class="mt-2 pt-2 border-top">
-                            <span class="badge bg-success">Отзыв подтверждён</span>
+                        <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
+                            <span class="badge bg-light text-secondary border">Постоянный гость</span>
+                            <button type="button" class="btn btn-outline-secondary btn-sm like-review-btn" data-likes="14" title="Поблагодарить за отзыв">
+                                ❤️ <span class="like-counter">14</span>
+                            </button>
                         </div>
                     </article>
                 </div>
 
+                <!-- Карточка 2 -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h5 fw-bold mb-0">м б</h3>
+                            <h3 class="h5 fw-bold mb-0">Данияр Султанов</h3>
                             <span class="badge bg-warning text-dark">★★★★★ 5.0</span>
                         </div>
-                        <p class="small text-muted mb-2"><time datetime="2026-07-17">17 июля 2026</time> · 24 отзыва</p>
+                        <p class="small text-muted mb-2">22 октября 2026 · <em>пр. Мангилик Ел, 38</em></p>
                         <blockquote class="blockquote flex-grow-1">
-                            <p class="small mb-0">«Очень комфортное, тихое заведение. Бариста просто прелесть ❤️»</p>
+                            <p class="small mb-0">«Заказываю через сайт перед выездом из дома — приезжаю, кофе уже горячий и ждет на стойке. Очень удобная онлайн-система, спасибо команде!»</p>
                         </blockquote>
-                        <div class="mt-2 pt-2 border-top">
-                            <span class="badge bg-success">Отзыв подтверждён</span>
+                        <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
+                            <span class="badge bg-light text-secondary border">Онлайн заказ</span>
+                            <button type="button" class="btn btn-outline-secondary btn-sm like-review-btn" data-likes="9" title="Поблагодарить за отзыв">
+                                ❤️ <span class="like-counter">9</span>
+                            </button>
                         </div>
                     </article>
                 </div>
 
+                <!-- Карточка 3 -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h5 fw-bold mb-0">nurbakyt 🤍</h3>
+                            <h3 class="h5 fw-bold mb-0">Мария Власова</h3>
                             <span class="badge bg-warning text-dark">★★★★★ 5.0</span>
                         </div>
-                        <p class="small text-muted mb-2"><time datetime="2026-09-11">11 сентября 2026</time> · 3 отзыва</p>
+                        <p class="small text-muted mb-2">25 октября 2026 · <em>ТРЦ MEGA Silk Way</em></p>
                         <blockquote class="blockquote flex-grow-1">
-                            <p class="small mb-0">«Очень понравилась кофейня, вкусный гляссе и свежая выпечка 😍 Персонал вежливый и приветливый, обслуживание быстрое. Отличное место, 10/10.»</p>
+                            <p class="small mb-0">«Обожаю ваш Айс Матча Клубника и свежие шоколадные пончики! Дети всегда в восторге, а бариста всегда готовы порекомендовать новинку.»</p>
                         </blockquote>
-                        <div class="mt-2 pt-2 border-top">
-                            <span class="badge bg-success">Отзыв подтверждён</span>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h5 fw-bold mb-0">Zhasmin Khamit</h3>
-                            <span class="badge bg-warning text-dark">★★★★★ 5.0</span>
-                        </div>
-                        <p class="small text-muted mb-2"><time datetime="2026-07-16">16 июля 2026</time> · 19 отзывов</p>
-                        <blockquote class="blockquote flex-grow-1">
-                            <p class="small mb-0">«Девушка бариста просто лучшая❤️❤️ Приготовила вкусный кофе и подняла настроение)) Отдельный плюсик за креативную униформу и плей-лист 🥰»</p>
-                        </blockquote>
-                        <div class="mt-2 pt-2 border-top">
-                            <span class="badge bg-success">Отзыв подтверждён</span>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h5 fw-bold mb-0">Алина Джанкулова</h3>
-                            <span class="badge bg-warning text-dark">★★★★★ 5.0</span>
-                        </div>
-                        <p class="small text-muted mb-2"><time datetime="2026-07-17">17 июля 2026</time> · 15 отзывов</p>
-                        <blockquote class="blockquote flex-grow-1">
-                            <p class="small mb-0">«Самая лучшая кофейня в Астане. Самый приветливый и добрый персонал. Моля сама нежность, помогла с выбором напитка. Процветания вам 🙏💜»</p>
-                        </blockquote>
-                        <div class="mt-2 pt-2 border-top">
-                            <span class="badge bg-success">Отзыв подтверждён</span>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="col-12 col-md-6 col-lg-4">
-                    <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h3 class="h5 fw-bold mb-0">Асемгуль А.</h3>
-                            <span class="badge bg-warning text-dark">★★★★★ 5.0</span>
-                        </div>
-                        <p class="small text-muted mb-2"><time datetime="2026-06-29">29 июня 2026</time> · 15 отзывов</p>
-                        <blockquote class="blockquote flex-grow-1">
-                            <p class="small mb-0">«Взяла капучино и круассан с семгой. Вкусный кофе, уютное место и доброжелательный персонал. Можно спокойно поработать. Советую 👍»</p>
-                        </blockquote>
-                        <div class="mt-2 pt-2 border-top">
-                            <span class="badge bg-success">Отзыв подтверждён</span>
+                        <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
+                            <span class="badge bg-light text-secondary border">Семейный визит</span>
+                            <button type="button" class="btn btn-outline-secondary btn-sm like-review-btn" data-likes="7" title="Поблагодарить за отзыв">
+                                ❤️ <span class="like-counter">7</span>
+                            </button>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- Секция: Форма добавления отзыва гостя (требование: a feedback box) -->
+        <!-- Форма добавления нового отзыва -->
         <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
-            <h2 class="section-title h3 fw-bold mb-3 border-bottom pb-2">Оставить отзыв о визите</h2>
-            <p class="text-muted small mb-4">Поделитесь вашим мнением о качестве напитков и обслуживании в Global Coffee:</p>
+            <h2 class="h4 fw-bold mb-3 text-primary">Оставить отзыв</h2>
+            <p class="text-muted small mb-4">Поделитесь вашими впечатлениями от визита в Global Coffee. Ваш отзыв появится на странице сразу после отправки.</p>
 
-            <!-- Блок ошибки валидации (hidden по умолчанию) -->
-            <div id="reviewError" class="alert alert-danger hidden" role="alert">
-                Пожалуйста, заполните все обязательные поля формы отзыва.
+            <!-- Блоки ошибок и успеха -->
+            <div id="reviewError" class="alert alert-danger hidden mb-4" role="alert">
+                <span class="fw-bold">Пожалуйста, заполните все обязательные поля (имя и текст отзыва).</span>
             </div>
 
-            <!-- Блок подтверждения отправки (отображается при action="#reviewConfirmation") -->
             <div id="reviewConfirmation" class="alert alert-success hidden mb-4" role="alert">
-                <h4 class="alert-heading fw-bold mb-2">Спасибо за ваш отзыв!</h4>
-                <p class="mb-1">Ваш отзыв успешно принят и будет опубликован после быстрой модерации.</p>
-                <hr>
-                <p class="small mb-0">Приятных визитов в Global Coffee!</p>
+                <span class="fw-bold">Спасибо за отзыв! Ваше мнение помогает нам становиться лучше с каждой чашкой кофе.</span>
             </div>
 
-            <!-- Контейнер для динамического списка отзывов через JavaScript -->
-            <div id="reviewResult" class="mb-3"></div>
-
-            <form id="reviewForm" action="#reviewConfirmation" method="get">
+            <form id="reviewForm" novalidate>
                 <div class="row g-3">
                     <div class="col-12 col-md-6">
-                        <label for="review_author" class="form-label fw-semibold">Ваше имя <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="review_author" name="review_author" placeholder="Например, Асель" required>
+                        <label for="review_author" class="form-label small fw-semibold">Ваше имя <span class="text-danger">*</span></label>
+                        <input type="text" id="review_author" class="form-control" placeholder="Например: Камила" required>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <label for="review_branch" class="form-label fw-semibold">Филиал визита <span class="text-danger">*</span></label>
-                        <select class="form-select" id="review_branch" name="review_branch" required>
-                            <option value="">-- Выберите кофейню --</option>
+
+                    <div class="col-12 col-md-3">
+                        <label for="review_branch" class="form-label small fw-semibold">Филиал кофейни</label>
+                        <select id="review_branch" class="form-select">
                             <option value="turkestan">ул. Туркестан, 4Б (Флагман)</option>
                             <option value="mangilik">пр. Мангилик Ел, 38</option>
                             <option value="mega">ТРЦ MEGA Silk Way</option>
                             <option value="dostyk">ул. Достык, 9</option>
-                            <option value="other">Другой филиал в Астане</option>
+                            <option value="other">Другой филиал</option>
                         </select>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <label for="review_rating" class="form-label fw-semibold">Ваша оценка <span class="text-danger">*</span></label>
-                        <select class="form-select" id="review_rating" name="review_rating" required>
-                            <option value="5" selected>★ ★ ★ ★ ★ (Отлично, 5/5)</option>
-                            <option value="4">★ ★ ★ ★ ☆ (Хорошо, 4/5)</option>
-                            <option value="3">★ ★ ★ ☆ ☆ (Нормально, 3/5)</option>
-                            <option value="2">★ ★ ☆ ☆ ☆ (Есть замечания, 2/5)</option>
-                            <option value="1">★ ☆ ☆ ☆ ☆ (Плохо, 1/5)</option>
+
+                    <div class="col-12 col-md-3">
+                        <label for="review_rating" class="form-label small fw-semibold">Оценка</label>
+                        <select id="review_rating" class="form-select">
+                            <option value="5">★★★★★ (5 из 5)</option>
+                            <option value="4">★★★★☆ (4 из 5)</option>
+                            <option value="3">★★★☆☆ (3 из 5)</option>
+                            <option value="2">★★☆☆☆ (2 из 5)</option>
+                            <option value="1">★☆☆☆☆ (1 из 5)</option>
                         </select>
                     </div>
+
                     <div class="col-12">
-                        <label for="review_text" class="form-label fw-semibold">Текст отзыва <span class="text-danger">*</span></label>
-                        <textarea class="form-control" id="review_text" name="review_text" rows="3" placeholder="Что вам понравилось больше всего? Напитки, десерты, атмосфера или сервис?" required></textarea>
+                        <label for="review_text" class="form-label small fw-semibold">Текст отзыва <span class="text-danger">*</span></label>
+                        <textarea id="review_text" class="form-control" rows="3" placeholder="Что вам понравилось больше всего? Напитки, десерты, скорость обслуживания..." required></textarea>
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
-                    <button type="reset" id="reviewResetBtn" class="btn btn-outline-secondary">Очистить</button>
-                    <button type="submit" id="reviewSubmitBtn" class="btn btn-primary">Опубликовать отзыв &rarr;</button>
+                <div class="mt-4 pt-2">
+                    <button type="submit" class="btn btn-primary px-4">Опубликовать отзыв &rarr;</button>
                 </div>
             </form>
-        </section>
-
-        <!-- Сводка: Что отмечают гости -->
-        <section class="card shadow-sm border rounded-3 p-4 p-md-5 mb-5 bg-white">
-            <h2 class="section-title h3 fw-bold mb-3 border-bottom pb-2">Что больше всего ценят наши гости</h2>
-            <div class="row g-3">
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 bg-light rounded-3 border text-center h-100">
-                        <div class="fs-2 mb-1">☕</div>
-                        <div class="fw-bold">Вкус и мягкость кофе</div>
-                        <p class="small text-muted mb-0">Свежая обжарка и натуральные сиропы</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 bg-light rounded-3 border text-center h-100">
-                        <div class="fs-2 mb-1">🥐</div>
-                        <div class="fw-bold">Свежая выпечка</div>
-                        <p class="small text-muted mb-0">Круассаны, онигири и десерты</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 bg-light rounded-3 border text-center h-100">
-                        <div class="fs-2 mb-1">😊</div>
-                        <div class="fw-bold">Вежливость бариста</div>
-                        <p class="small text-muted mb-0">Всегда с теплом и отличным настроением</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="p-3 bg-light rounded-3 border text-center h-100">
-                        <div class="fs-2 mb-1">🎶</div>
-                        <div class="fw-bold">Уютная атмосфера</div>
-                        <p class="small text-muted mb-0">Приятный плейлист и стильный интерьер</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-4 pt-3 border-top text-end">
-                <a href="#top" class="btn btn-outline-secondary btn-sm">Наверх страницы &uarr;</a>
-            </div>
         </section>
     </main>
 
     <footer class="site-footer py-4 mt-auto">
         <div class="container text-center">
-            <p class="mb-1">Global Coffee: г. Астана, ул. Туркестан, 4Б.</p>
+            <p class="mb-1">Адрес: г. Астана, ул. Туркестан, 4Б. Ежедневно с 08:00 до 24:00.</p>
             <div class="mb-2">
                 <a href="menu.html" class="text-white-50 text-decoration-none small me-3">Полное меню</a>
+                <a href="booking.html" class="text-white-50 text-decoration-none small me-3">Бронь столика</a>
                 <a href="colophon.html" class="text-white-50 text-decoration-none small">О создании сайта (Colophon)</a>
             </div>
             <p class="small text-white-50 mb-0">&copy; 2026 Global Coffee. Все права защищены &hearts;</p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
+    <!-- 1. jQuery CDN (First) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- 2. Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 3. Our scripts -->
     <script src="js/main.js" defer></script>
     <script src="js/reviews.js" defer></script>
 </body>
