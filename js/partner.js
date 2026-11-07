@@ -30,6 +30,7 @@ function initPartnerForm() {
   // Clear errors dynamically on input
   $form.find('input').on('input', function () {
     $(this).removeClass('is-invalid error');
+    $(this).parent().find('.field-error-msg').remove();
     if ($errorAlert.is(':visible')) {
       $errorAlert.slideUp(200);
     }
@@ -43,6 +44,8 @@ function initPartnerForm() {
      * and smooth scroll animations to run within the page.
      */
     e.preventDefault();
+    $confirmAlert.stop(true, true).hide().addClass('hidden');
+    $form.find('.field-error-msg').remove();
 
     const name = $.trim($nameInput.val());
     const phone = $.trim($phoneInput.val());
@@ -52,13 +55,13 @@ function initPartnerForm() {
     let hasErrors = false;
 
     if (!name) {
-      $nameInput.addClass('is-invalid error');
+      showPartnerError($nameInput, 'Укажите ваше имя.');
       hasErrors = true;
     }
 
     const phoneDigits = phone.replace(/\D/g, '');
-    if (phoneDigits.length < 10) {
-      $phoneInput.addClass('is-invalid error');
+    if (!/^77\d{9}$/.test(phoneDigits)) {
+      showPartnerError($phoneInput, 'Введите полный номер: +7 7XX XXX-XX-XX.');
       hasErrors = true;
     }
 
@@ -85,10 +88,10 @@ function initPartnerForm() {
         '</div>' +
         '<h5 class="h6 fw-bold mt-3 mb-2">Следующие шаги:</h5>' +
         '<ol class="small mb-2 ps-3">' +
-          '<li>Директор по франчайзингу свяжется с вами по номеру ' + escapeHtml(phone) + ' в течение 24 часов.</li>' +
-          '<li>Мы предоставим презентацию и финансовую модель окупаемости кофейни в г. ' + escapeHtml(city) + '.</li>' +
+          '<li>Указанный контактный номер: ' + escapeHtml(phone) + '.</li>' +
+          '<li>Выбранный город для открытия: ' + escapeHtml(city) + '.</li>' +
         '</ol>' +
-        '<div class="small text-success fw-bold">✓ Статус: Успешно зарегистрировано в базе партнеров Global Coffee</div>';
+        '<div class="small text-success fw-bold">✓ Заявка подготовлена на вашем устройстве. Это учебный сайт: данные не отправляются в кофейню.</div>';
 
       $resultBox.html(resultHtml);
     }
@@ -109,4 +112,9 @@ function initPartnerForm() {
 function escapeHtml(str) {
   if (typeof str !== 'string') return '';
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function showPartnerError($field, message) {
+  $field.addClass('is-invalid error');
+  $('<div>').addClass('invalid-feedback d-block field-error-msg').text(message).appendTo($field.parent());
 }

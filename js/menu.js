@@ -1,183 +1,106 @@
-/**
- * ==============================================================================
- * GLOBAL COFFEE — MENU CATALOG & LIVE FILTERING (JQUERY 3.7.1)
- * File: js/menu.js
- * 
- * JQUERY VERSION: 3.7.1
- * WHY $(function () { ... }) IS NEEDED:
- * Attaches filter listeners and initializes search input once menu cards and list
- * groups have loaded into the DOM.
- * ==============================================================================
- */
-
 'use strict';
 
-let activeCategory = 'all';
+// Каталог работает на обычном JavaScript, без jQuery.
+document.addEventListener('DOMContentLoaded', function () {
+  const search = document.getElementById('menuSearchInput');
+  if (!search) return;
 
-$(function () {
-  initMenuFilterControls();
-  initMenuSearchInput();
-  initMenuResetControl();
-});
+  const lists = document.querySelectorAll('main section .list-group');
+  const results = document.getElementById('menuSearchResults');
+  const controls = document.getElementById('filterAll').parentElement;
+  const categories = { filterAll: 'all', filterCoffee: 'coffee', filterCold: 'cold', filterFood: 'food' };
+  let category = 'all';
 
-/**
- * Category Filter Buttons using Method Chaining and Traversal
- */
-function initMenuFilterControls() {
-  const $filterBtns = $('#filterAll, #filterCoffee, #filterCold, #filterFood');
-  if (!$filterBtns.length) return;
+  function formatMenuPrice(price) {
+    return price.toLocaleString('ru-RU') + ' ₸';
+  }
 
-  $filterBtns.on('click', function () {
-    const btnId = $(this).attr('id');
-    if (btnId === 'filterCoffee') activeCategory = 'coffee';
-    else if (btnId === 'filterCold') activeCategory = 'cold';
-    else if (btnId === 'filterFood') activeCategory = 'food';
-    else activeCategory = 'all';
-
-    // Chaining demonstration across filter buttons
-    // Chain explanation:
-    // 1. $(this): the clicked category filter button.
-    // 2. .addClass('active btn-outline-primary'): activates this button with primary style.
-    // 3. .removeClass('btn-outline-secondary'): removes secondary styling.
-    // 4. .siblings('button'): traverses to all sibling filter buttons within container.
-    // 5. .removeClass('active btn-outline-primary'): deactivates all other category buttons.
-    // 6. .addClass('btn-outline-secondary'): returns sibling buttons to secondary outline.
-    $(this)
-      .addClass('active btn-outline-primary')
-      .removeClass('btn-outline-secondary')
-      .siblings('button')
-      .removeClass('active btn-outline-primary')
-      .addClass('btn-outline-secondary');
-
-    applyMenuFilters();
-  });
-}
-
-/**
- * Search input handling with keyup & Escape support
- */
-function initMenuSearchInput() {
-  const $searchInput = $('#menuSearchInput');
-  if (!$searchInput.length) return;
-
-  $searchInput.on('input keyup', function (e) {
-    if (e.key === 'Escape') {
-      $(this).val('');
-    }
-    applyMenuFilters();
-  });
-}
-
-/**
- * Dynamically creates a reset button using jQuery element constructor and .appendTo()
- */
-function initMenuResetControl() {
-  const $buttonGroup = $('#menuSearchInput').closest('.card').find('.col-md-7');
-  if (!$buttonGroup.length || $('#menuResetBtn').length) return;
-
-  $('<button>')
-    .attr('type', 'button')
-    .attr('id', 'menuResetBtn')
-    .attr('title', 'Очистить строку поиска и показать все категории')
-    .addClass('btn btn-outline-dark btn-sm ms-2 align-self-center')
-    .text('✕ Сбросить фильтры')
-    .on('click', resetAllMenuFilters)
-    .appendTo($buttonGroup);
-}
-
-function resetAllMenuFilters() {
-  $('#menuSearchInput').val('');
-  activeCategory = 'all';
-
-  $('#filterAll')
-    .addClass('active btn-outline-primary')
-    .removeClass('btn-outline-secondary')
-    .siblings('button')
-    .removeClass('active btn-outline-primary')
-    .addClass('btn-outline-secondary');
-
-  applyMenuFilters();
-}
-
-/**
- * Traverses menu card columns and list group items, updating match count
- */
-function applyMenuFilters() {
-  const $searchInput = $('#menuSearchInput');
-  const rawQuery = $searchInput.length ? $searchInput.val() : '';
-  const cleanQuery = $.trim(rawQuery).toLowerCase();
-  const $resultsContainer = $('#menuSearchResults');
-
-  const $cardGroups = $('.page-content .card .list-group');
-  let totalVisible = 0;
-
-  $cardGroups.each(function () {
-    const $listGroup = $(this);
-    const $cardCol = $listGroup.closest('.col-12');
-    const cardHeaderTitle = $cardCol.find('.card-header h3').text().toLowerCase();
-    const $items = $listGroup.find('.list-group-item');
-
-    let cardHasMatches = false;
-
-    let matchesCategory = true;
-    if (activeCategory === 'coffee') {
-      matchesCategory = cardHeaderTitle.indexOf('классика') !== -1 || cardHeaderTitle.indexOf('фирменные') !== -1;
-    } else if (activeCategory === 'cold') {
-      matchesCategory = cardHeaderTitle.indexOf('холодные') !== -1;
-    } else if (activeCategory === 'food') {
-      matchesCategory = cardHeaderTitle.indexOf('еда') !== -1 || cardHeaderTitle.indexOf('выпечка') !== -1;
-    }
-
-    $items.each(function () {
-      const itemText = $(this).text().toLowerCase();
-      const matchesSearch = cleanQuery === '' || itemText.indexOf(cleanQuery) !== -1;
-
-      if (matchesCategory && matchesSearch) {
-        $(this).removeClass('hidden');
-        totalVisible += 1;
-        cardHasMatches = true;
-      } else {
-        $(this).addClass('hidden');
-      }
+  function findMenuItems(query, selectedCategory) {
+    return MENU_ITEMS.filter(function (item) {
+      const matchesCategory = selectedCategory === 'all' || item.category === selectedCategory;
+      const text = (item.name + ' ' + item.note).toLowerCase();
+      return matchesCategory && text.includes(query.trim().toLowerCase());
     });
+  }
 
-    if (cardHasMatches) {
-      $cardCol.removeClass('hidden');
-    } else {
-      $cardCol.addClass('hidden');
-    }
-  });
+  function createMenuItem(item) {
+    const row = document.createElement('li');
+    row.className = 'list-group-item d-flex align-items-center py-3 gap-2';
+    const image = document.createElement('img');
+    image.src = item.image;
+    image.alt = item.alt;
+    image.width = 60;
+    image.height = 60;
+    image.className = 'rounded-3 menu-item-thumb';
+    const description = document.createElement('div');
+    description.className = 'flex-grow-1';
+    const name = document.createElement('span');
+    name.className = 'fw-semibold d-block';
+    name.textContent = item.name;
+    const note = document.createElement('div');
+    note.className = 'small text-muted';
+    note.textContent = item.note;
+    const price = document.createElement('span');
+    price.className = item.badge;
+    price.textContent = formatMenuPrice(item.price);
+    description.append(name, note);
+    row.append(image, description, price);
+    return row;
+  }
 
-  if ($resultsContainer.length) {
-    if (cleanQuery !== '' || activeCategory !== 'all') {
-      if (totalVisible > 0) {
-        $resultsContainer.html(
-          '<span class="badge bg-success me-2">Найдено: ' + totalVisible + '</span>' +
-          '<span class="text-muted">позиций в меню по вашему запросу</span>'
-        );
-      } else {
-        const emptyHtml =
-          '<div class="alert alert-warning d-flex align-items-center justify-content-between p-3 mt-2 rounded-3">' +
-            '<div>' +
-              '<span class="fs-5 me-2">🔍</span>' +
-              '<strong>Ничего не найдено: </strong>' +
-              '<span>по запросу «' + escapeHtml(rawQuery) + '» в выбранной категории позиций нет.</span>' +
-            '</div>' +
-            '<button type="button" id="emptyStateResetBtn" class="btn btn-outline-dark btn-sm ms-3">Сбросить поиск</button>' +
-          '</div>';
+  function renderMenu(items) {
+    lists.forEach(function (list, group) {
+      list.replaceChildren();
+      const groupItems = items.filter(function (item) { return item.group === group; });
+      for (const item of groupItems) list.append(createMenuItem(item));
+      list.closest('.col-12').classList.toggle('hidden', groupItems.length === 0);
+    });
+    results.textContent = items.length ? 'Найдено позиций: ' + items.length : 'Ничего не найдено. Попробуйте другой запрос.';
+    if (!items.length) results.append(createResetButton());
+  }
 
-        $resultsContainer.html(emptyHtml);
+  function createResetButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'btn btn-outline-dark btn-sm ms-2';
+    button.dataset.resetMenu = 'true';
+    button.textContent = 'Сбросить поиск';
+    return button;
+  }
 
-        // Delegated event binding or direct on newly created button
-        $('#emptyStateResetBtn').on('click', resetAllMenuFilters);
-      }
-    } else {
-      $resultsContainer.empty();
+  function updateMenu() {
+    renderMenu(findMenuItems(search.value, category));
+    for (const button of controls.querySelectorAll('button')) {
+      if (!categories[button.id]) continue;
+      const active = categories[button.id] === category;
+      button.classList.toggle('active', active);
+      button.classList.toggle('btn-outline-primary', active);
+      button.classList.toggle('btn-outline-secondary', !active);
+      button.setAttribute('aria-pressed', String(active));
     }
   }
-}
 
-function escapeHtml(str) {
-  if (typeof str !== 'string') return '';
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
+  function resetMenu() {
+    search.value = '';
+    category = 'all';
+    updateMenu();
+    search.focus();
+  }
+
+  controls.append(createResetButton());
+  // Один обработчик родителя обслуживает и созданные позже кнопки.
+  search.closest('.card').addEventListener('click', function (event) {
+    const button = event.target.closest('button');
+    if (!button) return;
+    if (button.dataset.resetMenu) resetMenu();
+    else if (categories[button.id]) {
+      category = categories[button.id];
+      updateMenu();
+    }
+  });
+  search.addEventListener('input', updateMenu);
+  search.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') resetMenu();
+  });
+  updateMenu();
+});

@@ -96,6 +96,8 @@ function initOrderCalculator() {
           console.warn('LocalStorage error:', e);
         }
 
+        $('input[name="order_type"]:checked').trigger('change');
+        $('#orderConfirmation').stop(true, true).hide().addClass('hidden');
         recalculateCart();
         if (typeof window.updateNavCartBadge === 'function') {
           window.updateNavCartBadge();
@@ -329,6 +331,7 @@ function initOrderFormSubmit() {
      * client-side verification, order itemization, and animated receipt display.
      */
     e.preventDefault();
+    $('#orderConfirmation').stop(true, true).hide().addClass('hidden');
     clearAllOrderFieldErrors();
 
     const totals = recalculateCart();
@@ -354,7 +357,7 @@ function initOrderFormSubmit() {
     // 2. Phone validation with regex
     const $phoneInput = $('#customer_phone');
     const phoneDigits = $phoneInput.val().replace(/\D/g, '');
-    if (phoneDigits.length < 10) {
+    if (!/^77\d{9}$/.test(phoneDigits)) {
       setOrderFieldError($phoneInput, 'Укажите корректный номер телефона для связи (+7 7XX XXX-XX-XX).');
       if (!$firstInvalid) $firstInvalid = $phoneInput;
       hasErrors = true;
@@ -459,6 +462,12 @@ function initOrderFormSubmit() {
     } catch (e) {
       console.warn('LocalStorage error:', e);
     }
+
+    // Чек остаётся на экране, а оформленные товары убираются из корзины.
+    $('input[name="order_items"]').prop('checked', false);
+    $('.qty-input').val('1');
+    $('.card').removeClass('selected');
+    recalculateCart();
 
     if (typeof window.updateNavCartBadge === 'function') {
       window.updateNavCartBadge();

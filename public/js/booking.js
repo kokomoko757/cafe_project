@@ -135,6 +135,7 @@ function clearBookingFieldError($field) {
 function initBookingDetailsPage() {
   const $form = $('#bookingDetailsForm');
   if (!$form.length) return;
+  $form.prop('noValidate', true);
 
   const $dateInput = $('#date');
   const $timeSelect = $('#time');
@@ -146,6 +147,11 @@ function initBookingDetailsPage() {
   const $errorAlert = $('#bookingError');
   const $confirmAlert = $('#bookingConfirmation');
   const $resultBox = $('#bookingResult');
+  $form.on('reset', function () {
+    $form.find('.invalid-feedback.field-error-msg').remove();
+    $form.find('.is-invalid, .error').removeClass('is-invalid error');
+    $errorAlert.stop(true, true).hide().addClass('hidden');
+  });
 
   // Clear errors dynamically on input or change event
   $form.find('input, select, textarea').on('input change', function () {
@@ -156,7 +162,7 @@ function initBookingDetailsPage() {
   });
 
   // Set minimum date attribute to today
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Almaty' });
   if ($dateInput.length) {
     $dateInput.attr('min', today);
     if (!$dateInput.val()) {
@@ -194,6 +200,7 @@ function initBookingDetailsPage() {
 
   // Form submit handler with jQuery validation
   $form.on('submit', function (e) {
+    $confirmAlert.stop(true, true).hide().addClass('hidden');
     /**
      * WHY event.preventDefault() IS NEEDED:
      * Without e.preventDefault(), the browser immediately executes a default HTTP submit,
@@ -215,7 +222,7 @@ function initBookingDetailsPage() {
 
     // 2. Phone validation with regex
     const phoneDigits = $phoneInput.val().replace(/\D/g, '');
-    if (phoneDigits.length < 10) {
+    if (!/^77\d{9}$/.test(phoneDigits)) {
       setBookingFieldError($phoneInput, 'Укажите контактный номер телефона (+7 7XX XXX-XX-XX).');
       if (!$firstInvalid) $firstInvalid = $phoneInput;
       hasErrors = true;
@@ -240,15 +247,17 @@ function initBookingDetailsPage() {
 
     // 5. Time validation
     const selectedTime = $timeSelect.val();
-    if (!selectedTime) {
-      setBookingFieldError($timeSelect, 'Пожалуйста, выберите удобное время посещения.');
+    const now = new Date();
+    const visitTime = new Date(selectedDate + 'T' + selectedTime + ':00+05:00');
+    if (!selectedTime || !Number.isFinite(visitTime.getTime()) || visitTime <= now) {
+      setBookingFieldError($timeSelect, 'Выберите время посещения в будущем.');
       if (!$firstInvalid) $firstInvalid = $timeSelect;
       hasErrors = true;
     }
 
     // 6. Guests count validation
-    const guestCount = parseInt($guestsInput.val(), 10);
-    if (isNaN(guestCount) || guestCount < 1 || guestCount > 10) {
+    const guestCount = Number($guestsInput.val());
+    if (!Number.isInteger(guestCount) || guestCount < 1 || guestCount > 10) {
       setBookingFieldError($guestsInput, 'Количество гостей должно быть от 1 до 10 человек.');
       if (!$firstInvalid) $firstInvalid = $guestsInput;
       hasErrors = true;

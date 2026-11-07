@@ -21,9 +21,9 @@ const BRANCH_NAMES = {
 };
 
 $(function () {
+  initDelegatedReviewInteractions();
   initReviewsForm();
   loadStoredReviews();
-  initDelegatedReviewInteractions();
 });
 
 /**
@@ -56,7 +56,9 @@ function initDelegatedReviewInteractions() {
     // $(this) inside the delegated handler refers to the specific .like-review-btn clicked
     const $btn = $(this);
     const currentCount = parseInt($btn.data('likes') || 0, 10);
-    const newCount = currentCount + 1;
+    const liked = $btn.attr('aria-pressed') === 'true';
+    const newCount = liked ? Math.max(0, currentCount - 1) : currentCount + 1;
+    $btn.attr('aria-pressed', String(!liked));
 
     $btn.data('likes', newCount);
     $btn.find('.like-counter').text(newCount);
@@ -85,12 +87,15 @@ function initReviewsForm() {
   // Clear errors dynamically on input
   $form.find('input, select, textarea').on('input change', function () {
     $(this).removeClass('is-invalid error');
+    $(this).parent().find('.field-error-msg').remove();
     if ($errorAlert.is(':visible')) {
       $errorAlert.slideUp(200);
     }
   });
 
   $form.on('submit', function (e) {
+    $confirmAlert.stop(true, true).hide().addClass('hidden');
+    $form.find('.field-error-msg').remove();
     /**
      * WHY event.preventDefault() IS NEEDED:
      * Prevents standard HTTP form submission and page reloading, allowing
@@ -101,17 +106,25 @@ function initReviewsForm() {
     const author = $.trim($authorInput.val());
     const branchKey = $branchSelect.val();
     const branchName = BRANCH_NAMES[branchKey] || 'Global Coffee Астана';
-    const rating = parseInt($ratingSelect.val() || '5', 10);
+    const rating = Number($ratingSelect.val());
     const text = $.trim($textInput.val());
 
     let hasErrors = false;
 
     if (!author) {
-      $authorInput.addClass('is-invalid error');
+      showReviewError($authorInput, 'Укажите ваше имя.');
+      hasErrors = true;
+    }
+    if (!BRANCH_NAMES[branchKey]) {
+      showReviewError($branchSelect, 'Выберите филиал.');
+      hasErrors = true;
+    }
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+      showReviewError($ratingSelect, 'Выберите оценку от 1 до 5.');
       hasErrors = true;
     }
     if (!text) {
-      $textInput.addClass('is-invalid error');
+      showReviewError($textInput, 'Напишите отзыв.');
       hasErrors = true;
     }
 
@@ -155,6 +168,7 @@ function initReviewsForm() {
 function renderReviewCard(review, $container, prepend) {
   if (!$container || !$container.length) return;
 
+  if (!Number.isInteger(review.rating) || review.rating < 1 || review.rating > 5) return;
   const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
 
   const $col = $('<div>').addClass('col-12 col-md-6 col-lg-4');
@@ -220,4 +234,9 @@ function loadStoredReviews() {
 function escapeHtml(str) {
   if (typeof str !== 'string') return '';
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function showReviewError($field, message) {
+  $field.addClass('is-invalid error');
+  $('<div>').addClass('invalid-feedback d-block field-error-msg').text(message).appendTo($field.parent());
 }
