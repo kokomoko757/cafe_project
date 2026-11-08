@@ -157,6 +157,7 @@ function recalculateCart() {
   $('#orderTotalPrice').text(window.GlobalCoffee.formatPrice(totalPrice));
 
   const $submitBtn = $('#orderSubmitBtn');
+  updateOrderPreview($submitBtn, cartState, totalPrice);
   let $emptyStateMsg = $('#orderEmptyStateMsg');
 
   if (totalItems === 0) {
@@ -186,6 +187,33 @@ function recalculateCart() {
   }
 
   return { totalItems, totalPrice, cartState };
+}
+
+function buildOrderItemsList(cartState) {
+  const formatPrice = window.GlobalCoffee.formatPrice;
+  const rows = Object.values(cartState).map(function (item) {
+    return `<li class="list-group-item d-flex justify-content-between align-items-center gap-2 px-0 py-2">
+      <div>
+        <strong>${escapeHtml(item.name)}</strong>
+        <div class="small text-muted">${item.qty} шт. × ${formatPrice(item.price)}</div>
+      </div>
+      <span class="fw-bold text-nowrap">${formatPrice(item.subtotal)}</span>
+    </li>`;
+  });
+  return `<ul class="list-group list-group-flush mb-3">${rows.join('')}</ul>`;
+}
+
+function updateOrderPreview($submitBtn, cartState, totalPrice) {
+  let $preview = $('#orderPreview');
+  if (!$preview.length) {
+    $preview = $('<section id="orderPreview" class="mt-4" aria-labelledby="orderPreviewTitle">')
+      .insertBefore($submitBtn.parent());
+  }
+
+  const summary = Object.keys(cartState).length
+    ? buildOrderItemsList(cartState) + `<p class="fw-bold text-end mb-0">Итого: ${window.GlobalCoffee.formatPrice(totalPrice)}</p>`
+    : '<p class="small text-muted mb-0">Выберите позиции из меню, чтобы увидеть состав заказа.</p>';
+  $preview.html('<h3 id="orderPreviewTitle" class="h5 fw-bold mb-2">Ваш заказ</h3>' + summary);
 }
 
 /**
@@ -410,21 +438,6 @@ function initOrderFormSubmit() {
 
     // Render receipt with jQuery .html()
     if ($orderResult.length) {
-      let itemsListHtml = '<ul class="list-group list-group-flush mb-3">';
-      const cartKeys = Object.keys(totals.cartState);
-      cartKeys.forEach(function (k) {
-        const item = totals.cartState[k];
-        itemsListHtml +=
-          '<li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2">' +
-            '<div>' +
-              '<strong>' + escapeHtml(item.name) + '</strong>' +
-              '<div class="small text-muted">' + item.qty + ' шт. × ' + window.GlobalCoffee.formatPrice(item.price) + '</div>' +
-            '</div>' +
-            '<span class="fw-bold">' + window.GlobalCoffee.formatPrice(item.subtotal) + '</span>' +
-          '</li>';
-      });
-      itemsListHtml += '</ul>';
-
       const resultHtml =
         '<div class="border-bottom pb-3 mb-3">' +
           '<span class="badge bg-primary mb-2 fs-6">Номер заказа: ' + orderId + '</span>' +
@@ -432,7 +445,7 @@ function initOrderFormSubmit() {
           '<p class="small text-muted mb-1">Способ: ' + deliveryText + ' (' + escapeHtml(addressText) + ')</p>' +
           '<p class="small text-secondary mb-0">Пожелания: ' + escapeHtml(instructionsText) + '</p>' +
         '</div>' +
-        itemsListHtml +
+        buildOrderItemsList(totals.cartState) +
         '<div class="d-flex justify-content-between align-items-center pt-2 border-top">' +
           '<span class="fs-5 fw-bold">Итого к оплате:</span>' +
           '<span class="fs-4 fw-bold text-primary">' + window.GlobalCoffee.formatPrice(totals.totalPrice) + '</span>' +
