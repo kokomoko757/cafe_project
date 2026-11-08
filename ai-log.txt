@@ -51,3 +51,63 @@ Decision:
 - Linting: tsc --noEmit && node --check js/*.js old-js-version.js (Pass).
 - Dev server: Verified on port 3000.
 ================================================================================
+
+DATE: November 8, 2026
+TOPIC: Endterm Rubric Audit, Plain JS vs jQuery Strict Separation & Unit Test Suite
+
+1. AUDIT FINDINGS AGAINST 100-POINT RUBRIC
+--------------------------------------------------------------------------------
+During the final verification pass against `requirements.txt`, an architectural
+rubric risk was detected:
+- The rubric strictly penalizes having only jQuery on the live site ("A project
+  with only plain JS or only jQuery loses the points for the missing half.
+  Keep the two apart: a feature is either plain JavaScript or jQuery, never both,
+  and keep them in separate files").
+- In an earlier iteration, all interactive features had been ported to jQuery,
+  leaving Vanilla JS solely in `old-js-version.js` (unlinked from live HTML).
+- To guarantee full score for Weeks 6–8 (20 pts Plain JS + 14 pts Events/Delegation
+  + 16 pts Validation), Table Booking (`booking.html`, `details.html`, `js/booking.js`)
+  was refactored into 100% native Vanilla JavaScript with zero jQuery calls.
+- Online Order (`order.html`), Menu (`menu.html`), Reviews (`reviews.html`),
+  Locations (`location.html`), and Franchise (`partner.html`) remain 100% jQuery 3.7.1.
+
+2. LOG OF PROMPTS & ARCHITECTURAL DECISIONS
+--------------------------------------------------------------------------------
+Prompt 4: "Audit all 10 pages against requirements.txt and eliminate any rubric penalties."
+Decision:
+- Refactored `js/booking.js` and `public/js/booking.js` to pure Plain JS:
+  1) `TABLES_CATALOG` array of objects at top of file.
+  2) Reusable pure functions with parameters & returns (`findTableById`,
+     `calculateBookingDeposit`, `generateBookingReference`, `formatPriceKzt`, `escapeHtml`).
+  3) 4 distinct event types: `click`, `input`, `change`, `submit`.
+  4) Event delegation: `container.addEventListener('click', ...)` using `e.target.closest()`.
+  5) Inline validation errors per input, cleared instantly on `input`/`change`.
+  6) Dynamic creation of `#selectedTableBanner` and `#bookingResult` via DOM APIs.
+  7) Calculated value: deposit = `guests * 1000 ₸`.
+
+Prompt 5: "Fix Vite 6 preview host blocking on cloud development proxy."
+Decision:
+- Added `server.allowedHosts: true` to `vite.config.ts`.
+- Verified HTTP 200 response when sending external `Host: ais-dev-*` headers.
+
+Prompt 6: "Add automated unit tests for core coffee business logic."
+Decision:
+- Created `src/utils/coffee.test.ts` using Node.js native test runner (`node:test`, `node:assert/strict`).
+- Added `"test": "npx --yes tsx --test src/utils/coffee.test.ts"` to `package.json`.
+- Verified 6/6 tests passing (pricing, phone formatting, date formatting, line totals, deposits).
+
+Prompt 7: "Perform browser automation and visual verification with Playwright CLI."
+Decision:
+- Navigated through all 10 HTML pages, checked console logs (0 errors).
+- Tested booking flow: table selection -> localStorage persistence -> details form submission -> confirmation card.
+- Tested order flow: checkbox selection -> real-time subtotal calculation -> delivery slideDown -> submission.
+- Tested menu live search and category filter chaining.
+- Tested reviews submission and dynamic card prepending with like button delegation.
+
+3. FINAL VERIFICATION SUMMARY
+--------------------------------------------------------------------------------
+- Unit tests: 6/6 passing (`npm test`).
+- Lint & syntax: TypeScript + Node check pass (`npm run lint`).
+- Build: 10/10 HTML pages bundled cleanly (`npm run build`).
+- Live server: Running smoothly on port 3000.
+================================================================================
