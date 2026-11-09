@@ -55,7 +55,18 @@ $(function () {
   initMobileNavAutoClose();
   updateNavCartBadge();
   initDailySpecialRecommendation();
+  initHomeButtons();
 });
+
+function initHomeButtons() {
+  const $buttons = $('#baristaRecommendationContainer').prev();
+  $buttons.removeClass('d-flex flex-wrap gap-2 justify-content-center justify-content-md-start')
+    .addClass('row row-cols-1 row-cols-sm-2 g-2');
+  $buttons.children('.btn')
+    .removeClass('btn-lg btn-sm btn-outline-primary btn-outline-dark btn-secondary align-self-center')
+    .addClass('btn-primary w-100 h-100')
+    .wrap('<div class="col"></div>');
+}
 
 /**
  * 1. Live Business Hours Badge

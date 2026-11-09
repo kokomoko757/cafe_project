@@ -1,15 +1,3 @@
-/**
- * ==============================================================================
- * GLOBAL COFFEE — REVIEWS & GUEST FEEDBACK (JQUERY 3.7.1)
- * File: js/reviews.js
- * 
- * JQUERY VERSION: 3.7.1
- * WHY $(function () { ... }) IS NEEDED:
- * Ensures the review grid container and submission form exist before rendering
- * dynamic review cards or binding delegated interaction handlers.
- * ==============================================================================
- */
-
 'use strict';
 
 const BRANCH_NAMES = {
@@ -19,205 +7,139 @@ const BRANCH_NAMES = {
   dostyk: 'ул. Достык, 9',
   other: 'Астана (филиал сети)'
 };
+const REVIEW_STORAGE_KEY = 'global_coffee_user_reviews';
 
-$(function () {
-  initReviewsForm();
-  loadStoredReviews();
-  initDelegatedReviewInteractions();
-});
+document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.getElementById('reviewsGrid');
+  const form = document.getElementById('reviewForm');
+  if (!grid || !form) return;
 
-/**
- * ==============================================================================
- * DELEGATED EVENT HANDLER (RUBRIC REQUIREMENT)
- * 
- * WHY BINDING DIRECTLY TO .like-review-btn WOULD NOT WORK:
- * Direct event binding (e.g., $('.like-review-btn').on('click', ...)) queries the DOM
- * only once when this function runs. Any review card added later (either from localStorage
- * or when a visitor submits a new review) did not exist at execution time and therefore
- * would have no listener attached at all!
- * By binding to the existing parent container ($('#reviewsGrid')) and passing the selector
- * '.like-review-btn' as the second argument of .on(), jQuery intercepts the event as it
- * bubbles up, ensuring cards created at any point in the future respond to clicks seamlessly.
- * ==============================================================================
- */
-function initDelegatedReviewInteractions() {
-  const $grid = $('.page-content section:first .row.g-4');
-  $grid.attr('id', 'reviewsGrid');
+  const author = document.getElementById('review_author');
+  const branch = document.getElementById('review_branch');
+  const rating = document.getElementById('review_rating');
+  const text = document.getElementById('review_text');
+  const error = document.getElementById('reviewError');
+  const confirmation = document.getElementById('reviewConfirmation');
+  const reviews = loadReviews();
 
-  // Delegated click handler on existing parent (#reviewsGrid) reacting to dynamically created buttons
-  $('#reviewsGrid').on('click', '.like-review-btn', function (event) {
-    /**
-     * WHY event.preventDefault() IS NEEDED:
-     * Prevents the button from triggering unintended parent form behaviors or
-     * jumping the browser viewport.
-     */
+  const filter = document.createElement('select');
+  filter.className = 'form-select mb-2';
+  filter.setAttribute('aria-label', 'Фильтр отзывов по филиалу');
+  filter.add(new Option('Все филиалы', ''));
+  for (const name of Object.values(BRANCH_NAMES)) filter.add(new Option(name, name));
+
+  const count = document.createElement('p');
+  count.className = 'small text-muted mb-3';
+  count.setAttribute('role', 'status');
+  grid.before(filter, count);
+
+  for (const card of grid.children) {
+    card.dataset.branch = card.querySelector('em')?.textContent.trim() || '';
+  }
+  grid.prepend(...reviews.map(createReviewCard));
+
+  function applyFilter() {
+    let visible = 0;
+    for (const card of grid.children) {
+      const matches = !filter.value || card.dataset.branch === filter.value;
+      card.classList.toggle('hidden', !matches);
+      if (matches) visible++;
+    }
+    count.textContent = visible ? `Найдено отзывов: ${visible}` : 'Для этого филиала пока нет отзывов.';
+  }
+
+  filter.addEventListener('change', applyFilter);
+  applyFilter();
+
+  // Один обработчик также работает для карточек, добавленных после загрузки.
+  grid.addEventListener('click', function (event) {
+    const button = event.target.closest('.like-review-btn');
+    if (!button) return;
+    const liked = button.getAttribute('aria-pressed') === 'true';
+    const likes = Number(button.dataset.likes) + (liked ? -1 : 1);
+    button.dataset.likes = likes;
+    button.querySelector('.like-counter').textContent = likes;
+    button.setAttribute('aria-pressed', String(!liked));
+    button.classList.toggle('btn-outline-secondary', liked);
+    button.classList.toggle('btn-danger', !liked);
+  });
+
+  form.addEventListener('input', function (event) {
+    if (event.target.value.trim()) event.target.classList.remove('is-invalid', 'error');
+    if (!form.querySelector('.is-invalid')) error.classList.add('hidden');
+  });
+
+  form.addEventListener('submit', function (event) {
     event.preventDefault();
-
-    // $(this) inside the delegated handler refers to the specific .like-review-btn clicked
-    const $btn = $(this);
-    const currentCount = parseInt($btn.data('likes') || 0, 10);
-    const newCount = currentCount + 1;
-
-    $btn.data('likes', newCount);
-    $btn.find('.like-counter').text(newCount);
-    $btn.toggleClass('btn-outline-danger btn-danger text-white');
-
-    // jQuery Effect: subtle pulse effect with .animate()
-    $btn.animate({ opacity: 0.6 }, 100).animate({ opacity: 1 }, 150);
-  });
-}
-
-/**
- * Review Submission with jQuery Validation
- */
-function initReviewsForm() {
-  const $form = $('#reviewForm');
-  const $authorInput = $('#review_author');
-  const $branchSelect = $('#review_branch');
-  const $ratingSelect = $('#review_rating');
-  const $textInput = $('#review_text');
-  const $errorAlert = $('#reviewError');
-  const $confirmAlert = $('#reviewConfirmation');
-  const $reviewsGrid = $('#reviewsGrid');
-
-  if (!$form.length) return;
-
-  // Clear errors dynamically on input
-  $form.find('input, select, textarea').on('input change', function () {
-    $(this).removeClass('is-invalid error');
-    if ($errorAlert.is(':visible')) {
-      $errorAlert.slideUp(200);
-    }
-  });
-
-  $form.on('submit', function (e) {
-    /**
-     * WHY event.preventDefault() IS NEEDED:
-     * Prevents standard HTTP form submission and page reloading, allowing
-     * client-side rendering of the new review card and animated prepend into the grid.
-     */
-    e.preventDefault();
-
-    const author = $.trim($authorInput.val());
-    const branchKey = $branchSelect.val();
-    const branchName = BRANCH_NAMES[branchKey] || 'Global Coffee Астана';
-    const rating = parseInt($ratingSelect.val() || '5', 10);
-    const text = $.trim($textInput.val());
-
-    let hasErrors = false;
-
-    if (!author) {
-      $authorInput.addClass('is-invalid error');
-      hasErrors = true;
-    }
-    if (!text) {
-      $textInput.addClass('is-invalid error');
-      hasErrors = true;
-    }
-
-    if (hasErrors) {
-      $errorAlert.removeClass('hidden').hide().slideDown(250);
+    confirmation.classList.add('hidden');
+    const invalid = [author, text].filter(field => !field.value.trim());
+    for (const field of invalid) field.classList.add('is-invalid', 'error');
+    error.classList.toggle('hidden', invalid.length === 0);
+    if (invalid.length) {
+      invalid[0].focus();
       return;
     }
 
-    $errorAlert.slideUp(200, function () {
-      $(this).addClass('hidden');
-    });
-
-    const newReview = {
+    const review = {
       id: 'rev_' + Date.now(),
-      author: author,
-      branch: branchName,
-      rating: rating,
-      text: text,
+      author: author.value.trim(),
+      branch: BRANCH_NAMES[branch.value] || BRANCH_NAMES.other,
+      rating: Number(rating.value),
+      text: text.value.trim(),
       date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' })
     };
+    reviews.unshift(review);
+    try {
+      localStorage.setItem(REVIEW_STORAGE_KEY, JSON.stringify(reviews));
+    } catch (error) {
+      console.warn('Не удалось сохранить отзыв:', error);
+    }
 
-    // Render new card prepended with .prepend() and .fadeIn()
-    renderReviewCard(newReview, $reviewsGrid, true);
-    saveReviewToStorage(newReview);
-
-    // Show success message with effect
-    $confirmAlert.removeClass('hidden').hide().fadeIn(300);
-
-    $form[0].reset();
+    grid.prepend(createReviewCard(review));
+    if (filter.value && filter.value !== review.branch) filter.value = review.branch;
+    applyFilter();
+    confirmation.classList.remove('hidden');
+    form.reset();
   });
+});
+
+function loadReviews() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(REVIEW_STORAGE_KEY) || '[]');
+    if (Array.isArray(saved)) return saved.filter(review => review && Number.isInteger(review.rating) && review.rating >= 1 && review.rating <= 5);
+  } catch (error) {
+    console.warn('Не удалось прочитать отзывы:', error);
+  }
+  return [];
 }
 
-/**
- * ==============================================================================
- * DYNAMIC CARD GENERATION FROM ARRAY IN CODE WITH .append() / .prepend()
- * 
- * The cards built here are created entirely dynamically in JavaScript and
- * appended to the DOM.
- * ==============================================================================
- */
-function renderReviewCard(review, $container, prepend) {
-  if (!$container || !$container.length) return;
-
+function createReviewCard(review) {
+  const column = document.createElement('div');
+  column.className = 'col-12 col-md-6 col-lg-4';
+  column.dataset.branch = review.branch;
+  column.innerHTML = `
+    <article class="card h-100 shadow-sm border rounded-3 p-3 bg-white border-warning">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <h3 class="h5 fw-bold mb-0"></h3>
+        <span class="badge bg-warning text-dark"></span>
+      </div>
+      <p class="small text-muted mb-2"><span></span> · <em></em></p>
+      <blockquote class="blockquote flex-grow-1"><p class="small mb-0"></p></blockquote>
+      <div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">
+        <div>
+          <span class="badge bg-success me-1">Отзыв гостя</span>
+          <span class="badge bg-info text-dark">Новый</span>
+        </div>
+        <button type="button" class="btn btn-outline-secondary btn-sm like-review-btn" data-likes="0" aria-pressed="false" title="Поблагодарить за отзыв">
+          ❤️ <span class="like-counter">0</span>
+        </button>
+      </div>
+    </article>`;
   const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
-
-  const $col = $('<div>').addClass('col-12 col-md-6 col-lg-4');
-
-  const cardHtml =
-    '<article class="card h-100 shadow-sm border rounded-3 p-3 bg-white border-warning">' +
-      '<div class="d-flex justify-content-between align-items-start mb-2">' +
-        '<h3 class="h5 fw-bold mb-0">' + escapeHtml(review.author) + '</h3>' +
-        '<span class="badge bg-warning text-dark">' + stars + ' ' + review.rating + '.0</span>' +
-      '</div>' +
-      '<p class="small text-muted mb-2">' + review.date + ' · <em>' + escapeHtml(review.branch) + '</em></p>' +
-      '<blockquote class="blockquote flex-grow-1">' +
-        '<p class="small mb-0">«' + escapeHtml(review.text) + '»</p>' +
-      '</blockquote>' +
-      '<div class="mt-2 pt-2 border-top d-flex justify-content-between align-items-center">' +
-        '<div>' +
-          '<span class="badge bg-success me-1">Отзыв гостя</span>' +
-          '<span class="badge bg-info text-dark">Новый</span>' +
-        '</div>' +
-        '<button type="button" class="btn btn-outline-secondary btn-sm like-review-btn" data-likes="0" title="Поблагодарить за отзыв">' +
-          '❤️ <span class="like-counter">0</span>' +
-        '</button>' +
-      '</div>' +
-    '</article>';
-
-  $col.html(cardHtml).hide();
-
-  if (prepend && $container.children().length) {
-    $container.prepend($col);
-  } else {
-    $container.append($col);
-  }
-
-  // Effect: smooth fadeIn of the newly constructed card
-  $col.fadeIn(350);
-}
-
-function saveReviewToStorage(review) {
-  try {
-    const stored = JSON.parse(localStorage.getItem('global_coffee_user_reviews') || '[]');
-    stored.unshift(review);
-    localStorage.setItem('global_coffee_user_reviews', JSON.stringify(stored));
-  } catch (e) {
-    console.warn('LocalStorage save error:', e);
-  }
-}
-
-function loadStoredReviews() {
-  try {
-    const stored = JSON.parse(localStorage.getItem('global_coffee_user_reviews') || '[]');
-    const $reviewsGrid = $('#reviewsGrid');
-    if (!$reviewsGrid.length || stored.length === 0) return;
-
-    // Traversal using .each()
-    $.each(stored, function (index, review) {
-      renderReviewCard(review, $reviewsGrid, true);
-    });
-  } catch (e) {
-    console.warn('LocalStorage load error:', e);
-  }
-}
-
-function escapeHtml(str) {
-  if (typeof str !== 'string') return '';
-  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  column.querySelector('h3').textContent = review.author;
+  column.querySelector('.bg-warning').textContent = `${stars} ${review.rating}.0`;
+  column.querySelector('p span').textContent = review.date;
+  column.querySelector('em').textContent = review.branch;
+  column.querySelector('blockquote p').textContent = `«${review.text}»`;
+  return column;
 }
